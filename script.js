@@ -1,103 +1,88 @@
-body {
-  font-family: Arial, sans-serif;
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transition:0.3s;
+function login() {
+  let user = document.getElementById("username").value.trim();
+  let pass = document.getElementById("password").value.trim();
+
+  if (user === "" || pass === "") {
+    document.getElementById("loginError").innerText =
+      "Enter username & password";
+    return;
+  }
+
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("appBox").classList.remove("hidden");
+
+  document.getElementById("userDisplay").innerText =
+    "Welcome " + user;
+
+  startClock();
 }
 
-body.dark {
-  background:#0f0f1a;
-  color:white;
+function logout() {
+  location.reload();
 }
 
-body.light {
-  background:#667eea;
-  color:white;
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  document.body.classList.toggle("dark");
 }
 
-.box {
-  width:350px;
-  padding:25px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(20px);
+function startClock() {
+  setInterval(() => {
+    let now = new Date();
+    document.getElementById("clockDisplay").innerText =
+      now.toLocaleTimeString();
+
+    updateWork(now);
+  }, 1000);
 }
 
-h2 {
-  text-align:center;
-  color:#00f7ff;
+function updateWork(now) {
+  let workMin = parseInt(document.getElementById("workHours").value);
+
+  let h = parseInt(document.getElementById("loginHour").value || 9);
+  let m = parseInt(document.getElementById("loginMinute").value || 0);
+  let ampm = document.getElementById("loginAMPM").value;
+
+  if (ampm === "PM" && h !== 12) h += 12;
+  if (ampm === "AM" && h === 12) h = 0;
+
+  let loginTime = new Date();
+  loginTime.setHours(h, m, 0);
+
+  let diff = Math.floor((now - loginTime) / 60000);
+  let remaining = workMin - diff;
+
+  let percent = Math.min((diff / workMin) * 100, 100);
+  let bar = document.getElementById("progressBar");
+
+  bar.style.width = percent + "%";
+  bar.innerText = Math.floor(percent) + "%";
+
+  if (remaining > 0) {
+    document.getElementById("leaveTime").innerText =
+      "Remaining: " + formatTime(remaining);
+    document.getElementById("leaveTime").style.color = "#00f7ff";
+  } else {
+    let overtime = Math.abs(remaining);
+    document.getElementById("leaveTime").innerText =
+      "🔥 Overtime: " + formatTime(overtime);
+    document.getElementById("leaveTime").style.color = "#ff4b2b";
+  }
 }
 
-.field {
-  position:relative;
-  margin-top:15px;
+function formatTime(min) {
+  return `${Math.floor(min / 60)}h ${min % 60}m`;
 }
 
-.field input,
-.field select,
-.field textarea {
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  background:rgba(255,255,255,0.1);
-  color:white;
-  outline:none;
-}
+window.onload = function () {
+  let h = document.getElementById("loginHour");
+  let m = document.getElementById("loginMinute");
 
-.field label {
-  position:absolute;
-  top:50%;
-  left:10px;
-  transform:translateY(-50%);
-  font-size:12px;
-  opacity:0.6;
-}
+  for (let i = 1; i <= 12; i++) {
+    h.innerHTML += `<option>${i}</option>`;
+  }
 
-button {
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border:none;
-  border-radius:8px;
-  color:white;
-  cursor:pointer;
-}
-
-.primary {
-  background:linear-gradient(135deg,#00f7ff,#0072ff);
-}
-
-.logout {
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
-}
-
-.hidden {
-  display:none;
-}
-
-.leave-time {
-  text-align:center;
-  margin-top:10px;
-  font-weight:bold;
-}
-
-.progress-container {
-  margin-top:15px;
-  height:20px;
-  background:rgba(255,255,255,0.1);
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.progress-bar {
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#00f7ff,#00ff88);
-  text-align:center;
-  font-size:12px;
-  line-height:20px;
-}
+  for (let i = 0; i < 60; i++) {
+    m.innerHTML += `<option>${i}</option>`;
+  }
+};
