@@ -71,8 +71,7 @@ function calculateWork(){
 
  let breaks=getBreaks();
 
- let bH=Math.floor(breaks/60), bM=breaks%60;
- totalBreak.innerText=`Break: ${bH}h ${bM}m`;
+ totalBreak.innerText=`Break: ${Math.floor(breaks/60)}h ${breaks%60}m`;
 
  let worked=(now-start)-breaks*60000;
  if(worked<0) worked=0;
@@ -94,10 +93,7 @@ function calculateWork(){
  let lh=leave.getHours(),lm=pad(leave.getMinutes()),lap=lh>=12?"PM":"AM";
  lh=lh%12||12;
 
- leaveTime.innerText=
- leave.getDate()!=start.getDate()?
- `⏱ Tomorrow at ${lh}:${lm} ${lap}`:
- `⏱ Leave at ${lh}:${lm} ${lap}`;
+ leaveTime.innerText=`⏱ Leave at ${lh}:${lm} ${lap}`;
 
  updateCountdown(leave);
  updateProgress(min,target);
