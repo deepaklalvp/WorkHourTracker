@@ -256,6 +256,14 @@ function updateClock(){
  let h=now.getHours(),m=pad(now.getMinutes());
  let ap=h>=12?"PM":"AM"; h=h%12||12;
  clockDisplay.innerText=`${h}:${m} ${ap}`;
+  let rem = target - min;
+
+if (rem > 0) {
+  remaining.innerText = "";
+} else {
+  remaining.innerText =
+    `Overtime: ${Math.floor(-rem/60)}h ${(-rem%60)}m`;
+}
  calculateWork();
 }
 
