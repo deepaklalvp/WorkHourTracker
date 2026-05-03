@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Work Tracker</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,7 +11,7 @@
 
 <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
 
-<!-- LOGIN PAGE -->
+<!-- LOGIN -->
 <div class="box" id="loginBox">
   <h2>⚡ Work Tracker</h2>
 
@@ -27,14 +26,14 @@
   </div>
 
   <button class="primary" onclick="login()">Login</button>
-  <div id="loginError" style="text-align:center;margin-top:10px;color:#ff4b2b;"></div>
+  <div id="loginError" style="text-align:center;color:#ff4b2b;"></div>
 </div>
 
-<!-- APP PAGE -->
+<!-- APP -->
 <div class="box hidden" id="appBox">
   <h2>⚡ Work Tracker</h2>
 
-  <div id="userDisplay" style="text-align:center;"></div>
+  <div id="userDisplay"></div>
   <div id="clockDisplay" style="text-align:center;margin-top:10px;"></div>
 
   <button class="logout" onclick="logout()">Logout</button>
@@ -49,11 +48,13 @@
     </select>
   </div>
 
+  <!-- BREAKS -->
   <div class="field">
     <textarea id="breakTimes" placeholder=" "></textarea>
     <label>Breaks (minutes)</label>
   </div>
 
+  <!-- WORK HOURS -->
   <div class="field">
     <select id="workHours">
       <option value="480">8 hrs</option>
@@ -63,8 +64,14 @@
     <label>Work Duration</label>
   </div>
 
-  <div class="leave-time" id="leaveTime"></div>
+  <!-- OUTPUTS (RESTORED) -->
+  <div class="result" id="result"></div>
+  <div class="break-total" id="totalBreak"></div>
 
+  <div class="leave-time" id="leaveTime"></div>
+  <div class="leave-time" id="countdown"></div>
+
+  <!-- PROGRESS -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar">0%</div>
   </div>
