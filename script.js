@@ -63,9 +63,10 @@ function calculateWork(){
  let h=h12%12+(ap==="PM"?12:0);
 
  let start=new Date(); start.setHours(h,m,0);
- let now=new Date(); if(now<start) now.setDate(now.getDate()+1);
+ let now=new Date(); 
+ if(now<start) now.setDate(now.getDate()+1);
 
- let breaks=getBreaks();
+ let breaks = getBreaks();
 
  let worked=(now-start)-breaks*60000;
  if(worked<0) worked=0;
@@ -74,12 +75,10 @@ function calculateWork(){
  let hh=Math.floor(min/60),mm=min%60;
 
  result.innerText=`Worked: ${hh}h ${mm}m`;
- 
- let breaks = getBreaks();
-let bH = Math.floor(breaks / 60);
-let bM = breaks % 60;
 
-totalBreak.innerText = `⏸ Total Break Taken: ${bH}h ${bM}m`;
+ let bH = Math.floor(breaks / 60);
+ let bM = breaks % 60;
+ totalBreak.innerText = `⏸ Total Break Taken: ${bH}h ${bM}m`;
 
  let target=+workHours.value;
  let rem = target - min;
