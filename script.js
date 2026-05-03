@@ -1,164 +1,98 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
+// LOGIN SIMPLE
+function login() {
+  let user = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+
+  if (!user || !pass) {
+    document.getElementById("loginError").innerText = "Fill all fields";
+    return;
+  }
+
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("appBox").classList.remove("hidden");
+
+  document.getElementById("userDisplay").innerText = "Welcome " + user;
+
+  startClock();
 }
 
-/* THEMES */
-body.dark {
-  background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
-  color: #fff;
+// LOGOUT
+function logout() {
+  location.reload();
 }
 
-body.light {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: #fff;
+// THEME
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  document.body.classList.toggle("dark");
 }
 
-/* GLASS CARD */
-.box {
-  width: 360px;
-  padding: 25px;
-  border-radius: 20px;
-  backdrop-filter: blur(25px);
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+// CLOCK
+function startClock() {
+  setInterval(() => {
+    let now = new Date();
+    document.getElementById("clockDisplay").innerText =
+      now.toLocaleTimeString();
+
+    updateWorkStatus(now);
+  }, 1000);
 }
 
-/* TITLE */
-h2 {
-  text-align: center;
-  text-shadow: 0 0 10px #00f7ff;
+// MAIN LOGIC
+function updateWorkStatus(now) {
+  let workMinutes = parseInt(document.getElementById("workHours").value || 480);
+
+  let loginHour = parseInt(document.getElementById("loginHour").value || 9);
+  let loginMin = parseInt(document.getElementById("loginMinute").value || 0);
+  let ampm = document.getElementById("loginAMPM").value;
+
+  if (ampm === "PM" && loginHour !== 12) loginHour += 12;
+  if (ampm === "AM" && loginHour === 12) loginHour = 0;
+
+  let loginTime = new Date();
+  loginTime.setHours(loginHour, loginMin, 0);
+
+  let diffMs = now - loginTime;
+  let workedMin = Math.floor(diffMs / 60000);
+
+  let diff = workMinutes - workedMin;
+
+  let bar = document.getElementById("progressBar");
+  let percent = Math.min((workedMin / workMinutes) * 100, 100);
+
+  bar.style.width = percent + "%";
+  bar.innerText = Math.floor(percent) + "%";
+
+  // OVERTIME LOGIC
+  if (diff > 0) {
+    document.getElementById("leaveTime").innerText =
+      "Remaining: " + formatTime(diff);
+    document.getElementById("leaveTime").style.color = "#00f7ff";
+  } else {
+    let overtime = Math.abs(diff);
+    document.getElementById("leaveTime").innerText =
+      "🔥 Overtime: " + formatTime(overtime);
+    document.getElementById("leaveTime").style.color = "#ff4b2b";
+  }
 }
 
-/* FIELDS */
-.field {
-  position: relative;
-  margin-top: 18px;
+// FORMAT TIME
+function formatTime(mins) {
+  let h = Math.floor(mins / 60);
+  let m = mins % 60;
+  return `${h}h ${m}m`;
 }
 
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  padding: 12px 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-}
+// FILL TIME DROPDOWNS
+window.onload = function () {
+  let hour = document.getElementById("loginHour");
+  let min = document.getElementById("loginMinute");
 
-/* LABEL ANIMATION */
-.field label {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  font-size: 13px;
-  opacity: 0.6;
-  transition: 0.3s;
-}
+  for (let i = 1; i <= 12; i++) {
+    hour.innerHTML += `<option>${i}</option>`;
+  }
 
-.field input:focus + label,
-.field input:not(:placeholder-shown) + label,
-.field textarea:focus + label,
-.field textarea:not(:placeholder-shown) + label,
-.field select:focus + label,
-.field select:valid + label {
-  top: -8px;
-  font-size: 11px;
-  color: #00f7ff;
-}
-
-/* TIME ROW */
-.time-row {
-  display: flex;
-  gap: 5px;
-  margin-top: 5px;
-}
-
-/* BUTTONS */
-button {
-  width: 100%;
-  margin-top: 12px;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  color: white;
-}
-
-.primary {
-  background: linear-gradient(135deg, #00f7ff, #0072ff);
-}
-
-.logout {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-}
-
-/* OUTPUT TEXT */
-.result,
-.leave-time,
-.break-total {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  text-shadow: 0 0 6px rgba(0,255,255,0.6);
-}
-
-/* PROGRESS BAR */
-.progress-container {
-  margin-top: 15px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  height: 22px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  text-align: center;
-  color: white;
-  font-size: 12px;
-  line-height: 22px;
-  background: linear-gradient(270deg, #00f7ff, #0072ff, #00ff88);
-  background-size: 400% 400%;
-  animation: move 5s ease infinite;
-  transition: width 0.6s;
-}
-
-@keyframes move {
-  0% { background-position: 0%; }
-  50% { background-position: 100%; }
-  100% { background-position: 0%; }
-}
-
-/* THEME BUTTON */
-.theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: rgba(255,255,255,0.1);
-  border: none;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  color: #fff;
-}
-
-/* SELECT FIX */
-select option {
-  color: #000;
-}
-
-.hidden {
-  display: none;
-}
+  for (let i = 0; i < 60; i++) {
+    min.innerHTML += `<option>${i}</option>`;
+  }
+};
