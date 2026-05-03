@@ -1,30 +1,22 @@
 function toggleTheme(){
  let isDark = document.body.classList.contains("dark");
-
  document.body.classList.toggle("dark", !isDark);
  document.body.classList.toggle("light", isDark);
-
  localStorage.setItem("theme", isDark ? "light":"dark");
  updateThemeIcon();
 }
 
 function updateThemeIcon(){
- themeBtn.innerText =
- document.body.classList.contains("dark") ? "☀️":"🌙";
+ themeBtn.innerText = document.body.classList.contains("dark") ? "☀️":"🌙";
 }
 
 function login(){
- let u = username.value;
- let p = password.value;
- let n = parseInt(u);
-
- if(n >= 101 && n <= 150 && u === p){
+ let u=username.value,p=password.value,n=parseInt(u);
+ if(n>=101&&n<=150&&u===p){
   localStorage.setItem("loggedIn","true");
   localStorage.setItem("username",u);
   showApp();
- } else {
-  loginError.innerText = "Invalid";
- }
+ } else loginError.innerText="Invalid";
 }
 
 function logout(){
@@ -35,166 +27,87 @@ function logout(){
 function showApp(){
  loginBox.classList.add("hidden");
  appBox.classList.remove("hidden");
- userDisplay.innerText = "User: " + localStorage.getItem("username");
+ userDisplay.innerText="User: "+localStorage.getItem("username");
 }
 
-function pad(n){ return n.toString().padStart(2,'0'); }
+function pad(n){return n.toString().padStart(2,'0');}
 
 function updateClock(){
- let now = new Date();
- let h = now.getHours();
- let m = pad(now.getMinutes());
-
- let ap = h >= 12 ? "PM" : "AM";
- h = h % 12 || 12;
-
- clockDisplay.innerText = `${h}:${m} ${ap}`;
-
+ let now=new Date();
+ let h=now.getHours(),m=pad(now.getMinutes());
+ let ap=h>=12?"PM":"AM"; h=h%12||12;
+ clockDisplay.innerText=`${h}:${m} ${ap}`;
  calculateWork();
 }
 
 function getBreaks(){
- return breakTimes.value
- .split(/[\s,]+/)
- .map(n => parseInt(n))
- .filter(n => !isNaN(n))
- .reduce((a,b) => a + b, 0);
+ return breakTimes.value.split(/[\s,]+/)
+ .map(n=>parseInt(n))
+ .filter(n=>!isNaN(n))
+ .reduce((a,b)=>a+b,0);
 }
 
-/* PROGRESS UI */
-function updateProgress(min, target){
- let p = Math.min(min / target * 100, 100);
-
- progressBar.style.width = p + "%";
- progressBar.innerText = Math.floor(p) + "% ⚡";
-
- progressBar.classList.remove(
-  "progress-safe",
-  "progress-warning",
-  "progress-danger"
- );
-
- if(p < 60){
-  progressBar.classList.add("progress-safe");
- }
- else if(p < 90){
-  progressBar.classList.add("progress-warning");
- }
- else{
-  progressBar.classList.add("progress-danger");
- }
+function updateProgress(min,target){
+ let p=Math.min(min/target*100,100);
+ progressBar.style.width=p+"%";
+ progressBar.innerText=Math.floor(p)+"% ⚡";
 }
 
-/* REMAINING UI STATE */
-function updateRemainingUI(rem){
- remaining.classList.remove("safe","warning","danger","over");
-
- if(rem > 120){
-  remaining.classList.add("safe");
- }
- else if(rem > 30){
-  remaining.classList.add("warning");
- }
- else if(rem > 0){
-  remaining.classList.add("danger");
- }
- else {
-  remaining.classList.add("over");
- }
-}
-
-/* COUNTDOWN */
 function updateCountdown(ld){
- let diff = ld - new Date();
-
- if(diff <= 0){
-  countdown.innerText = "✅ Done";
-  return;
- }
-
- let h = Math.floor(diff / 3600000);
- let m = Math.floor(diff % 3600000 / 60000);
- let s = Math.floor(diff % 60000 / 1000);
-
- countdown.innerText = `⏳ ${h}h ${m}m ${s}s`;
+ let diff=ld-new Date();
+ if(diff<=0){countdown.innerText="✅ Done";return;}
+ let h=Math.floor(diff/3600000);
+ let m=Math.floor(diff%3600000/60000);
+ let s=Math.floor(diff%60000/1000);
+ countdown.innerText=`⏳ ${h}h ${m}m ${s}s`;
 }
 
-/* MAIN LOGIC */
 function calculateWork(){
- let h12 = +loginHour.value;
- let m = +loginMinute.value;
- let ap = loginAMPM.value;
+ let h12=+loginHour.value,m=+loginMinute.value,ap=loginAMPM.value;
+ let h=h12%12+(ap==="PM"?12:0);
 
- let h = h12 % 12 + (ap === "PM" ? 12 : 0);
+ let start=new Date(); start.setHours(h,m,0);
+ let now=new Date(); if(now<start) now.setDate(now.getDate()+1);
 
- let start = new Date();
- start.setHours(h, m, 0);
+ let breaks=getBreaks();
 
- let now = new Date();
- if(now < start) now.setDate(now.getDate() + 1);
+ totalBreak.innerText=`Break: ${Math.floor(breaks/60)}h ${breaks%60}m`;
 
- let breaks = getBreaks();
+ let worked=(now-start)-breaks*60000;
+ if(worked<0) worked=0;
 
- totalBreak.innerText =
- `Break: ${Math.floor(breaks/60)}h ${breaks%60}m`;
+ let min=Math.floor(worked/60000);
+ let hh=Math.floor(min/60),mm=min%60;
 
- let worked = (now - start) - breaks * 60000;
- if(worked < 0) worked = 0;
+ result.innerText=`Worked: ${hh}h ${mm}m`;
 
- let min = Math.floor(worked / 60000);
- let hh = Math.floor(min / 60);
- let mm = min % 60;
+ let target=+workHours.value;
+ let rem=target-min;
 
- result.innerText = `Worked: ${hh}h ${mm}m`;
+ remaining.innerText=rem>0?
+ `Remaining: ${Math.floor(rem/60)}h ${rem%60}m`:
+ `Overtime: ${Math.floor(-rem/60)}h ${-rem%60}m`;
 
- let target = +workHours.value;
+ let leave=new Date(start.getTime()+breaks*60000+target*60000);
 
- if(isNaN(target)){
-  remaining.innerText = "Select work duration";
-  return;
- }
+ let lh=leave.getHours(),lm=pad(leave.getMinutes()),lap=lh>=12?"PM":"AM";
+ lh=lh%12||12;
 
- let rem = target - min;
-
- if(rem > 0){
-  remaining.innerText =
-  `Remaining: ${Math.floor(rem/60)}h ${rem%60}m`;
- } else {
-  remaining.innerText =
-  `Overtime: ${Math.floor(-rem/60)}h ${-rem%60}m`;
- }
-
- updateRemainingUI(rem);
-
- let leave = new Date(
-  start.getTime() + breaks * 60000 + target * 60000
- );
-
- let lh = leave.getHours();
- let lm = pad(leave.getMinutes());
- let lap = lh >= 12 ? "PM" : "AM";
- lh = lh % 12 || 12;
-
- leaveTime.innerText = `⏱ Leave at ${lh}:${lm} ${lap}`;
+ leaveTime.innerText=`⏱ Leave at ${lh}:${lm} ${lap}`;
 
  updateCountdown(leave);
- updateProgress(min, target);
+ updateProgress(min,target);
 }
 
-/* INIT */
-window.onload = () => {
- for(let i=1;i<=12;i++)
-  loginHour.add(new Option(i,i));
+window.onload=()=>{
+ for(let i=1;i<=12;i++) loginHour.add(new Option(i,i));
+ for(let i=0;i<60;i++) loginMinute.add(new Option(pad(i),i));
 
- for(let i=0;i<60;i++)
-  loginMinute.add(new Option(pad(i),i));
-
- let t = localStorage.getItem("theme") || "dark";
+ let t=localStorage.getItem("theme")||"dark";
  document.body.classList.add(t);
  updateThemeIcon();
 
- if(localStorage.getItem("loggedIn"))
-  showApp();
+ if(localStorage.getItem("loggedIn")) showApp();
 
- setInterval(updateClock, 1000);
+ setInterval(updateClock,1000);
 };
