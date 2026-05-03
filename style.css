@@ -1,103 +1,112 @@
 body {
-  font-family: Arial, sans-serif;
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transition:0.3s;
+  font-family: Arial;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body.dark {
-  background:#0f0f1a;
-  color:white;
+  background: #0f0f1a;
+  color: white;
 }
 
 body.light {
-  background:#667eea;
-  color:white;
+  background: #667eea;
+  color: white;
 }
 
 .box {
-  width:350px;
-  padding:25px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(20px);
+  width: 360px;
+  padding: 25px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
 }
 
 h2 {
-  text-align:center;
-  color:#00f7ff;
+  text-align: center;
+  color: #00f7ff;
 }
 
 .field {
-  position:relative;
-  margin-top:15px;
+  position: relative;
+  margin-top: 15px;
 }
 
 .field input,
 .field select,
 .field textarea {
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  background:rgba(255,255,255,0.1);
-  color:white;
-  outline:none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
 }
 
 .field label {
-  position:absolute;
-  top:50%;
-  left:10px;
-  transform:translateY(-50%);
-  font-size:12px;
-  opacity:0.6;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  opacity: 0.6;
 }
 
 button {
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border:none;
-  border-radius:8px;
-  color:white;
-  cursor:pointer;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
 }
 
 .primary {
-  background:linear-gradient(135deg,#00f7ff,#0072ff);
+  background: linear-gradient(135deg,#00f7ff,#0072ff);
 }
 
 .logout {
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
+  background: linear-gradient(135deg,#ff416c,#ff4b2b);
 }
 
 .hidden {
-  display:none;
+  display: none;
 }
 
+.result,
+.break-total,
 .leave-time {
-  text-align:center;
-  margin-top:10px;
-  font-weight:bold;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 .progress-container {
-  margin-top:15px;
-  height:20px;
-  background:rgba(255,255,255,0.1);
-  border-radius:10px;
-  overflow:hidden;
+  margin-top: 15px;
+  height: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .progress-bar {
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#00f7ff,#00ff88);
-  text-align:center;
-  font-size:12px;
-  line-height:20px;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,#00f7ff,#00ff88);
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
+  border-radius: 50%;
 }
