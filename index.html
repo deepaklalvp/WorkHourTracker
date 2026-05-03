@@ -53,15 +53,17 @@
     <label>Breaks (minutes)</label>
   </div>
 
-  <div class="field">
-    <select id="workHours">
-      <option value="" disabled selected hidden></option>
-      <option value="480">8 hrs</option>
-      <option value="450">7.5 hrs</option>
-      <option value="540">9 hrs</option>
-    </select>
-    <label>Work Duration</label>
-  </div>
+<div class="field">
+  <select id="workHours">
+    <option value="" disabled hidden>Select duration</option>
+
+    <option value="360">6 hrs</option>
+    <option value="480" selected>8 hrs</option>
+    <option value="540">9 hrs</option>
+    <option value="600">10 hrs</option>
+  </select>
+  <label>Work Duration</label>
+</div>
 
   <div class="result" id="result"></div>
   <div class="break-total" id="totalBreak"></div>
