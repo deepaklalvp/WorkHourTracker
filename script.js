@@ -1,88 +1,117 @@
-function login() {
-  let user = document.getElementById("username").value.trim();
-  let pass = document.getElementById("password").value.trim();
-
-  if (user === "" || pass === "") {
-    document.getElementById("loginError").innerText =
-      "Enter username & password";
-    return;
-  }
-
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("appBox").classList.remove("hidden");
-
-  document.getElementById("userDisplay").innerText =
-    "Welcome " + user;
-
-  startClock();
+function toggleTheme(){
+ let isDark = document.body.classList.contains("dark");
+ document.body.classList.toggle("dark", !isDark);
+ document.body.classList.toggle("light", isDark);
+ localStorage.setItem("theme", isDark ? "light":"dark");
+ updateThemeIcon();
 }
 
-function logout() {
-  location.reload();
+function updateThemeIcon(){
+ themeBtn.innerText = document.body.classList.contains("dark") ? "☀️":"🌙";
 }
 
-function toggleTheme() {
-  document.body.classList.toggle("light");
-  document.body.classList.toggle("dark");
+function login(){
+ let u=username.value,p=password.value,n=parseInt(u);
+ if(n>=101&&n<=150&&u===p){
+  localStorage.setItem("loggedIn","true");
+  localStorage.setItem("username",u);
+  showApp();
+ } else loginError.innerText="Invalid";
 }
 
-function startClock() {
-  setInterval(() => {
-    let now = new Date();
-    document.getElementById("clockDisplay").innerText =
-      now.toLocaleTimeString();
-
-    updateWork(now);
-  }, 1000);
+function logout(){
+ localStorage.clear();
+ location.reload();
 }
 
-function updateWork(now) {
-  let workMin = parseInt(document.getElementById("workHours").value);
-
-  let h = parseInt(document.getElementById("loginHour").value || 9);
-  let m = parseInt(document.getElementById("loginMinute").value || 0);
-  let ampm = document.getElementById("loginAMPM").value;
-
-  if (ampm === "PM" && h !== 12) h += 12;
-  if (ampm === "AM" && h === 12) h = 0;
-
-  let loginTime = new Date();
-  loginTime.setHours(h, m, 0);
-
-  let diff = Math.floor((now - loginTime) / 60000);
-  let remaining = workMin - diff;
-
-  let percent = Math.min((diff / workMin) * 100, 100);
-  let bar = document.getElementById("progressBar");
-
-  bar.style.width = percent + "%";
-  bar.innerText = Math.floor(percent) + "%";
-
-  if (remaining > 0) {
-    document.getElementById("leaveTime").innerText =
-      "Remaining: " + formatTime(remaining);
-    document.getElementById("leaveTime").style.color = "#00f7ff";
-  } else {
-    let overtime = Math.abs(remaining);
-    document.getElementById("leaveTime").innerText =
-      "🔥 Overtime: " + formatTime(overtime);
-    document.getElementById("leaveTime").style.color = "#ff4b2b";
-  }
+function showApp(){
+ loginBox.classList.add("hidden");
+ appBox.classList.remove("hidden");
+ userDisplay.innerText="User: "+localStorage.getItem("username");
 }
 
-function formatTime(min) {
-  return `${Math.floor(min / 60)}h ${min % 60}m`;
+function pad(n){return n.toString().padStart(2,'0');}
+
+function updateClock(){
+ let now=new Date();
+ let h=now.getHours(),m=pad(now.getMinutes());
+ let ap=h>=12?"PM":"AM"; h=h%12||12;
+ clockDisplay.innerText=`${h}:${m} ${ap}`;
+ calculateWork();
 }
 
-window.onload = function () {
-  let h = document.getElementById("loginHour");
-  let m = document.getElementById("loginMinute");
+function getBreaks(){
+ return breakTimes.value.split(/[\s,]+/)
+ .map(n=>parseInt(n))
+ .filter(n=>!isNaN(n))
+ .reduce((a,b)=>a+b,0);
+}
 
-  for (let i = 1; i <= 12; i++) {
-    h.innerHTML += `<option>${i}</option>`;
-  }
+function updateProgress(min,target){
+ let p=Math.min(min/target*100,100);
+ progressBar.style.width=p+"%";
+ progressBar.innerText=Math.floor(p)+"% ⚡";
+}
 
-  for (let i = 0; i < 60; i++) {
-    m.innerHTML += `<option>${i}</option>`;
-  }
+function updateCountdown(ld){
+ let diff=ld-new Date();
+ if(diff<=0){countdown.innerText="✅ Done";return;}
+ let h=Math.floor(diff/3600000);
+ let m=Math.floor(diff%3600000/60000);
+ let s=Math.floor(diff%60000/1000);
+ countdown.innerText=`⏳ ${h}h ${m}m ${s}s`;
+}
+
+function calculateWork(){
+ let h12=+loginHour.value,m=+loginMinute.value,ap=loginAMPM.value;
+ let h=h12%12+(ap==="PM"?12:0);
+
+ let start=new Date(); start.setHours(h,m,0);
+ let now=new Date(); if(now<start) now.setDate(now.getDate()+1);
+
+ let breaks=getBreaks();
+
+ let bH=Math.floor(breaks/60), bM=breaks%60;
+ totalBreak.innerText=`Break: ${bH}h ${bM}m`;
+
+ let worked=(now-start)-breaks*60000;
+ if(worked<0) worked=0;
+
+ let min=Math.floor(worked/60000);
+ let hh=Math.floor(min/60),mm=min%60;
+
+ result.innerText=`Worked: ${hh}h ${mm}m`;
+
+ let target=+workHours.value;
+ let rem=target-min;
+
+ remaining.innerText=rem>0?
+ `Remaining: ${Math.floor(rem/60)}h ${rem%60}m`:
+ `Overtime: ${Math.floor(-rem/60)}h ${-rem%60}m`;
+
+ let leave=new Date(start.getTime()+breaks*60000+target*60000);
+
+ let lh=leave.getHours(),lm=pad(leave.getMinutes()),lap=lh>=12?"PM":"AM";
+ lh=lh%12||12;
+
+ leaveTime.innerText=
+ leave.getDate()!=start.getDate()?
+ `⏱ Tomorrow at ${lh}:${lm} ${lap}`:
+ `⏱ Leave at ${lh}:${lm} ${lap}`;
+
+ updateCountdown(leave);
+ updateProgress(min,target);
+}
+
+window.onload=()=>{
+ for(let i=1;i<=12;i++) loginHour.add(new Option(i,i));
+ for(let i=0;i<60;i++) loginMinute.add(new Option(pad(i),i));
+
+ let t=localStorage.getItem("theme")||"dark";
+ document.body.classList.add(t);
+ updateThemeIcon();
+
+ if(localStorage.getItem("loggedIn")) showApp();
+
+ setInterval(updateClock,1000);
 };
