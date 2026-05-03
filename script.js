@@ -79,6 +79,8 @@ function calculateWork(){
 let bH = Math.floor(breaks / 60);
 let bM = breaks % 60;
 
+ totalBreak.innerText = `Total Break: ${bH}h ${bM}m`;
+
  let target=+workHours.value;
  let rem = target - min;
 
