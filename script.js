@@ -1,98 +1,103 @@
-// LOGIN SIMPLE
-function login() {
-  let user = document.getElementById("username").value;
-  let pass = document.getElementById("password").value;
-
-  if (!user || !pass) {
-    document.getElementById("loginError").innerText = "Fill all fields";
-    return;
-  }
-
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("appBox").classList.remove("hidden");
-
-  document.getElementById("userDisplay").innerText = "Welcome " + user;
-
-  startClock();
+body {
+  font-family: Arial, sans-serif;
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:0.3s;
 }
 
-// LOGOUT
-function logout() {
-  location.reload();
+body.dark {
+  background:#0f0f1a;
+  color:white;
 }
 
-// THEME
-function toggleTheme() {
-  document.body.classList.toggle("light");
-  document.body.classList.toggle("dark");
+body.light {
+  background:#667eea;
+  color:white;
 }
 
-// CLOCK
-function startClock() {
-  setInterval(() => {
-    let now = new Date();
-    document.getElementById("clockDisplay").innerText =
-      now.toLocaleTimeString();
-
-    updateWorkStatus(now);
-  }, 1000);
+.box {
+  width:350px;
+  padding:25px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
 }
 
-// MAIN LOGIC
-function updateWorkStatus(now) {
-  let workMinutes = parseInt(document.getElementById("workHours").value || 480);
-
-  let loginHour = parseInt(document.getElementById("loginHour").value || 9);
-  let loginMin = parseInt(document.getElementById("loginMinute").value || 0);
-  let ampm = document.getElementById("loginAMPM").value;
-
-  if (ampm === "PM" && loginHour !== 12) loginHour += 12;
-  if (ampm === "AM" && loginHour === 12) loginHour = 0;
-
-  let loginTime = new Date();
-  loginTime.setHours(loginHour, loginMin, 0);
-
-  let diffMs = now - loginTime;
-  let workedMin = Math.floor(diffMs / 60000);
-
-  let diff = workMinutes - workedMin;
-
-  let bar = document.getElementById("progressBar");
-  let percent = Math.min((workedMin / workMinutes) * 100, 100);
-
-  bar.style.width = percent + "%";
-  bar.innerText = Math.floor(percent) + "%";
-
-  // OVERTIME LOGIC
-  if (diff > 0) {
-    document.getElementById("leaveTime").innerText =
-      "Remaining: " + formatTime(diff);
-    document.getElementById("leaveTime").style.color = "#00f7ff";
-  } else {
-    let overtime = Math.abs(diff);
-    document.getElementById("leaveTime").innerText =
-      "🔥 Overtime: " + formatTime(overtime);
-    document.getElementById("leaveTime").style.color = "#ff4b2b";
-  }
+h2 {
+  text-align:center;
+  color:#00f7ff;
 }
 
-// FORMAT TIME
-function formatTime(mins) {
-  let h = Math.floor(mins / 60);
-  let m = mins % 60;
-  return `${h}h ${m}m`;
+.field {
+  position:relative;
+  margin-top:15px;
 }
 
-// FILL TIME DROPDOWNS
-window.onload = function () {
-  let hour = document.getElementById("loginHour");
-  let min = document.getElementById("loginMinute");
+.field input,
+.field select,
+.field textarea {
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:rgba(255,255,255,0.1);
+  color:white;
+  outline:none;
+}
 
-  for (let i = 1; i <= 12; i++) {
-    hour.innerHTML += `<option>${i}</option>`;
-  }
+.field label {
+  position:absolute;
+  top:50%;
+  left:10px;
+  transform:translateY(-50%);
+  font-size:12px;
+  opacity:0.6;
+}
 
-  for (let i = 0; i < 60; i++) {
-    min.innerHTML += `<option>${i}</option>`;
-  }
-};
+button {
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
+}
+
+.primary {
+  background:linear-gradient(135deg,#00f7ff,#0072ff);
+}
+
+.logout {
+  background:linear-gradient(135deg,#ff416c,#ff4b2b);
+}
+
+.hidden {
+  display:none;
+}
+
+.leave-time {
+  text-align:center;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+.progress-container {
+  margin-top:15px;
+  height:20px;
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.progress-bar {
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#00f7ff,#00ff88);
+  text-align:center;
+  font-size:12px;
+  line-height:20px;
+}
