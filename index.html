@@ -5,7 +5,6 @@
 <title>Work Tracker</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- CSS FILE -->
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,7 +12,7 @@
 
 <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
 
-<!-- LOGIN -->
+<!-- LOGIN BOX -->
 <div class="box" id="loginBox">
   <h2>⚡ Work Tracker</h2>
 
@@ -31,17 +30,19 @@
   <div id="loginError"></div>
 </div>
 
-<!-- APP -->
+<!-- APP BOX -->
 <div class="box hidden" id="appBox">
   <h2>⚡ Work Tracker</h2>
 
   <div id="userDisplay"></div>
-  <div id="clockDisplay" style="text-align:center; text-shadow:0 0 8px #00f7ff;"></div>
+
+  <div id="clockDisplay" style="text-align:center; margin-top:10px; text-shadow:0 0 8px #00f7ff;"></div>
 
   <button class="logout" onclick="logout()">Logout</button>
 
+  <!-- LOGIN TIME -->
   <label>Login Time:</label>
-  <div style="display:flex; gap:5px;">
+  <div class="time-row">
     <select id="loginHour"></select>
     <select id="loginMinute"></select>
     <select id="loginAMPM">
@@ -50,13 +51,15 @@
     </select>
   </div>
 
+  <!-- BREAKS -->
   <div class="field">
     <textarea id="breakTimes" placeholder=" "></textarea>
     <label>Breaks (minutes)</label>
   </div>
 
+  <!-- WORK HOURS -->
   <div class="field">
-    <select id="workHours" required>
+    <select id="workHours">
       <option value="" disabled selected hidden></option>
       <option value="480">8 hrs</option>
       <option value="450">7.5 hrs</option>
@@ -65,19 +68,20 @@
     <label>Work Duration</label>
   </div>
 
+  <!-- OUTPUT -->
   <div class="result" id="result"></div>
   <div class="break-total" id="totalBreak"></div>
-  <div class="remaining" id="remaining"></div>
+
+  <!-- OVERTIME / STATUS -->
   <div class="leave-time" id="leaveTime"></div>
   <div class="leave-time" id="countdown"></div>
 
+  <!-- PROGRESS -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar">0%</div>
   </div>
 </div>
 
-<!-- JS FILE -->
 <script src="script.js"></script>
-
 </body>
 </html>
