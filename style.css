@@ -13,12 +13,13 @@ body.dark {
   background: radial-gradient(circle at top,#1a1a2e,#0f0f1a);
   color:#fff;
 }
+
 body.light {
   background: linear-gradient(135deg,#667eea,#764ba2);
   color:#fff;
 }
 
-/* GLASS CARD */
+/* CARD */
 .box {
   width:360px;
   padding:25px;
@@ -34,7 +35,7 @@ h2 {
   text-shadow:0 0 10px #00f7ff;
 }
 
-/* INPUT FIELDS */
+/* FIELDS */
 .field {
   position:relative;
   margin-top:18px;
@@ -93,14 +94,43 @@ button {
   background: linear-gradient(135deg,#ff416c,#ff4b2b);
 }
 
-/* OUTPUT */
+/* OUTPUT TEXT */
 .result, .remaining, .leave-time, .break-total {
   text-align:center;
   margin-top:10px;
   font-weight:bold;
+  font-size:16px;
+  transition:0.3s;
+  text-shadow:0 0 6px rgba(0,255,255,0.4);
 }
 
-/* PROGRESS */
+/* REMAINING STATES */
+.remaining.safe {
+  color:#00ff88;
+  text-shadow:0 0 10px #00ff88;
+}
+
+.remaining.warning {
+  color:#ffd000;
+  text-shadow:0 0 10px #ffd000;
+}
+
+.remaining.danger {
+  color:#ff3b3b;
+  text-shadow:0 0 10px #ff3b3b;
+}
+
+.remaining.over {
+  color:#ff3b3b;
+  animation: glowRed 0.8s infinite alternate;
+}
+
+@keyframes glowRed {
+  from { text-shadow:0 0 5px #ff3b3b; }
+  to { text-shadow:0 0 20px #ff0000; }
+}
+
+/* PROGRESS BAR */
 .progress-container {
   margin-top:15px;
   background: rgba(255,255,255,0.1);
@@ -114,10 +144,24 @@ button {
   width:0%;
   text-align:center;
   line-height:22px;
-  background: linear-gradient(270deg,#00f7ff,#0072ff,#00ff88);
+  font-size:12px;
+  color:white;
+  transition:width 0.6s;
   background-size:400% 400%;
   animation: move 5s ease infinite;
-  transition:width 0.6s;
+}
+
+/* PROGRESS STATES */
+.progress-safe {
+  background: linear-gradient(270deg,#00ff88,#00f7ff);
+}
+
+.progress-warning {
+  background: linear-gradient(270deg,#ffd000,#ff9900);
+}
+
+.progress-danger {
+  background: linear-gradient(270deg,#ff3b3b,#ff0066);
 }
 
 @keyframes move {
@@ -126,7 +170,7 @@ button {
   100%{background-position:0%}
 }
 
-/* TOGGLE */
+/* THEME TOGGLE */
 .theme-toggle {
   position:fixed;
   top:15px;
@@ -140,3 +184,5 @@ button {
 }
 
 .hidden { display:none; }
+
+select option { color:#000; }
