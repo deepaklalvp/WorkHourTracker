@@ -38,16 +38,13 @@ function updateClock() {
   let ap = h >= 12 ? "PM" : "AM";
   h = h % 12 || 12;
 
-  // Date parts
-  let day = now.getDate();
-  let month = now.getMonth() + 1; // months are 0-based
-  let year = now.getFullYear();
+  let dateStr = now.toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
-  // Format date (DD/MM/YYYY)
-  let dateStr = `${pad(day)}/${pad(month)}/${year}`;
-
-  // Combine date + time
-  clockDisplay.innerText = `${dateStr} ${h}:${m}:${s} ${ap}`;
+  clockDisplay.innerText = `📅 ${dateStr}  ⏰ ${h}:${m}:${s} ${ap}`;
 
   calculateWork();
 }
