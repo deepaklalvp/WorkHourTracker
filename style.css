@@ -96,17 +96,16 @@ button {
 .break-total,
 .leave-time {
   text-align: center;
-  margin-top: 12px;
-  padding: 10px 14px;
+  margin-top: 6px;          /* reduced from 12px */
+  padding: 6px 10px;        /* reduced from 10px 14px */
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;          /* reduced from 16px */
   color: #e6ffff;
   background: rgba(0, 255, 255, 0.08);
   border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 8px;
+  border-radius: 6px;       /* slightly tighter */
   backdrop-filter: blur(6px);
   text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
-
 }
 
 .progress-container {
