@@ -95,8 +95,14 @@ function calculateWork(){
  let target=+workHours.value;
  let rem = target - min;
 
- remaining.innerText = rem > 0 ? "" :
- `Overtime: ${Math.floor(-rem/60)}h ${(-rem%60)}m`;
+if (rem > 0) {
+  remaining.innerText = "";
+  remaining.style.display = "none";
+} else {
+  remaining.style.display = "block";
+  remaining.innerText =
+    `Overtime: ${Math.floor(-rem / 60)}h ${(-rem % 60)}m`;
+}
 
  let leave=new Date(start.getTime()+breaks*60000+target*60000);
 
