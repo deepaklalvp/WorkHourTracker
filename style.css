@@ -92,12 +92,21 @@ button {
   background: linear-gradient(135deg,#ff416c,#ff4b2b);
 }
 
-.result, .break-total, .leave-time {
-  text-align:center;
-  margin-top:10px;
-  font-weight:bold;
-  font-size:16px;
-  text-shadow:0 0 6px rgba(0,255,255,0.6);
+.result,
+.break-total,
+.leave-time {
+  text-align: center;
+  margin-top: 12px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #e6ffff;
+  background: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+}
 }
 
 .progress-container {
