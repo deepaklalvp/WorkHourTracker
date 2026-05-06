@@ -28,14 +28,29 @@ function showApp(){
 
 function pad(n){return n.toString().padStart(2,'0');}
 
-function updateClock(){
- let now=new Date();
- let h=now.getHours(),m=pad(now.getMinutes());
- let ap=h>=12?"PM":"AM"; h=h%12||12;
- clockDisplay.innerText=`${h}:${m} ${ap}`;
- calculateWork();
-}
+function updateClock() {
+  let now = new Date();
 
+  let h = now.getHours(),
+      m = pad(now.getMinutes()),
+      s = pad(now.getSeconds());
+
+  let ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+
+  // Date parts
+  let day = now.getDate();
+  let month = now.getMonth() + 1; // months are 0-based
+  let year = now.getFullYear();
+
+  // Format date (DD/MM/YYYY)
+  let dateStr = `${pad(day)}/${pad(month)}/${year}`;
+
+  // Combine date + time
+  clockDisplay.innerText = `${dateStr} ${h}:${m}:${s} ${ap}`;
+
+  calculateWork();
+}
 function getBreaks(){
  return breakTimes.value.split(/[\s,]+/)
  .map(n=>parseInt(n))
