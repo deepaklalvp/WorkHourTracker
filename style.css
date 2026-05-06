@@ -96,16 +96,38 @@ button {
 .break-total,
 .leave-time {
   text-align: center;
-  margin-top: 6px;          /* reduced from 12px */
-  padding: 6px 10px;        /* reduced from 10px 14px */
+  margin-top: 6px;
+  padding: 6px 10px;
   font-weight: 600;
-  font-size: 14px;          /* reduced from 16px */
-  color: #e6ffff;
-  background: rgba(0, 255, 255, 0.08);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 6px;       /* slightly tighter */
-  backdrop-filter: blur(6px);
-  text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+  font-size: 14px;
+  color: #eaffff;
+
+  background: rgba(0, 255, 255, 0.06);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 8px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Apple-style soft depth */
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* Neon glow */
+  text-shadow:
+    0 0 4px rgba(0, 255, 255, 0.35),
+    0 0 10px rgba(0, 255, 255, 0.25);
+}
+
+/* Optional hover glow (nice Apple-style interaction) */
+.result:hover,
+.break-total:hover,
+.leave-time:hover {
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.3),
+    0 0 12px rgba(0, 255, 255, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .progress-container {
