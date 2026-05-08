@@ -263,3 +263,32 @@ select option { color:#000; }
 .sub-tab-content.active-sub-tab{
   display:block !important;
 }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
+}
+
+th {
+  background: rgba(0,255,255,0.15);
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background: rgba(255,255,255,0.04);
+}
+
+table tr:hover {
+  background: rgba(0,255,255,0.08);
+  transition: 0.2s;
+}
