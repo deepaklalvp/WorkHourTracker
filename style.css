@@ -237,49 +237,54 @@ select option { color:#000; }
 }
 
 /* =========================
-   Support Sub Tabs
-========================= */
-/* =========================
-   Support Sub Tabs
+   Compact Support Sub Tabs
 ========================= */
 
 .sub-tabs{
   display:flex;
-  gap:8px;
-  margin:15px 0;
+  gap:6px;
+  margin:10px 0;
   flex-wrap:wrap;
 }
 
+/* smaller, tighter buttons */
 .sub-tab-btn{
-  padding:8px 14px;
+  padding:6px 10px;
   border:none;
-  border-radius:8px;
+  border-radius:6px;
   cursor:pointer;
   color:white;
 
+  font-size:12px;
+  font-weight:500;
+
   background: rgba(255,255,255,0.08);
 
-  transition:0.3s;
+  transition:0.2s;
 }
 
 .sub-tab-btn:hover{
   background: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
 }
 
 .sub-tab-btn.active{
   background: linear-gradient(135deg,#00ff88,#00b894);
-  box-shadow:0 0 10px #00ff88;
+  box-shadow:0 0 8px rgba(0,255,136,0.4);
 }
 
+/* compact content area */
 .sub-tab-content{
   display:none !important;
 
-  margin-top:15px;
-  padding:15px;
+  margin-top:10px;
+  padding:10px;
 
-  border-radius:12px;
+  border-radius:10px;
 
   background: rgba(255,255,255,0.05);
+  font-size:13px;
+  line-height:1.4;
 }
 
 .sub-tab-content.active-sub-tab{
