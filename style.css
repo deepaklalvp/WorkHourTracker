@@ -26,6 +26,8 @@ body.light {
 }
 
 .box {
+  position: relative;
+
   width:100%;
   max-width:360px;
   max-height:90vh;
@@ -181,7 +183,7 @@ button {
   cursor:pointer;
   color:#fff;
 
-  z-index:999;
+  z-index:9999;
 }
 
 select option { color:#000; }
