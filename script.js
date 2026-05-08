@@ -88,17 +88,21 @@ function openTab(tabId, btn){
 }
 function openSubTab(tabId, btn){
 
-  // hide all sub tabs
+  // hide all
   document.querySelectorAll('.sub-tab-content')
-    .forEach(tab => tab.classList.remove('active-sub-tab'));
+    .forEach(tab => {
+      tab.classList.remove('active-sub-tab');
+      tab.style.display = "none";
+    });
 
-  // remove active button
+  // remove active buttons
   document.querySelectorAll('.sub-tab-btn')
     .forEach(button => button.classList.remove('active'));
 
   // show selected
-  document.getElementById(tabId)
-    .classList.add('active-sub-tab');
+  let el = document.getElementById(tabId);
+  el.classList.add('active-sub-tab');
+  el.style.display = "block";
 
   // active button
   btn.classList.add('active');
