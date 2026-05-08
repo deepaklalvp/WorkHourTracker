@@ -69,6 +69,23 @@ function updateCountdown(ld){
  let s=Math.floor(diff%60000/1000);
  countdown.innerText=`⏳ ${h}h ${m}m ${s}s`;
 }
+function openTab(tabId, btn){
+
+  // hide all tab contents
+  document.querySelectorAll('.tab-content')
+    .forEach(tab => tab.classList.remove('active-tab'));
+
+  // remove active button class
+  document.querySelectorAll('.tab-btn')
+    .forEach(button => button.classList.remove('active'));
+
+  // show selected tab
+  document.getElementById(tabId)
+    .classList.add('active-tab');
+
+  // highlight active button
+  btn.classList.add('active');
+}
 
 function calculateWork(){
  let h12=+loginHour.value,m=+loginMinute.value,ap=loginAMPM.value;
@@ -117,6 +134,7 @@ if (rem > 0) {
  updateCountdown(leave);
  updateProgress(min,target);
 }
+
 
 window.onload=()=>{
  for(let i=1;i<=12;i++) loginHour.add(new Option(i,i));
