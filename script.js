@@ -107,7 +107,15 @@ function openSubTab(tabId, btn){
   // active button
   btn.classList.add('active');
 }
-
+function copyText(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      console.log("Copied: " + text);
+    })
+    .catch(err => {
+      console.error("Copy failed:", err);
+    });
+}
 function calculateWork(){
  let h12=+loginHour.value,m=+loginMinute.value,ap=loginAMPM.value;
  let h=h12%12+(ap==="PM"?12:0);
