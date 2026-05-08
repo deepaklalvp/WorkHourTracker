@@ -1,11 +1,18 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin:0;
-  height:100vh;
+  min-height:100vh;
+
   display:flex;
   justify-content:center;
-  align-items:center;
+
+  align-items:flex-start;
+
   transition:0.4s;
+
+  padding:30px 15px;
+
+  overflow-y:auto;
 }
 
 body.dark {
@@ -20,6 +27,8 @@ body.light {
 
 .box {
   width:360px;
+  max-height:90vh;
+  overflow-y:auto;
   padding:25px;
   border-radius:20px;
   backdrop-filter: blur(25px);
@@ -302,6 +311,14 @@ table tr:hover {
   box-shadow:
     0 4px 12px rgba(0,0,0,0.2),
     inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.box::-webkit-scrollbar{
+  width:6px;
+}
+
+.box::-webkit-scrollbar-thumb{
+  background:#00f7ff;
+  border-radius:10px;
 }
 
 .bank-card h4{
