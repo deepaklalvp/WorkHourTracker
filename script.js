@@ -86,6 +86,23 @@ function openTab(tabId, btn){
   // highlight active button
   btn.classList.add('active');
 }
+function openSubTab(tabId, btn){
+
+  // hide all sub tabs
+  document.querySelectorAll('.sub-tab-content')
+    .forEach(tab => tab.classList.remove('active-sub-tab'));
+
+  // remove active button
+  document.querySelectorAll('.sub-tab-btn')
+    .forEach(button => button.classList.remove('active'));
+
+  // show selected
+  document.getElementById(tabId)
+    .classList.add('active-sub-tab');
+
+  // active button
+  btn.classList.add('active');
+}
 
 function calculateWork(){
  let h12=+loginHour.value,m=+loginMinute.value,ap=loginAMPM.value;
