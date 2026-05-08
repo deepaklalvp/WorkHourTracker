@@ -240,33 +240,64 @@ select option { color:#000; }
    Support Sub Tabs
 ========================= */
 
+/* =========================
+   Modern Support Sub Tabs
+========================= */
+
 .sub-tabs{
   display:flex;
-  gap:8px;
+  gap:10px;
+
   margin:15px 0;
-  flex-wrap:wrap;
+
+  overflow-x:auto;
+  overflow-y:hidden;
+
+  padding-bottom:5px;
+
+  scrollbar-width:none; /* Firefox */
+}
+
+.sub-tabs::-webkit-scrollbar{
+  display:none; /* Chrome/Safari */
 }
 
 .sub-tab-btn{
-  padding:8px 14px;
+  flex:none;
+
+  padding:8px 16px;
+
   border:none;
-  border-radius:8px;
+  border-radius:999px;
+
   cursor:pointer;
+
   color:white;
+  font-size:13px;
+  font-weight:600;
+
+  white-space:nowrap;
 
   background: rgba(255,255,255,0.08);
 
   transition:0.3s;
+
+  backdrop-filter: blur(10px);
 }
 
 .sub-tab-btn:hover{
   background: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
 }
 
 .sub-tab-btn.active{
   background: linear-gradient(135deg,#00ff88,#00b894);
-  box-shadow:0 0 10px #00ff88;
+  box-shadow: 0 0 10px rgba(0,255,136,0.5);
 }
+
+/* =========================
+   Sub Tab Content (IMPORTANT)
+========================= */
 
 .sub-tab-content{
   display:none !important;
