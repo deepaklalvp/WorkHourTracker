@@ -31,52 +31,85 @@
 </div>
 
 <!-- APP -->
+<!-- APP -->
 <div class="box hidden" id="appBox">
+
   <h2>⚡ Work Tracker</h2>
 
-  <div id="userDisplay"></div>
-  <div id="clockDisplay" style="text-align:center;"></div>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="openTab('trackerTab', this)">
+      Work Tracker
+    </button>
 
-  <button class="logout" onclick="logout()">Logout</button>
-
-  <label>Login Time:</label>
-  <div style="display:flex; gap:5px;">
-    <select id="loginHour"></select>
-    <select id="loginMinute"></select>
-    <select id="loginAMPM">
-      <option>AM</option><option>PM</option>
-    </select>
+    <button class="tab-btn" onclick="openTab('supportTab', this)">
+      Support Doc
+    </button>
   </div>
 
-  <div class="field">
-    <textarea id="breakTimes" placeholder=" "></textarea>
-    <label>Breaks (minutes)</label>
+  <!-- WORK TRACKER TAB -->
+  <div id="trackerTab" class="tab-content active-tab">
+
+    <div id="userDisplay"></div>
+    <div id="clockDisplay" style="text-align:center;"></div>
+
+    <button class="logout" onclick="logout()">Logout</button>
+
+    <label>Login Time:</label>
+    <div style="display:flex; gap:5px;">
+      <select id="loginHour"></select>
+      <select id="loginMinute"></select>
+      <select id="loginAMPM">
+        <option>AM</option>
+        <option>PM</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <textarea id="breakTimes" placeholder=" "></textarea>
+      <label>Breaks (minutes)</label>
+    </div>
+
+    <div class="field">
+      <select id="workHours">
+        <option value="" disabled hidden>Select duration</option>
+        <option value="360">6 hrs</option>
+        <option value="480" selected>8 hrs</option>
+        <option value="540">9 hrs</option>
+        <option value="600">10 hrs</option>
+      </select>
+      <label>Work Duration</label>
+    </div>
+
+    <div class="result" id="result"></div>
+    <div class="break-total" id="totalBreak"></div>
+    <div class="leave-time" id="countdown"></div>
+    <div class="leave-time" id="leaveTime"></div>
+
+    <div class="result" id="remaining"></div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+
   </div>
 
-<div class="field">
-  <select id="workHours">
-    <option value="" disabled hidden>Select duration</option>
+  <!-- SUPPORT DOC TAB -->
+  <div id="supportTab" class="tab-content">
 
-    <option value="360">6 hrs</option>
-    <option value="480" selected>8 hrs</option>
-    <option value="540">9 hrs</option>
-    <option value="600">10 hrs</option>
-  </select>
-  <label>Work Duration</label>
+    <h3>📄 Support Document</h3>
+
+    <p>
+      Add your support-related details here.
+    </p>
+
+    <ul>
+      <li>Team contacts</li>
+      <li>Shift timing</li>
+      <li>Escalation matrix</li>
+      <li>Useful links</li>
+    </ul>
+
+  </div>
+
 </div>
-
-  <div class="result" id="result"></div>
-  <div class="break-total" id="totalBreak"></div>
-  <div class="leave-time" id="countdown"></div>
-  <div class="leave-time" id="leaveTime"></div>
-
-  <div class="result" id="remaining"></div>
-
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar">0%</div>
-  </div>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
