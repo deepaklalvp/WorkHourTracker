@@ -96,23 +96,82 @@
 
   </div>
 
-  <!-- SUPPORT DOC TAB -->
-  <div id="supportTab" class="tab-content">
+<!-- SUPPORT DOC TAB -->
+<div id="supportTab" class="tab-content">
 
-    <h3>📄 Support Document</h3>
+  <h3>📄 Support Document</h3>
 
-    <p>
-      Add your support-related details here.
-    </p>
+  <!-- SUB TABS -->
+  <div class="sub-tabs">
 
-    <ul>
-      <li>Team contacts</li>
-      <li>Shift timing</li>
-      <li>Escalation matrix</li>
-      <li>Useful links</li>
-    </ul>
+    <button class="sub-tab-btn active"
+      onclick="openSubTab('pricingTab', this)">
+      Pricing
+    </button>
+
+    <button class="sub-tab-btn"
+      onclick="openSubTab('bankTab', this)">
+      Bank Accounts
+    </button>
+
+    <button class="sub-tab-btn"
+      onclick="openSubTab('demoTab', this)">
+      Demo Accounts
+    </button>
+
+    <button class="sub-tab-btn"
+      onclick="openSubTab('contactTab', this)">
+      Contact
+    </button>
+
+    <button class="sub-tab-btn"
+      onclick="openSubTab('meetingTab', this)">
+      Book Meetings
+    </button>
 
   </div>
+
+  <!-- PRICING -->
+  <div id="pricingTab" class="sub-tab-content active-sub-tab">
+    <h4>💰 Pricing</h4>
+    <p>Basic: ₹500/month</p>
+    <p>Pro: ₹1000/month</p>
+    <p>Enterprise: Custom</p>
+  </div>
+
+  <!-- BANK ACCOUNTS -->
+  <div id="bankTab" class="sub-tab-content">
+    <h4>🏦 Bank Accounts</h4>
+    <ul>
+      <li>HDFC - 1234567890</li>
+      <li>SBI - 9876543210</li>
+    </ul>
+  </div>
+
+  <!-- DEMO ACCOUNTS -->
+  <div id="demoTab" class="sub-tab-content">
+    <h4>🧪 Demo Accounts</h4>
+    <ul>
+      <li>Demo User 1 - demo1@test.com</li>
+      <li>Demo User 2 - demo2@test.com</li>
+    </ul>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contactTab" class="sub-tab-content">
+    <h4>📞 Contact</h4>
+    <p>Email: support@example.com</p>
+    <p>Phone: +91-9876543210</p>
+  </div>
+
+  <!-- BOOK MEETINGS -->
+  <div id="meetingTab" class="sub-tab-content">
+    <h4>📅 Book Meetings</h4>
+    <p>Use the calendar below to schedule a call.</p>
+    <button class="primary">Book Now</button>
+  </div>
+
+</div>
 
 </div>
 
