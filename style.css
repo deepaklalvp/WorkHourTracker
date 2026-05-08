@@ -173,3 +173,46 @@ button {
 select option { color:#000; }
 
 .hidden { display:none; }
+
+/* =========================
+   Tabs
+========================= */
+
+.tabs{
+  display:flex;
+  gap:10px;
+  margin:20px 0;
+}
+
+.tab-btn{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+
+  background: rgba(255,255,255,0.08);
+  color:white;
+
+  transition:0.3s;
+
+  backdrop-filter: blur(10px);
+}
+
+.tab-btn:hover{
+  background: rgba(255,255,255,0.15);
+}
+
+.tab-btn.active{
+  background: linear-gradient(135deg,#00f7ff,#0072ff);
+  box-shadow:0 0 10px #00f7ff;
+}
+
+.tab-content{
+  display:none;
+}
+
+.active-tab{
+  display:block;
+}
