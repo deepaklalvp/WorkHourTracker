@@ -237,60 +237,66 @@ select option { color:#000; }
 }
 
 /* =========================
-   Compact Support Sub Tabs
+   CARD STYLE SUB TABS
 ========================= */
 
 .sub-tabs{
-  display:flex;
-  gap:6px;
-  margin:10px 0;
-  flex-wrap:wrap;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:10px;
+  margin:12px 0;
 }
 
-/* smaller, tighter buttons */
+/* each tab becomes a card */
 .sub-tab-btn{
-  padding:6px 10px;
+  padding:12px;
   border:none;
-  border-radius:6px;
+  border-radius:12px;
   cursor:pointer;
-  color:white;
 
-  font-size:12px;
-  font-weight:500;
+  color:white;
+  font-size:13px;
+  font-weight:600;
+
+  text-align:left;
 
   background: rgba(255,255,255,0.08);
 
-  transition:0.2s;
+  backdrop-filter: blur(10px);
+
+  transition:0.25s;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
+/* hover effect */
 .sub-tab-btn:hover{
-  background: rgba(255,255,255,0.15);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.14);
 }
 
+/* active card */
 .sub-tab-btn.active{
   background: linear-gradient(135deg,#00ff88,#00b894);
-  box-shadow:0 0 8px rgba(0,255,136,0.4);
+  box-shadow: 0 0 12px rgba(0,255,136,0.5);
 }
 
-/* compact content area */
+/* CONTENT stays same but cleaner */
 .sub-tab-content{
   display:none !important;
+  margin-top:12px;
+  padding:12px;
 
-  margin-top:10px;
-  padding:10px;
-
-  border-radius:10px;
+  border-radius:12px;
 
   background: rgba(255,255,255,0.05);
+
   font-size:13px;
-  line-height:1.4;
 }
 
 .sub-tab-content.active-sub-tab{
   display:block !important;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
