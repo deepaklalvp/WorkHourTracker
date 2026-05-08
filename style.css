@@ -239,65 +239,37 @@ select option { color:#000; }
 /* =========================
    Support Sub Tabs
 ========================= */
-
 /* =========================
-   Modern Support Sub Tabs
+   Support Sub Tabs
 ========================= */
 
 .sub-tabs{
   display:flex;
-  gap:10px;
-
+  gap:8px;
   margin:15px 0;
-
-  overflow-x:auto;
-  overflow-y:hidden;
-
-  padding-bottom:5px;
-
-  scrollbar-width:none; /* Firefox */
-}
-
-.sub-tabs::-webkit-scrollbar{
-  display:none; /* Chrome/Safari */
+  flex-wrap:wrap;
 }
 
 .sub-tab-btn{
-  flex:none;
-
-  padding:8px 16px;
-
+  padding:8px 14px;
   border:none;
-  border-radius:999px;
-
+  border-radius:8px;
   cursor:pointer;
-
   color:white;
-  font-size:13px;
-  font-weight:600;
-
-  white-space:nowrap;
 
   background: rgba(255,255,255,0.08);
 
   transition:0.3s;
-
-  backdrop-filter: blur(10px);
 }
 
 .sub-tab-btn:hover{
   background: rgba(255,255,255,0.15);
-  transform: translateY(-1px);
 }
 
 .sub-tab-btn.active{
   background: linear-gradient(135deg,#00ff88,#00b894);
-  box-shadow: 0 0 10px rgba(0,255,136,0.5);
+  box-shadow:0 0 10px #00ff88;
 }
-
-/* =========================
-   Sub Tab Content (IMPORTANT)
-========================= */
 
 .sub-tab-content{
   display:none !important;
@@ -313,6 +285,7 @@ select option { color:#000; }
 .sub-tab-content.active-sub-tab{
   display:block !important;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
