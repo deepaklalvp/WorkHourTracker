@@ -250,7 +250,7 @@ select option { color:#000; }
 }
 
 .sub-tab-content{
-  display:none;
+  display:none !important;
 
   margin-top:15px;
   padding:15px;
@@ -260,6 +260,6 @@ select option { color:#000; }
   background: rgba(255,255,255,0.05);
 }
 
-.active-sub-tab{
-  display:block;
+.sub-tab-content.active-sub-tab{
+  display:block !important;
 }
