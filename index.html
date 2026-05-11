@@ -41,17 +41,21 @@
     <div id="clockDisplay" style="text-align:center;"></div>
 
     <button class="logout" onclick="logout()">Logout</button>
-  <!-- Tabs -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="openTab('trackerTab', this)">
-      Work Tracker
-    </button>
 
-    <button class="tab-btn" onclick="openTab('supportTab', this)">
-      Support Doc
-    </button>
-  </div>
+  <button class="tab-btn active" onclick="openTab('trackerTab', this)">
+    Work Tracker
+  </button>
 
+  <button class="tab-btn" onclick="openTab('supportTab', this)">
+    Support Doc
+  </button>
+
+  <button class="tab-btn" onclick="openTab('issuesTab', this)">
+    Common Issues
+  </button>
+
+</div>
   
   <!-- WORK TRACKER TAB -->
   <div id="trackerTab" class="tab-content active-tab">
@@ -456,7 +460,50 @@
 </div>
 
 </div>
+<!-- COMMON ISSUES TAB -->
+<div id="issuesTab" class="tab-content">
 
+  <h3>⚠️ Common Issues</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Issue</th>
+        <th>Solution</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>Login not working</td>
+        <td>Check username/password and internet connection.</td>
+      </tr>
+
+      <tr>
+        <td>Printer not printing</td>
+        <td>Restart printer service and verify printer settings.</td>
+      </tr>
+
+      <tr>
+        <td>KOT not generating</td>
+        <td>Ensure kitchen printer is connected properly.</td>
+      </tr>
+
+      <tr>
+        <td>Slow system performance</td>
+        <td>Clear browser cache and restart the system.</td>
+      </tr>
+
+      <tr>
+        <td>Unable to sync data</td>
+        <td>Check server connectivity and retry sync.</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
 <script src="script.js"></script>
 </body>
 </html>
