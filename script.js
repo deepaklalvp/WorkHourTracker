@@ -130,7 +130,13 @@ function calculateWork(){
  let bM = breaks % 60;
  totalBreak.innerText = `⏸ Total Break Taken: ${bH}h ${bM}m`;
 
- let target=+workHours.value;
+let target;
+
+if (workHours.value === "custom") {
+  target = (+customHours.value || 0) * 60;
+} else {
+  target = +workHours.value;
+}
  let rem = target - min;
 
 if (rem > 0) {
@@ -155,7 +161,17 @@ if (rem > 0) {
  updateCountdown(leave);
  updateProgress(min,target);
 }
+workHours.addEventListener("change", () => {
+  if (workHours.value === "custom") {
+    customHoursField.classList.remove("hidden");
+  } else {
+    customHoursField.classList.add("hidden");
+  }
 
+  calculateWork();
+});
+
+customHours.addEventListener("input", calculateWork);
 
 window.onload=()=>{
  for(let i=1;i<=12;i++) loginHour.add(new Option(i,i));
