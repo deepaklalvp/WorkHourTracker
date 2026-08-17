@@ -6,24 +6,24 @@
 
   /* Material-style colors */
 
-  --primary: #6750a4;
-  --primary-hover: #5b4494;
+  --primary: #3F6DF6;
+  --primary-hover: #3159D6;
 
-  --primary-container: #eaddff;
+  --primary-container: #DCE6FF;
 
-  --secondary: #625b71;
+  --secondary: #56627A;
 
-  --success: #2e7d32;
-  --danger: #ba1a1a;
+  --success: #2E7D5B;
+  --danger: #C62828;
 
-  --surface: #fffbfe;
-  --surface-container: #f3edf7;
-  --surface-high: #ece6f0;
+  --surface: #F8FAFC;
+  --surface-container: #EEF2F7;
+  --surface-high: #E5EAF1;
 
-  --text: #1d1b20;
-  --text-secondary: #625f66;
+  --text: #172033;
+  --text-secondary: #687386;
 
-  --border: rgba(0, 0, 0, 0.08);
+  --border: rgba(23, 32, 51, 0.08);
 
   --white: #ffffff;
 
@@ -32,13 +32,13 @@
   --radius-lg: 24px;
 
   --shadow-sm:
-    0 2px 6px rgba(0, 0, 0, 0.06);
+    0 2px 6px rgba(23, 32, 51, 0.06);
 
   --shadow:
-    0 4px 14px rgba(0, 0, 0, 0.08);
+    0 4px 14px rgba(23, 32, 51, 0.08);
 
   --shadow-lg:
-    0 12px 35px rgba(0, 0, 0, 0.12);
+    0 12px 35px rgba(23, 32, 51, 0.12);
 
   --transition:
     0.2s ease;
@@ -52,19 +52,22 @@
 
 body.dark {
 
-  --primary: #d0bcff;
-  --primary-hover: #ddcaff;
+  --primary: #AFC4FF;
+  --primary-hover: #C1D0FF;
 
-  --primary-container: #4f378b;
+  --primary-container: #29427A;
 
-  --secondary: #ccc2dc;
+  --secondary: #BBC5D8;
 
-  --surface: #141218;
-  --surface-container: #211f26;
-  --surface-high: #2b2930;
+  --success: #81C995;
+  --danger: #FFB4AB;
 
-  --text: #e6e1e5;
-  --text-secondary: #cac4d0;
+  --surface: #10141C;
+  --surface-container: #1B202A;
+  --surface-high: #252B36;
+
+  --text: #E7EAF0;
+  --text-secondary: #B9C0CD;
 
   --border: rgba(255, 255, 255, 0.08);
 
@@ -135,12 +138,12 @@ body.light {
   background:
     radial-gradient(
       circle at 0% 0%,
-      rgba(103, 80, 164, 0.08),
+      rgba(63, 109, 246, 0.08),
       transparent 30%
     ),
     radial-gradient(
       circle at 100% 100%,
-      rgba(103, 80, 164, 0.06),
+      rgba(20, 184, 166, 0.06),
       transparent 30%
     ),
     var(--surface);
@@ -259,7 +262,7 @@ body.light {
   font-size: 28px;
 
   box-shadow:
-    0 8px 20px rgba(103, 80, 164, 0.25);
+    0 8px 20px rgba(63, 109, 246, 0.25);
 
 }
 
@@ -342,7 +345,7 @@ body.light {
   border-color: var(--primary);
 
   box-shadow:
-    0 0 0 3px rgba(103, 80, 164, 0.12);
+    0 0 0 3px rgba(63, 109, 246, 0.12);
 
 }
 
@@ -449,7 +452,7 @@ button:active {
   font-weight: 700;
 
   box-shadow:
-    0 4px 12px rgba(103, 80, 164, 0.25);
+    0 4px 12px rgba(63, 109, 246, 0.25);
 
 }
 
@@ -458,7 +461,7 @@ button:active {
   background: var(--primary-hover);
 
   box-shadow:
-    0 6px 18px rgba(103, 80, 164, 0.3);
+    0 6px 18px rgba(63, 109, 246, 0.3);
 
 }
 
@@ -472,7 +475,7 @@ button:active {
 
   border-radius: 999px;
 
-  background: rgba(186, 26, 26, 0.1);
+  background: rgba(198, 40, 40, 0.1);
 
   color: var(--danger);
 
@@ -484,7 +487,7 @@ button:active {
 
 .logout:hover {
 
-  background: rgba(186, 26, 26, 0.17);
+  background: rgba(198, 40, 40, 0.17);
 
 }
 
@@ -499,7 +502,7 @@ button:active {
 
   margin-top: 12px;
 
-  color: #d32f2f;
+  color: #D32F2F;
 
   font-size: 13px;
 
@@ -940,7 +943,7 @@ button:active {
 
 .stat-icon.purple {
 
-  background: rgba(103, 80, 164, 0.12);
+  background: rgba(63, 109, 246, 0.12);
 
 }
 
@@ -952,7 +955,7 @@ button:active {
 
 .stat-icon.green {
 
-  background: rgba(46, 125, 50, 0.12);
+  background: rgba(46, 125, 91, 0.12);
 
 }
 
@@ -1218,7 +1221,7 @@ button:active {
 
   border-radius: 12px;
 
-  background: rgba(186, 26, 26, 0.08);
+  background: rgba(198, 40, 40, 0.08);
 
   color: var(--danger);
 
@@ -1543,7 +1546,7 @@ tbody tr:last-child td {
 
 tbody tr:hover {
 
-  background: rgba(103, 80, 164, 0.05);
+  background: rgba(63, 109, 246, 0.05);
 
 }
 
