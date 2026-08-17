@@ -1,130 +1,39 @@
 /* =========================================================
-   ROOT / GLOBAL THEME
-========================================================= */
-
-:root {
-  --primary: #6c63ff;
-  --primary-light: #8b83ff;
-  --primary-dark: #5148d8;
-
-  --secondary: #00b8d9;
-  --success: #22c55e;
-  --danger: #ef5350;
-  --warning: #f59e0b;
-
-  --bg-dark: #0f172a;
-  --bg-dark-2: #111827;
-
-  --surface-dark: rgba(30, 41, 59, 0.88);
-  --surface-dark-light: rgba(51, 65, 85, 0.65);
-
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-
-  --border: rgba(255, 255, 255, 0.08);
-
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 18px;
-  --radius-xl: 22px;
-
-  --shadow:
-    0 10px 30px rgba(0, 0, 0, 0.25);
-
-  --shadow-soft:
-    0 4px 14px rgba(0, 0, 0, 0.18);
-
-  --transition: 0.25s ease;
-}
-
-
-/* =========================================================
    BODY
 ========================================================= */
 
 body {
-  font-family:
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   min-height: 100vh;
 
   display: flex;
   justify-content: center;
+
   align-items: flex-start;
+
+  transition: 0.4s;
 
   padding: 30px 15px;
 
-  box-sizing: border-box;
-
-  color: var(--text-primary);
-
-  transition:
-    background 0.35s ease,
-    color 0.35s ease;
-
   overflow-y: auto;
-
-  -webkit-font-smoothing: antialiased;
 }
 
 
 /* =========================================================
-   DARK THEME
+   DARK / LIGHT THEME
 ========================================================= */
 
 body.dark {
   background:
-    radial-gradient(
-      circle at top left,
-      rgba(108, 99, 255, 0.18),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(0, 184, 217, 0.10),
-      transparent 35%
-    ),
-    linear-gradient(
-      135deg,
-      #0f172a,
-      #111827 55%,
-      #0b1120
-    );
-
-  color: var(--text-primary);
+    radial-gradient(circle at top, #1e293b, #0f172a);
+  color: #f8fafc;
 }
 
-
-/* =========================================================
-   LIGHT THEME
-========================================================= */
-
 body.light {
-  --text-primary: #172033;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-
-  --border: rgba(15, 23, 42, 0.08);
-
   background:
-    radial-gradient(
-      circle at top left,
-      rgba(108, 99, 255, 0.16),
-      transparent 35%
-    ),
-    linear-gradient(
-      135deg,
-      #eef2ff,
-      #f8fafc
-    );
-
-  color: var(--text-primary);
+    linear-gradient(135deg, #e0e7ff, #f5f3ff);
+  color: #1e293b;
 }
 
 
@@ -136,67 +45,53 @@ body.light {
   position: relative;
 
   width: 100%;
-  max-width: 390px;
-
+  max-width: 360px;
   max-height: 90vh;
-
   overflow-y: auto;
 
-  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 20px;
 
-  padding: 24px;
+  backdrop-filter: blur(25px);
 
-  border-radius: var(--radius-xl);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(30, 41, 59, 0.94),
-      rgba(15, 23, 42, 0.94)
-    );
-
-  border: 1px solid var(--border);
+  background: rgba(30, 41, 59, 0.72);
 
   box-shadow:
-    0 20px 45px rgba(0, 0, 0, 0.28);
+    0 10px 30px rgba(15, 23, 42, 0.30),
+    0 2px 8px rgba(0, 0, 0, 0.15);
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 
-/* LIGHT BOX */
+/* LIGHT MODE BOX */
 
 body.light .box {
-  background:
-    rgba(255, 255, 255, 0.90);
+  background: rgba(255, 255, 255, 0.78);
+
+  border: 1px solid rgba(99, 102, 241, 0.10);
 
   box-shadow:
-    0 15px 40px rgba(30, 41, 59, 0.12);
+    0 10px 30px rgba(79, 70, 229, 0.12),
+    0 2px 8px rgba(15, 23, 42, 0.08);
 }
 
 
 /* =========================================================
-   HEADINGS
+   HEADING
 ========================================================= */
-
-h1,
-h2,
-h3,
-h4 {
-  color: var(--text-primary);
-}
 
 h2 {
   text-align: center;
 
-  margin-top: 5px;
-  margin-bottom: 22px;
+  color: #f8fafc;
 
-  font-size: 24px;
-  font-weight: 700;
+  text-shadow:
+    0 2px 8px rgba(99, 102, 241, 0.25);
+}
 
-  letter-spacing: -0.4px;
+body.light h2 {
+  color: #1e293b;
 
   text-shadow: none;
 }
@@ -208,87 +103,76 @@ h2 {
 
 .field {
   position: relative;
-
   margin-top: 18px;
 }
-
-
-/* INPUT / SELECT / TEXTAREA */
 
 .field input,
 .field select,
 .field textarea {
   width: 100%;
-
   box-sizing: border-box;
 
-  padding: 13px 12px;
+  padding: 12px 10px;
 
-  border-radius: var(--radius-sm);
+  border-radius: 10px;
 
-  border: 1px solid var(--border);
+  border: 1px solid rgba(148, 163, 184, 0.15);
 
   outline: none;
 
-  background:
-    rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.07);
 
-  color: var(--text-primary);
+  color: #f8fafc;
 
-  font-family: inherit;
+  transition: 0.25s;
+}
 
-  font-size: 14px;
+body.light .field input,
+body.light .field select,
+body.light .field textarea {
+  background: rgba(255, 255, 255, 0.85);
 
-  transition:
-    border 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+  color: #1e293b;
+
+  border-color: rgba(99, 102, 241, 0.12);
 }
 
 
-/* FOCUS */
+/* INPUT FOCUS */
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--primary);
-
-  background:
-    rgba(108, 99, 255, 0.08);
+  border-color: #6366f1;
 
   box-shadow:
-    0 0 0 3px rgba(108, 99, 255, 0.12);
+    0 0 0 3px rgba(99, 102, 241, 0.12);
 }
 
 
-/* PLACEHOLDER */
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: transparent;
-}
-
-
-/* LABEL */
+/* =========================================================
+   FIELD LABEL
+========================================================= */
 
 .field label {
   position: absolute;
 
   top: 50%;
-  left: 12px;
+  left: 10px;
 
   transform: translateY(-50%);
 
-  padding: 0 4px;
-
   font-size: 13px;
 
-  color: var(--text-muted);
+  opacity: 0.6;
 
-  pointer-events: none;
+  transition: 0.3s;
 
-  transition:
-    0.2s ease;
+  color: #cbd5e1;
+}
+
+body.light .field label {
+  color: #64748b;
 }
 
 
@@ -300,33 +184,16 @@ h2 {
 .field textarea:not(:placeholder-shown) + label,
 .field select:focus + label,
 .field select:valid + label {
-
   top: -8px;
 
   font-size: 11px;
 
-  color: var(--primary-light);
-
-  background:
-    #1e293b;
-}
-
-
-/* LIGHT FLOAT LABEL */
-
-body.light .field input:focus + label,
-body.light .field input:not(:placeholder-shown) + label,
-body.light .field textarea:focus + label,
-body.light .field textarea:not(:placeholder-shown) + label,
-body.light .field select:focus + label,
-body.light .field select:valid + label {
-
-  background: #ffffff;
+  color: #818cf8;
 }
 
 
 /* =========================================================
-   BUTTONS
+   BUTTON
 ========================================================= */
 
 button {
@@ -334,173 +201,154 @@ button {
 
   margin-top: 12px;
 
-  padding: 12px 14px;
+  padding: 12px;
 
   border: none;
 
-  border-radius: var(--radius-sm);
+  border-radius: 10px;
 
   cursor: pointer;
 
-  font-family: inherit;
+  font-weight: bold;
 
-  font-size: 14px;
+  color: white;
 
-  font-weight: 600;
-
-  color: #ffffff;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s ease;
+  transition: 0.25s;
 }
-
 
 button:hover {
   transform: translateY(-1px);
 }
 
 
-button:active {
-  transform: translateY(0);
-}
-
-
-/* PRIMARY */
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
 
 .primary {
   background:
     linear-gradient(
       135deg,
-      var(--primary),
-      var(--primary-dark)
+      #6366f1,
+      #4f46e5
     );
 
   box-shadow:
-    0 6px 16px rgba(108, 99, 255, 0.25);
+    0 6px 15px rgba(79, 70, 229, 0.25);
 }
-
 
 .primary:hover {
   box-shadow:
-    0 8px 20px rgba(108, 99, 255, 0.35);
+    0 8px 20px rgba(79, 70, 229, 0.35);
 }
 
 
-/* LOGOUT */
+/* =========================================================
+   LOGOUT
+========================================================= */
 
 .logout {
   background:
     linear-gradient(
       135deg,
-      #ef5350,
-      #d32f2f
+      #ef4444,
+      #dc2626
     );
 
   box-shadow:
-    0 6px 16px rgba(239, 83, 80, 0.18);
+    0 6px 15px rgba(220, 38, 38, 0.20);
 }
 
 
 /* =========================================================
-   THEME TOGGLE
-========================================================= */
-
-.theme-toggle {
-  position: fixed;
-
-  top: 15px;
-  right: 15px;
-
-  width: 42px;
-  height: 42px;
-
-  padding: 0;
-
-  margin: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    rgba(30, 41, 59, 0.85);
-
-  border: 1px solid var(--border);
-
-  color: var(--text-primary);
-
-  box-shadow:
-    var(--shadow-soft);
-
-  backdrop-filter: blur(12px);
-
-  z-index: 9999;
-}
-
-
-.theme-toggle:hover {
-  background:
-    rgba(51, 65, 85, 0.95);
-
-  transform: rotate(8deg);
-}
-
-
-/* =========================================================
-   RESULT / STATUS CARDS
+   RESULT / STATUS
 ========================================================= */
 
 .result,
 .break-total,
 .leave-time {
-
   text-align: center;
 
-  margin-top: 8px;
+  margin-top: 6px;
 
-  padding: 9px 12px;
+  padding: 6px 10px;
 
   font-weight: 600;
 
-  font-size: 13px;
+  font-size: 14px;
 
-  color: var(--text-secondary);
+  color: #e2e8f0;
 
   background:
-    rgba(255, 255, 255, 0.045);
+    rgba(99, 102, 241, 0.08);
 
   border:
-    1px solid var(--border);
+    1px solid rgba(129, 140, 248, 0.18);
 
-  border-radius:
-    var(--radius-sm);
+  border-radius: 8px;
 
-  backdrop-filter:
-    blur(10px);
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
 
   box-shadow:
-    var(--shadow-soft);
+    0 4px 12px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
-  text-shadow: none;
+  text-shadow:
+    0 1px 5px rgba(99, 102, 241, 0.15);
 
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease;
+  transition: 0.25s;
 }
 
+body.light .result,
+body.light .break-total,
+body.light .leave-time {
+  color: #334155;
+
+  background:
+    rgba(99, 102, 241, 0.06);
+
+  border-color:
+    rgba(99, 102, 241, 0.12);
+
+  box-shadow:
+    0 4px 12px rgba(79, 70, 229, 0.08);
+}
+
+
+/* =========================================================
+   RESULT HOVER
+========================================================= */
 
 .result:hover,
 .break-total:hover,
 .leave-time:hover {
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.22),
+    0 0 12px rgba(99, 102, 241, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
 
-  transform: translateY(-1px);
+
+/* =========================================================
+   PROGRESS CONTAINER
+========================================================= */
+
+.progress-container {
+  margin-top: 15px;
 
   background:
-    rgba(108, 99, 255, 0.08);
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 12px;
+
+  height: 22px;
+
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
 
@@ -508,35 +356,10 @@ button:active {
    PROGRESS BAR
 ========================================================= */
 
-.progress-container {
-
-  position: relative;
-
-  margin-top: 16px;
-
-  height: 24px;
-
-  width: 100%;
-
-  background:
-    rgba(255, 255, 255, 0.07);
-
-  border-radius: 12px;
-
-  overflow: hidden;
-
-  box-shadow:
-    inset 0 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-
 .progress-bar {
-
   height: 100%;
 
   width: 0%;
-
-  min-width: 0;
 
   display: flex;
 
@@ -544,45 +367,42 @@ button:active {
 
   justify-content: center;
 
-  box-sizing: border-box;
+  text-align: center;
 
-  padding: 0 6px;
+  color: white;
 
-  color: #ffffff;
+  font-size: 12px;
 
-  font-size: 11px;
+  font-weight: 600;
 
-  font-weight: 700;
-
-  line-height: 24px;
+  line-height: 22px;
 
   border-radius: 12px;
 
   background:
     linear-gradient(
-      90deg,
-      #6c63ff,
-      #4f8cff,
-      #00b8d9
+      270deg,
+      #6366f1,
+      #4f46e5,
+      #3b82f6
     );
 
-  background-size: 200% 100%;
+  background-size: 400% 400%;
 
-  animation:
-    progressGlow 4s ease infinite;
+  animation: move 5s ease infinite;
 
-  transition:
-    width 0.6s ease;
+  transition: width 0.6s ease;
 
   text-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.4);
-
-  white-space: nowrap;
+    0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 
-@keyframes progressGlow {
+/* =========================================================
+   PROGRESS ANIMATION
+========================================================= */
 
+@keyframes move {
   0% {
     background-position: 0% 50%;
   }
@@ -598,87 +418,153 @@ button:active {
 
 
 /* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+  position: fixed;
+
+  top: 15px;
+  right: 15px;
+
+  width: auto;
+
+  background:
+    rgba(51, 65, 85, 0.65);
+
+  border:
+    1px solid rgba(148, 163, 184, 0.15);
+
+  padding: 10px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  color: #f8fafc;
+
+  z-index: 9999;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+body.light .theme-toggle {
+  background:
+    rgba(255, 255, 255, 0.8);
+
+  color: #334155;
+
+  border-color:
+    rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================================
+   SELECT OPTION
+========================================================= */
+
+select option {
+  color: #1e293b;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.hidden {
+  display: none;
+}
+
+
+/* =========================================================
    TABS
 ========================================================= */
 
 .tabs {
-
   display: flex;
 
-  gap: 8px;
+  gap: 10px;
 
   margin: 20px 0;
 }
 
 
-.tab-btn {
+/* TAB BUTTON */
 
+.tab-btn {
   flex: 1;
 
-  padding: 10px 8px;
+  padding: 10px;
 
-  margin: 0;
+  border: 1px solid rgba(148, 163, 184, 0.12);
 
-  border: 1px solid var(--border);
-
-  border-radius: 12px;
+  border-radius: 10px;
 
   cursor: pointer;
 
-  font-weight: 600;
-
-  font-size: 13px;
+  font-weight: bold;
 
   background:
-    rgba(255, 255, 255, 0.045);
+    rgba(255, 255, 255, 0.06);
 
-  color: var(--text-secondary);
+  color: #cbd5e1;
 
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+  transition: 0.3s;
 
   backdrop-filter: blur(10px);
 }
 
-
-.tab-btn:hover {
+body.light .tab-btn {
+  color: #64748b;
 
   background:
-    rgba(108, 99, 255, 0.10);
+    rgba(255, 255, 255, 0.65);
 
-  color: var(--text-primary);
-
-  transform: translateY(-1px);
+  border-color:
+    rgba(99, 102, 241, 0.10);
 }
 
 
-.tab-btn.active {
+/* TAB HOVER */
 
+.tab-btn:hover {
+  background:
+    rgba(99, 102, 241, 0.10);
+
+  color: #e2e8f0;
+}
+
+
+/* ACTIVE TAB */
+
+.tab-btn.active {
   background:
     linear-gradient(
       135deg,
-      var(--primary),
-      var(--primary-dark)
+      #6366f1,
+      #4f46e5
     );
 
-  color: #ffffff;
-
-  border-color:
-    transparent;
+  color: white;
 
   box-shadow:
-    0 5px 14px rgba(108, 99, 255, 0.25);
+    0 5px 14px rgba(79, 70, 229, 0.25);
 }
 
 
-/* TAB CONTENT */
+/* =========================================================
+   TAB CONTENT
+========================================================= */
 
 .tab-content {
   display: none;
 }
-
 
 .active-tab {
   display: block;
@@ -690,7 +576,6 @@ button:active {
 ========================================================= */
 
 .sub-tabs {
-
   display: grid;
 
   grid-template-columns:
@@ -705,18 +590,15 @@ button:active {
 /* SUB TAB CARD */
 
 .sub-tab-btn {
-
   padding: 12px;
 
-  margin: 0;
+  border: 1px solid rgba(148, 163, 184, 0.12);
 
-  border: 1px solid var(--border);
-
-  border-radius: var(--radius-md);
+  border-radius: 12px;
 
   cursor: pointer;
 
-  color: var(--text-secondary);
+  color: #cbd5e1;
 
   font-size: 13px;
 
@@ -725,52 +607,51 @@ button:active {
   text-align: left;
 
   background:
-    rgba(255, 255, 255, 0.045);
+    rgba(255, 255, 255, 0.055);
 
-  backdrop-filter:
-    blur(10px);
+  backdrop-filter: blur(10px);
 
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    color 0.2s ease,
-    border 0.2s ease;
+  transition: 0.25s;
 
   box-shadow:
-    var(--shadow-soft);
+    0 4px 10px rgba(15, 23, 42, 0.15);
 }
 
-
-.sub-tab-btn:hover {
-
-  transform:
-    translateY(-2px);
+body.light .sub-tab-btn {
+  color: #475569;
 
   background:
-    rgba(108, 99, 255, 0.08);
+    rgba(255, 255, 255, 0.65);
 
-  color:
-    var(--text-primary);
+  border-color:
+    rgba(99, 102, 241, 0.10);
 }
 
 
-.sub-tab-btn.active {
+/* SUB TAB HOVER */
 
+.sub-tab-btn:hover {
+  transform: translateY(-2px);
+
+  background:
+    rgba(99, 102, 241, 0.10);
+}
+
+
+/* ACTIVE SUB TAB */
+
+.sub-tab-btn.active {
   background:
     linear-gradient(
       135deg,
-      #6c63ff,
-      #5148d8
+      #6366f1,
+      #4f46e5
     );
 
-  color:
-    #ffffff;
-
-  border-color:
-    transparent;
+  color: white;
 
   box-shadow:
-    0 7px 18px rgba(108, 99, 255, 0.25);
+    0 6px 15px rgba(79, 70, 229, 0.25);
 }
 
 
@@ -779,34 +660,37 @@ button:active {
 ========================================================= */
 
 .sub-tab-content {
-
   display: none !important;
 
   margin-top: 12px;
 
-  padding: 14px;
+  padding: 12px;
 
-  border-radius:
-    var(--radius-md);
+  border-radius: 12px;
 
   background:
-    rgba(255, 255, 255, 0.035);
+    rgba(255, 255, 255, 0.045);
 
   border:
-    1px solid var(--border);
+    1px solid rgba(148, 163, 184, 0.10);
 
   font-size: 13px;
 
-  color:
-    var(--text-secondary);
+  color: #cbd5e1;
+}
 
-  box-shadow:
-    var(--shadow-soft);
+body.light .sub-tab-content {
+  background:
+    rgba(255, 255, 255, 0.65);
+
+  color: #475569;
+
+  border-color:
+    rgba(99, 102, 241, 0.10);
 }
 
 
 .sub-tab-content.active-sub-tab {
-
   display: block !important;
 }
 
@@ -816,67 +700,73 @@ button:active {
 ========================================================= */
 
 table {
-
   width: 100%;
 
   border-collapse: collapse;
 
   margin-top: 10px;
 
-  color:
-    var(--text-secondary);
+  color: #cbd5e1;
 
   font-size: 12px;
 
-  border-radius:
-    var(--radius-sm);
+  border-radius: 10px;
 
   overflow: hidden;
+}
 
-  background:
-    rgba(255, 255, 255, 0.025);
+body.light table {
+  color: #475569;
 }
 
 
+/* TABLE CELLS */
+
 th,
 td {
-
-  padding: 9px 7px;
+  padding: 8px;
 
   border:
-    1px solid var(--border);
+    1px solid rgba(148, 163, 184, 0.12);
 
   text-align: center;
 }
 
 
+/* TABLE HEADER */
+
 th {
-
   background:
-    rgba(108, 99, 255, 0.13);
+    rgba(99, 102, 241, 0.13);
 
-  color:
-    var(--text-primary);
+  color: #e2e8f0;
 
-  font-weight:
-    600;
+  font-weight: bold;
 }
 
+body.light th {
+  color: #334155;
+
+  background:
+    rgba(99, 102, 241, 0.09);
+}
+
+
+/* EVEN ROW */
 
 table tr:nth-child(even) {
-
   background:
-    rgba(255, 255, 255, 0.025);
+    rgba(255, 255, 255, 0.035);
 }
 
 
+/* ROW HOVER */
+
 table tr:hover {
-
   background:
-    rgba(108, 99, 255, 0.07);
+    rgba(99, 102, 241, 0.08);
 
-  transition:
-    0.2s ease;
+  transition: 0.2s;
 }
 
 
@@ -885,57 +775,42 @@ table tr:hover {
 ========================================================= */
 
 .bank-card {
-
-  margin-top: 18px;
+  margin-top: 20px;
 
   padding: 15px;
 
-  border-radius:
-    var(--radius-md);
+  border-radius: 12px;
 
   background:
     rgba(255, 255, 255, 0.045);
 
   border:
-    1px solid var(--border);
+    1px solid rgba(148, 163, 184, 0.10);
 
   box-shadow:
-    var(--shadow-soft);
+    0 4px 12px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
 
-  backdrop-filter:
-    blur(12px);
+body.light .bank-card {
+  background:
+    rgba(255, 255, 255, 0.68);
+
+  border-color:
+    rgba(99, 102, 241, 0.10);
+
+  box-shadow:
+    0 4px 12px rgba(79, 70, 229, 0.08);
 }
 
 
+/* BANK CARD TITLE */
+
 .bank-card h4 {
-
-  margin-top: 0;
-
   margin-bottom: 10px;
 
   color:
-    var(--primary-light);
-
-  font-size: 14px;
-}
-
-
-/* =========================================================
-   HIDDEN
-========================================================= */
-
-.hidden {
-  display: none !important;
-}
-
-
-/* =========================================================
-   SELECT OPTIONS
-========================================================= */
-
-select option {
-  color: #172033;
-  background: #ffffff;
+    #818cf8;
 }
 
 
@@ -944,199 +819,58 @@ select option {
 ========================================================= */
 
 .box::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
-
-
-.box::-webkit-scrollbar-track {
-  background: transparent;
-}
-
 
 .box::-webkit-scrollbar-thumb {
-
   background:
-    rgba(108, 99, 255, 0.65);
+    #6366f1;
 
   border-radius: 10px;
 }
 
-
-.box::-webkit-scrollbar-thumb:hover {
-
+.box::-webkit-scrollbar-track {
   background:
-    var(--primary);
+    transparent;
 }
 
 
 /* =========================================================
-   RESPONSIVE — MOBILE
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width: 480px) {
 
   body {
-    padding:
-      15px 10px;
-
-    align-items:
-      flex-start;
+    padding: 20px 10px;
   }
-
 
   .box {
+    max-width: 100%;
 
-    max-width:
-      100%;
+    padding: 20px;
 
-    padding:
-      18px;
-
-    border-radius:
-      18px;
-
-    max-height:
-      calc(100vh - 30px);
+    border-radius: 18px;
   }
-
 
   h2 {
-
-    font-size:
-      21px;
-
-    margin-bottom:
-      18px;
+    font-size: 21px;
   }
-
-
-  .field input,
-  .field select,
-  .field textarea {
-
-    padding:
-      12px 10px;
-
-    font-size:
-      13px;
-  }
-
-
-  button {
-
-    padding:
-      11px;
-
-    font-size:
-      13px;
-  }
-
 
   .tabs {
-
-    gap:
-      6px;
-
-    margin:
-      16px 0;
+    gap: 7px;
   }
-
 
   .tab-btn {
+    font-size: 12px;
 
-    padding:
-      9px 6px;
-
-    font-size:
-      12px;
+    padding: 9px 6px;
   }
-
-
-  .sub-tabs {
-
-    gap:
-      8px;
-  }
-
 
   .sub-tab-btn {
+    font-size: 12px;
 
-    padding:
-      10px;
-
-    font-size:
-      12px;
-  }
-
-
-  .result,
-  .break-total,
-  .leave-time {
-
-    font-size:
-      12px;
-
-    padding:
-      8px;
-  }
-
-
-  table {
-
-    font-size:
-      11px;
-  }
-
-
-  th,
-  td {
-
-    padding:
-      7px 5px;
-  }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 350px) {
-
-  body {
-    padding:
-      10px 7px;
-  }
-
-
-  .box {
-
-    padding:
-      15px;
-
-    border-radius:
-      16px;
-  }
-
-
-  .sub-tabs {
-
-    grid-template-columns:
-      1fr;
-  }
-
-
-  .tabs {
-
-    flex-direction:
-      column;
-  }
-
-
-  .tab-btn {
-
-    width:
-      100%;
+    padding: 10px;
   }
 }
 
@@ -1147,65 +881,7 @@ select option {
 
 @media (min-width: 768px) {
 
-  body {
-
-    padding:
-      40px 20px;
-  }
-
-
   .box {
-
-    max-width:
-      430px;
-
-    padding:
-      28px;
-  }
-
-
-  h2 {
-
-    font-size:
-      25px;
-  }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-
-  outline:
-    2px solid var(--primary-light);
-
-  outline-offset:
-    2px;
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-
-    animation-duration:
-      0.01ms !important;
-
-    animation-iteration-count:
-      1 !important;
-
-    transition-duration:
-      0.01ms !important;
+    max-width: 380px;
   }
 }
