@@ -1,520 +1,1509 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Work Tracker</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Work Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="dark">
 
-<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+  <!-- =========================================
+       THEME BUTTON
+  ========================================== -->
 
-<!-- LOGIN -->
-<div class="box" id="loginBox">
-  <h2>⚡ Work Tracker</h2>
-
-  <div class="field">
-    <input id="username" placeholder=" " required>
-    <label>Username</label>
-  </div>
-
-  <div class="field">
-    <input id="password" type="password" placeholder=" " required>
-    <label>Password</label>
-  </div>
-
-  <button class="primary" onclick="login()">Login</button>
-  <div id="loginError"></div>
-</div>
-
-<!-- APP -->
-<!-- APP -->
-<div class="box hidden" id="appBox">
-
-  <h2>⚡ Work Tracker</h2>
-
-    
-    <div id="userDisplay" style="text-align:center;"></div>
-    <div id="clockDisplay" style="text-align:center;"></div>
-
-    <button class="logout" onclick="logout()">Logout</button>
-  <div class="tabs">
-
-  <button class="tab-btn active" onclick="openTab('trackerTab', this)">
-    Work Tracker
+  <button
+    class="theme-toggle"
+    onclick="toggleTheme()"
+    id="themeBtn"
+    aria-label="Toggle theme">
+    ☀️
   </button>
 
-  <button class="tab-btn" onclick="openTab('supportTab', this)">
-    Support Doc
-  </button>
 
-  <button class="tab-btn" onclick="openTab('issuesTab', this)">
-    Common Issues
-  </button>
+  <!-- =========================================
+       LOGIN
+  ========================================== -->
 
-</div>
-  
-  <!-- WORK TRACKER TAB -->
-  <div id="trackerTab" class="tab-content active-tab">
+  <div class="login-screen" id="loginBox">
+
+    <div class="login-card">
+
+      <div class="brand-logo">
+        ⚡
+      </div>
+
+      <h1>Work Tracker</h1>
+
+      <p class="login-subtitle">
+        Sign in to continue
+      </p>
 
 
-    <label>Login Time:</label>
-    <div style="display:flex; gap:5px;">
-      <select id="loginHour"></select>
-      <select id="loginMinute"></select>
-      <select id="loginAMPM">
-        <option>AM</option>
-        <option>PM</option>
-      </select>
-    </div>
+      <div class="field">
 
-    <div class="field">
-      <textarea id="breakTimes" placeholder=" "></textarea>
-      <label>Breaks (minutes)</label>
-    </div>
+        <input
+          id="username"
+          type="text"
+          placeholder=" "
+          autocomplete="username"
+          required>
 
-    <div class="field">
-  <select id="workHours">
-    <option value="" disabled hidden>Select duration</option>
-    <option value="360">6 hrs</option>
-    <option value="480" selected>8 hrs</option>
-    <option value="540">9 hrs</option>
-    <option value="600">10 hrs</option>
-    <option value="custom">Custom</option>
-  </select>
-  <label>Work Duration</label>
-</div>
+        <label for="username">
+          Username
+        </label>
 
-<div class="field hidden" id="customHoursField">
-  <input type="number" id="customHours" min="1" placeholder=" ">
-  <label>Custom Hours</label>
-</div>
+      </div>
 
-    <div class="result" id="result"></div>
-    <div class="break-total" id="totalBreak"></div>
-    <div class="leave-time" id="countdown"></div>
-    <div class="leave-time" id="leaveTime"></div>
 
-    <div class="result" id="remaining"></div>
+      <div class="field">
 
-    <div class="progress-container">
-      <div class="progress-bar" id="progressBar">0%</div>
+        <input
+          id="password"
+          type="password"
+          placeholder=" "
+          autocomplete="current-password"
+          required>
+
+        <label for="password">
+          Password
+        </label>
+
+      </div>
+
+
+      <button
+        class="primary login-button"
+        onclick="login()">
+
+        Login
+
+      </button>
+
+
+      <div
+        id="loginError"
+        class="error-message">
+      </div>
+
     </div>
 
   </div>
 
-<!-- SUPPORT DOC TAB -->
-<div id="supportTab" class="tab-content">
 
-  <h3>📄 Support Document</h3>
 
- <!-- SUB TABS -->
-<div class="sub-tabs">
+  <!-- =========================================
+       APPLICATION
+  ========================================== -->
 
-  <button class="sub-tab-btn active"
-    onclick="openSubTab('pricingTab', this)">
-    💰 Pricing
-  </button>
+  <div class="app-shell hidden" id="appBox">
 
-  <button class="sub-tab-btn"
-    onclick="openSubTab('bankTab', this)">
-    🏦 Bank Accounts
-  </button>
 
-  <button class="sub-tab-btn"
-    onclick="openSubTab('demoTab', this)">
-    🧪 Demo Accounts
-  </button>
+    <!-- =======================================
+         DESKTOP / MOBILE APP BAR
+    ======================================== -->
 
-  <button class="sub-tab-btn"
-    onclick="openSubTab('contactTab', this)">
-    📞 Contact
-  </button>
+    <header class="app-bar">
 
-  <button class="sub-tab-btn"
-    onclick="openSubTab('meetingTab', this)">
-    📅 Book Meetings
-  </button>
+      <div class="app-brand">
 
-</div>
+        <div class="app-icon">
+          ⚡
+        </div>
 
-<!-- PRICING -->
-<div id="pricingTab" class="sub-tab-content active-sub-tab">
+        <div>
+          <div class="app-title">
+            Work Tracker
+          </div>
 
-  <h3>💰 Pricing</h3>
+          <div class="app-subtitle">
+            Employee dashboard
+          </div>
+        </div>
 
-  <div style="overflow-x:auto;">
+      </div>
 
-    <table>
 
-      <tr>
-        <th rowspan="2">Plan</th>
-        <th colspan="2">Lite</th>
-        <th colspan="2">Pro</th>
-        <th rowspan="2">Tax</th>
-      </tr>
+      <div class="app-actions">
 
-      <tr>
-        <th>Monthly</th>
-        <th>Yearly</th>
-        <th>Monthly</th>
-        <th>Yearly</th>
-      </tr>
+        <div class="user-chip">
 
-      <!-- INR -->
-      <tr>
-        <td><b>INR</b></td>
-        <td>₹799</td>
-        <td>₹5999</td>
-        <td>₹1,599</td>
-        <td>₹14,999</td>
-        <td>18 %</td>
-      </tr>
+          <div class="avatar">
+            👤
+          </div>
 
-      <tr>
-        <td>For additional terminal</td>
-        <td>₹600</td>
-        <td>₹4,999</td>
-        <td>₹1,199</td>
-        <td>₹11,999</td>
-        <td>18 %</td>
-      </tr>
+          <span id="userDisplay">
+            User
+          </span>
 
-      <tr>
-        <td><b>INR new</b></td>
-        <td></td>
-        <td>₹9,999</td>
-        <td></td>
-        <td>₹24,999</td>
-        <td>18 %</td>
-      </tr>
+        </div>
 
-      <tr>
-        <td>For additional terminal</td>
-        <td></td>
-        <td>₹5,999</td>
-        <td></td>
-        <td>₹12,999</td>
-        <td>18 %</td>
-      </tr>
 
-      <!-- USD -->
-      <tr>
-        <td><b>USD</b></td>
-        <td>$25</td>
-        <td>$228</td>
-        <td>$58</td>
-        <td>$588</td>
-        <td>nil</td>
-      </tr>
+        <button
+          class="logout"
+          onclick="logout()">
 
-      <tr>
-        <td>For additional terminal</td>
-        <td>$19</td>
-        <td>$189</td>
-        <td>$49</td>
-        <td>$399</td>
-        <td>nil</td>
-      </tr>
+          Logout
 
-    </table>
+        </button>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- =======================================
+         APPLICATION BODY
+    ======================================== -->
+
+    <div class="app-layout">
+
+
+      <!-- =====================================
+           NAVIGATION
+      ====================================== -->
+
+      <nav class="main-nav">
+
+        <div class="nav-header">
+          Workspace
+        </div>
+
+
+        <button
+          class="tab-btn active"
+          onclick="openTab('trackerTab', this)">
+
+          <span class="nav-icon">🕐</span>
+
+          <span class="nav-label">
+            Work Tracker
+          </span>
+
+        </button>
+
+
+        <button
+          class="tab-btn"
+          onclick="openTab('supportTab', this)">
+
+          <span class="nav-icon">📄</span>
+
+          <span class="nav-label">
+            Support Docs
+          </span>
+
+        </button>
+
+
+        <button
+          class="tab-btn"
+          onclick="openTab('issuesTab', this)">
+
+          <span class="nav-icon">⚠️</span>
+
+          <span class="nav-label">
+            Common Issues
+          </span>
+
+        </button>
+
+      </nav>
+
+
+
+      <!-- =====================================
+           MAIN CONTENT
+      ====================================== -->
+
+      <main class="main-content">
+
+
+        <!-- ===================================
+             TOP INFORMATION
+        ==================================== -->
+
+        <div class="page-header">
+
+          <div>
+
+            <h2 id="pageTitle">
+              Work Tracker
+            </h2>
+
+            <p>
+              Monitor your working hours and leave time.
+            </p>
+
+          </div>
+
+
+          <div
+            class="clock-card"
+            id="clockDisplay">
+
+            📅 Loading...
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ===================================
+             WORK TRACKER
+        ==================================== -->
+
+        <section
+          id="trackerTab"
+          class="tab-content active-tab">
+
+
+          <!-- Dashboard cards -->
+
+          <div class="stats-grid">
+
+            <div class="stat-card">
+
+              <div class="stat-icon purple">
+                🕐
+              </div>
+
+              <div class="stat-content">
+
+                <span>
+                  Login Time
+                </span>
+
+                <strong id="loginSummary">
+                  —
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-icon blue">
+                💼
+              </div>
+
+              <div class="stat-content">
+
+                <span>
+                  Work Duration
+                </span>
+
+                <strong id="workSummary">
+                  8 hrs
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-icon green">
+                ⏱️
+              </div>
+
+              <div class="stat-content">
+
+                <span>
+                  Current Status
+                </span>
+
+                <strong>
+                  Active
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Tracker card -->
+
+          <div class="content-card">
+
+            <div class="card-header">
+
+              <div>
+
+                <h3>
+                  Work Session
+                </h3>
+
+                <p>
+                  Enter your work details below.
+                </p>
+
+              </div>
+
+              <div class="card-header-icon">
+                ⏱️
+              </div>
+
+            </div>
+
+
+
+            <!-- Login time -->
+
+            <div class="form-section">
+
+              <label class="section-label">
+                Login Time
+              </label>
+
+              <div class="time-inputs">
+
+                <select id="loginHour">
+                </select>
+
+                <span class="time-separator">
+                  :
+                </span>
+
+                <select id="loginMinute">
+                </select>
+
+                <select id="loginAMPM">
+
+                  <option>
+                    AM
+                  </option>
+
+                  <option>
+                    PM
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Breaks -->
+
+            <div class="field">
+
+              <textarea
+                id="breakTimes"
+                placeholder=" "
+                rows="3">
+              </textarea>
+
+              <label for="breakTimes">
+                Breaks in minutes
+              </label>
+
+              <span class="field-helper">
+                Example: 15 30 10
+              </span>
+
+            </div>
+
+
+
+            <!-- Work duration -->
+
+            <div class="field">
+
+              <select
+                id="workHours"
+                required>
+
+                <option
+                  value=""
+                  disabled
+                  hidden>
+
+                  Select duration
+
+                </option>
+
+                <option value="360">
+                  6 hours
+                </option>
+
+                <option
+                  value="480"
+                  selected>
+
+                  8 hours
+
+                </option>
+
+                <option value="540">
+                  9 hours
+                </option>
+
+                <option value="600">
+                  10 hours
+                </option>
+
+                <option value="custom">
+                  Custom
+                </option>
+
+              </select>
+
+              <label for="workHours">
+                Work Duration
+              </label>
+
+            </div>
+
+
+
+            <!-- Custom hours -->
+
+            <div
+              class="field hidden"
+              id="customHoursField">
+
+              <input
+                type="number"
+                id="customHours"
+                min="1"
+                placeholder=" ">
+
+              <label for="customHours">
+                Custom Hours
+              </label>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- =================================
+               RESULTS
+          ================================== -->
+
+          <div class="content-card results-card">
+
+            <div class="card-header">
+
+              <div>
+
+                <h3>
+                  Today's Progress
+                </h3>
+
+                <p>
+                  Your current working status.
+                </p>
+
+              </div>
+
+              <div class="card-header-icon">
+                📊
+              </div>
+
+            </div>
+
+
+            <div class="result-grid">
+
+              <div class="result-item">
+
+                <span class="result-label">
+                  Worked
+                </span>
+
+                <div
+                  class="result"
+                  id="result">
+                </div>
+
+              </div>
+
+
+              <div class="result-item">
+
+                <span class="result-label">
+                  Break Taken
+                </span>
+
+                <div
+                  class="break-total"
+                  id="totalBreak">
+                </div>
+
+              </div>
+
+
+              <div class="result-item">
+
+                <span class="result-label">
+                  Leave Time
+                </span>
+
+                <div
+                  class="leave-time"
+                  id="leaveTime">
+                </div>
+
+              </div>
+
+
+              <div class="result-item">
+
+                <span class="result-label">
+                  Remaining
+                </span>
+
+                <div
+                  class="leave-time"
+                  id="countdown">
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Overtime -->
+
+            <div
+              class="overtime"
+              id="remaining">
+            </div>
+
+
+
+            <!-- Progress -->
+
+            <div class="progress-section">
+
+              <div class="progress-header">
+
+                <span>
+                  Daily Progress
+                </span>
+
+                <span id="progressPercent">
+                  0%
+                </span>
+
+              </div>
+
+              <div class="progress-container">
+
+                <div
+                  class="progress-bar"
+                  id="progressBar">
+
+                  0%
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================
+             SUPPORT DOCUMENT
+        ==================================== -->
+
+        <section
+          id="supportTab"
+          class="tab-content">
+
+
+          <div class="page-section-header">
+
+            <div>
+
+              <h2>
+                Support Documents
+              </h2>
+
+              <p>
+                Quick access to important company information.
+              </p>
+
+            </div>
+
+            <span class="section-icon">
+              📄
+            </span>
+
+          </div>
+
+
+
+          <!-- Sub Navigation -->
+
+          <div class="sub-tabs">
+
+            <button
+              class="sub-tab-btn active"
+              onclick="openSubTab('pricingTab', this)">
+
+              <span>💰</span>
+
+              <div>
+                <strong>Pricing</strong>
+                <small>Plans & rates</small>
+              </div>
+
+            </button>
+
+
+            <button
+              class="sub-tab-btn"
+              onclick="openSubTab('bankTab', this)">
+
+              <span>🏦</span>
+
+              <div>
+                <strong>Bank Accounts</strong>
+                <small>Payment details</small>
+              </div>
+
+            </button>
+
+
+            <button
+              class="sub-tab-btn"
+              onclick="openSubTab('demoTab', this)">
+
+              <span>🧪</span>
+
+              <div>
+                <strong>Demo Accounts</strong>
+                <small>Test accounts</small>
+              </div>
+
+            </button>
+
+
+            <button
+              class="sub-tab-btn"
+              onclick="openSubTab('contactTab', this)">
+
+              <span>📞</span>
+
+              <div>
+                <strong>Contact</strong>
+                <small>Departments</small>
+              </div>
+
+            </button>
+
+
+            <button
+              class="sub-tab-btn"
+              onclick="openSubTab('meetingTab', this)">
+
+              <span>📅</span>
+
+              <div>
+                <strong>Meetings</strong>
+                <small>Book a meeting</small>
+              </div>
+
+            </button>
+
+          </div>
+
+
+
+          <!-- =================================
+               PRICING
+          ================================== -->
+
+          <div
+            id="pricingTab"
+            class="sub-tab-content active-sub-tab">
+
+            <div class="inner-card">
+
+              <div class="inner-card-title">
+                💰 Pricing
+              </div>
+
+              <div class="table-wrapper">
+
+                <table>
+
+                  <thead>
+
+                    <tr>
+
+                      <th rowspan="2">
+                        Plan
+                      </th>
+
+                      <th colspan="2">
+                        Lite
+                      </th>
+
+                      <th colspan="2">
+                        Pro
+                      </th>
+
+                      <th rowspan="2">
+                        Tax
+                      </th>
+
+                    </tr>
+
+                    <tr>
+
+                      <th>
+                        Monthly
+                      </th>
+
+                      <th>
+                        Yearly
+                      </th>
+
+                      <th>
+                        Monthly
+                      </th>
+
+                      <th>
+                        Yearly
+                      </th>
+
+                    </tr>
+
+                  </thead>
+
+
+                  <tbody>
+
+                    <tr>
+
+                      <td>
+                        <strong>INR</strong>
+                      </td>
+
+                      <td>₹799</td>
+                      <td>₹5999</td>
+                      <td>₹1,599</td>
+                      <td>₹14,999</td>
+                      <td>18%</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                      <td>
+                        Additional terminal
+                      </td>
+
+                      <td>₹600</td>
+                      <td>₹4,999</td>
+                      <td>₹1,199</td>
+                      <td>₹11,999</td>
+                      <td>18%</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                      <td>
+                        <strong>INR new</strong>
+                      </td>
+
+                      <td>—</td>
+                      <td>₹9,999</td>
+                      <td>—</td>
+                      <td>₹24,999</td>
+                      <td>18%</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                      <td>
+                        Additional terminal
+                      </td>
+
+                      <td>—</td>
+                      <td>₹5,999</td>
+                      <td>—</td>
+                      <td>₹12,999</td>
+                      <td>18%</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                      <td>
+                        <strong>USD</strong>
+                      </td>
+
+                      <td>$25</td>
+                      <td>$228</td>
+                      <td>$58</td>
+                      <td>$588</td>
+                      <td>nil</td>
+
+                    </tr>
+
+
+                    <tr>
+
+                      <td>
+                        Additional terminal
+                      </td>
+
+                      <td>$19</td>
+                      <td>$189</td>
+                      <td>$49</td>
+                      <td>$399</td>
+                      <td>nil</td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================
+               BANK
+          ================================== -->
+
+          <div
+            id="bankTab"
+            class="sub-tab-content">
+
+            <div class="inner-card">
+
+              <div class="inner-card-title">
+                🏦 Bank Accounts
+              </div>
+
+
+              <div class="bank-card">
+
+                <h4>
+                  🇮🇳 India
+                </h4>
+
+                <div class="table-wrapper">
+
+                  <table>
+
+                    <tr>
+                      <td>Name</td>
+                      <td>LITHOS TECHNOSOFT PVT LTD</td>
+                    </tr>
+
+                    <tr>
+                      <td>Bank</td>
+                      <td>ICICI BANK</td>
+                    </tr>
+
+                    <tr>
+                      <td>Branch</td>
+                      <td>CALICUT</td>
+                    </tr>
+
+                    <tr>
+                      <td>Account Number</td>
+                      <td>626505500465</td>
+                    </tr>
+
+                    <tr>
+                      <td>RTGS / NEFT IFSC</td>
+                      <td>ICIC0006265</td>
+                    </tr>
+
+                    <tr>
+                      <td>UPI</td>
+                      <td>eazypay.577554788@icici</td>
+                    </tr>
+
+                    <tr>
+                      <td>SWIFT CODE</td>
+                      <td>ICICINBBXXX</td>
+                    </tr>
+
+                  </table>
+
+                </div>
+
+              </div>
+
+
+              <div class="bank-card">
+
+                <h4>
+                  🌍 Outside India
+                </h4>
+
+                <div class="table-wrapper">
+
+                  <table>
+
+                    <tr>
+                      <td>Name</td>
+                      <td>LITHOS TECHNOSOFT PVT LTD</td>
+                    </tr>
+
+                    <tr>
+                      <td>Bank</td>
+                      <td>ICICI BANK</td>
+                    </tr>
+
+                    <tr>
+                      <td>Branch</td>
+                      <td>UL CYBER PARK</td>
+                    </tr>
+
+                    <tr>
+                      <td>Account Number</td>
+                      <td>730305000142</td>
+                    </tr>
+
+                    <tr>
+                      <td>RTGS / NEFT IFSC</td>
+                      <td>ICIC0007303</td>
+                    </tr>
+
+                    <tr>
+                      <td>SWIFT CODE</td>
+                      <td>ICICINBBXXX</td>
+                    </tr>
+
+                  </table>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================
+               DEMO ACCOUNTS
+          ================================== -->
+
+          <div
+            id="demoTab"
+            class="sub-tab-content">
+
+            <div class="inner-card">
+
+              <div class="inner-card-title">
+                🧪 Demo Accounts
+              </div>
+
+              <div class="table-wrapper">
+
+                <table>
+
+                  <thead>
+
+                    <tr>
+                      <th>Account</th>
+                      <th>Password</th>
+                      <th>Server</th>
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    <tr>
+                      <td>kot@llithospos.com</td>
+                      <td>demo123</td>
+                      <td>IND</td>
+                    </tr>
+
+                    <tr>
+                      <td>indtest@lithos.in</td>
+                      <td>demo123</td>
+                      <td>IND</td>
+                    </tr>
+
+                    <tr>
+                      <td>demo@lithospos.com</td>
+                      <td>demo123</td>
+                      <td>IND</td>
+                    </tr>
+
+                    <tr>
+                      <td>accounts@lithos.in</td>
+                      <td>demo123</td>
+                      <td>US</td>
+                    </tr>
+
+                    <tr>
+                      <td>ustest@lithos.in</td>
+                      <td>demo123</td>
+                      <td>US</td>
+                    </tr>
+
+                    <tr>
+                      <td>it@lithospos.com</td>
+                      <td>123456</td>
+                      <td>UK</td>
+                    </tr>
+
+                    <tr>
+                      <td>uktest@lithos.in</td>
+                      <td>demo123</td>
+                      <td>US</td>
+                    </tr>
+
+                    <tr>
+                      <td>expo@lithospos.com</td>
+                      <td>demo123</td>
+                      <td>UAE</td>
+                    </tr>
+
+                    <tr>
+                      <td>exporetail@lithospos.com</td>
+                      <td>demo123</td>
+                      <td>UAE</td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================
+               CONTACT
+          ================================== -->
+
+          <div
+            id="contactTab"
+            class="sub-tab-content">
+
+            <div class="inner-card">
+
+              <div class="inner-card-title">
+                📞 Contact
+              </div>
+
+              <div class="table-wrapper">
+
+                <table>
+
+                  <thead>
+
+                    <tr>
+
+                      <th>
+                        Department
+                      </th>
+
+                      <th>
+                        Email
+                      </th>
+
+                      <th>
+                        Phone
+                      </th>
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    <tr>
+                      <td>Support</td>
+                      <td>support@lithospos.com</td>
+                      <td>+91 9747500080</td>
+                    </tr>
+
+                    <tr>
+                      <td>Development Team</td>
+                      <td>dev@lithospos.com</td>
+                      <td>—</td>
+                    </tr>
+
+                    <tr>
+                      <td>Billing</td>
+                      <td>billing@lithospos.com</td>
+                      <td>—</td>
+                    </tr>
+
+                    <tr>
+                      <td>HR</td>
+                      <td>hr@lithostechnosoft.com</td>
+                      <td>—</td>
+                    </tr>
+
+                    <tr>
+                      <td>Sales</td>
+                      <td>sales@lithospos.com</td>
+                      <td>—</td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- =================================
+               MEETINGS
+          ================================== -->
+
+          <div
+            id="meetingTab"
+            class="sub-tab-content">
+
+            <div class="inner-card">
+
+              <div class="inner-card-title">
+                📅 Book Meetings
+              </div>
+
+              <p class="inner-description">
+                Use the links below to schedule a meeting.
+              </p>
+
+
+              <div class="meeting-list">
+
+                <a
+                  href="https://lithospos.com/request-demo"
+                  target="_blank"
+                  class="meeting-card">
+
+                  <span class="meeting-icon">
+                    🧪
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Demo Booking
+                    </strong>
+
+                    <small>
+                      Request a product demo
+                    </small>
+
+                  </div>
+
+                  <span>
+                    →
+                  </span>
+
+                </a>
+
+
+                <a
+                  href="https://lithospos.com/partner-with-us"
+                  target="_blank"
+                  class="meeting-card">
+
+                  <span class="meeting-icon">
+                    🤝
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Partner Booking
+                    </strong>
+
+                    <small>
+                      Partner with us
+                    </small>
+
+                  </div>
+
+                  <span>
+                    →
+                  </span>
+
+                </a>
+
+
+                <a
+                  href="https://www.lithospos.com/get-quote"
+                  target="_blank"
+                  class="meeting-card">
+
+                  <span class="meeting-icon">
+                    🏢
+                  </span>
+
+                  <div>
+
+                    <strong>
+                      Enterprise Booking
+                    </strong>
+
+                    <small>
+                      Get an enterprise quote
+                    </small>
+
+                  </div>
+
+                  <span>
+                    →
+                  </span>
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================
+             COMMON ISSUES
+        ==================================== -->
+
+        <section
+          id="issuesTab"
+          class="tab-content">
+
+          <div class="page-section-header">
+
+            <div>
+
+              <h2>
+                Common Issues
+              </h2>
+
+              <p>
+                Quick solutions for frequently reported problems.
+              </p>
+
+            </div>
+
+            <span class="section-icon">
+              ⚠️
+            </span>
+
+          </div>
+
+
+          <div class="issues-list">
+
+
+            <article class="issue-card">
+
+              <div class="issue-title">
+                <span>⚠️</span>
+                Terminal not found
+              </div>
+
+              <div class="issue-content">
+
+                This message typically occurs when the terminal
+                you are trying to log in to is already active on
+                a different device.
+
+                <br><br>
+
+                <strong>To deactivate:</strong>
+
+                <ol>
+
+                  <li>
+                    Open the LithosPOS application.
+                  </li>
+
+                  <li>
+                    Go to Menu → Settings → Account Details
+                    → Deactivate.
+                  </li>
+
+                  <li>
+                    If you cannot access the previous device,
+                    send a deactivation request from your
+                    registered LithosPOS email to
+                    support@lithospos.com.
+                  </li>
+
+                </ol>
+
+              </div>
+
+            </article>
+
+
+            <article class="issue-card">
+
+              <div class="issue-title">
+                <span>🖼️</span>
+                Images added in the back office not showing in POS
+              </div>
+
+              <div class="issue-content">
+
+                Start Menu → type Internet Options →
+                Open Internet Options → Programs →
+                Manage Add-ons → Learn more about toolbars
+                and extensions → load the back office URL.
+
+              </div>
+
+            </article>
+
+
+            <article class="issue-card">
+
+              <div class="issue-title">
+                <span>🖨️</span>
+                KOT not generating
+              </div>
+
+              <div class="issue-content">
+
+                Ensure the kitchen printer is connected properly.
+
+              </div>
+
+            </article>
+
+
+            <article class="issue-card">
+
+              <div class="issue-title">
+                <span>🐌</span>
+                Slow system performance
+              </div>
+
+              <div class="issue-content">
+
+                Clear browser cache and restart the system.
+
+              </div>
+
+            </article>
+
+
+            <article class="issue-card">
+
+              <div class="issue-title">
+                <span>🔄</span>
+                Unable to sync data
+              </div>
+
+              <div class="issue-content">
+
+                Check server connectivity and retry sync.
+
+              </div>
+
+            </article>
+
+
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+
+
+    <!-- =======================================
+         MOBILE BOTTOM NAV
+    ======================================== -->
+
+    <nav class="mobile-nav">
+
+      <button
+        class="tab-btn active"
+        onclick="openTab('trackerTab', this)">
+
+        <span>🕐</span>
+        <small>Tracker</small>
+
+      </button>
+
+
+      <button
+        class="tab-btn"
+        onclick="openTab('supportTab', this)">
+
+        <span>📄</span>
+        <small>Support</small>
+
+      </button>
+
+
+      <button
+        class="tab-btn"
+        onclick="openTab('issuesTab', this)">
+
+        <span>⚠️</span>
+        <small>Issues</small>
+
+      </button>
+
+    </nav>
 
   </div>
 
-</div>
-<!-- BANK ACCOUNTS -->
-<div id="bankTab" class="sub-tab-content">
 
-  <h3>🏦 Bank Accounts</h3>
+  <script src="script.js"></script>
 
-  <!-- INDIA -->
-  <div class="bank-card">
-
-    <h4>🇮🇳 For India</h4>
-
-    <table>
-      <tr>
-        <td><b>Name</b></td>
-        <td>LITHOS TECHNOSOFT PVT LTD</td>
-      </tr>
-
-      <tr>
-        <td><b>Bank</b></td>
-        <td>ICICI BANK</td>
-      </tr>
-
-      <tr>
-        <td><b>Branch</b></td>
-        <td>CALICUT</td>
-      </tr>
-
-      <tr>
-        <td><b>Account Number</b></td>
-        <td>626505500465</td>
-      </tr>
-
-      <tr>
-        <td><b>RTGS / NEFT IFSC</b></td>
-        <td>ICIC0006265</td>
-      </tr>
-
-      <tr>
-        <td><b>UPI</b></td>
-        <td>eazypay.577554788@icici</td>
-      </tr>
-
-      <tr>
-        <td><b>SWIFT CODE</b></td>
-        <td>ICICINBBXXX</td>
-      </tr>
-    </table>
-
-  </div>
-
-  <!-- OUTSIDE INDIA -->
-  <div class="bank-card">
-
-    <h4>🌍 Outside India</h4>
-
-    <table>
-      <tr>
-        <td><b>Name</b></td>
-        <td>LITHOS TECHNOSOFT PVT LTD</td>
-      </tr>
-
-      <tr>
-        <td><b>Bank</b></td>
-        <td>ICICI BANK</td>
-      </tr>
-
-      <tr>
-        <td><b>Branch</b></td>
-        <td>UL CYBER PARK</td>
-      </tr>
-
-      <tr>
-        <td><b>Account Number</b></td>
-        <td>730305000142</td>
-      </tr>
-
-      <tr>
-        <td><b>RTGS / NEFT IFSC</b></td>
-        <td>ICIC0007303</td>
-      </tr>
-
-      <tr>
-        <td><b>SWIFT CODE</b></td>
-        <td>ICICINBBXXX</td>
-      </tr>
-    </table>
-
-  </div>
-
-</div>
-<!-- DEMO ACCOUNTS --> 
-<div id="demoTab" class="sub-tab-content">
-  <h4>🧪 Demo Accounts</h4>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Account</th>
-        <th>Password</th>
-        <th>Server</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>kot@llithospos.com</td>
-        <td>demo123</td>
-        <td>IND</td>
-      </tr>
-
-      <tr>
-        <td>indtest@lithos.in</td>
-        <td>demo123</td>
-        <td>IND</td>
-      </tr>
-
-      <tr>
-        <td>demo@lithospos.com</td>
-        <td>demo123</td>
-        <td>IND</td>
-      </tr>
-
-      <tr>
-        <td>accounts@lithos.in</td>
-        <td>demo123</td>
-        <td>US</td>
-      </tr>
-
-      <tr>
-        <td>ustest@lithos.in</td>
-        <td>demo123</td>
-        <td>US</td>
-      </tr>
-
-      <tr>
-        <td>it@lithospos.com</td>
-        <td>123456</td>
-        <td>UK</td>
-      </tr>
-
-      <tr>
-        <td>uktest@lithos.in</td>
-        <td>demo123</td>
-        <td>US</td>
-      </tr>
-
-      <tr>
-        <td>expo@lithospos.com</td>
-        <td>demo123</td>
-        <td>UAE</td>
-      </tr>
-
-      <tr>
-        <td>exporetail@lithospos.com</td>
-        <td>demo123</td>
-        <td>UAE</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
- <!-- CONTACT -->
-<div id="contactTab" class="sub-tab-content">
-  <h4>📞 Contact</h4>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Department</th>
-        <th>Email</th>
-        <th>Phone</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>Support</td>
-        <td>support@lithospos.com</td>
-        <td>+91 9747500080</td>
-      </tr>
-
-      <tr>
-        <td>Development Team</td>
-        <td>dev@lithospos.com</td>
-        <td>—</td>
-      </tr>
-
-      <tr>
-        <td>Billing</td>
-        <td>billing@lithospos.com</td>
-        <td>—</td>
-      </tr>
-
-      <tr>
-        <td>HR</td>
-        <td>hr@lithostechnosoft.com</td>
-        <td>—</td>
-      </tr>
-
-      <tr>
-        <td>Sales</td>
-        <td>sales@lithospos.com</td>
-        <td>—</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- BOOK MEETINGS -->
-<div id="meetingTab" class="sub-tab-content">
-  <h4>📅 Book Meetings</h4>
-  <p>Use the links below to schedule a meeting:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Link</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>Demo Booking</td>
-        <td>https://lithospos.com/request-demo</td>
-      </tr>
-
-      <tr>
-        <td>Partner Booking</td>
-        <td>https://lithospos.com/partner-with-us</td>
-      </tr>
-
-      <tr>
-        <td>Enterprise Booking</td>
-        <td>https://www.lithospos.com/get-quote</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div>
-
-<!-- COMMON ISSUES TAB -->
-<div id="issuesTab" class="tab-content">
-
-  <h3>⚠️ Common Issues</h3>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Issue</th>
-        <th>Solution</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <tr>
-        <td>Terminal not found</td>
-        <td>This message is regarding your query about the "Terminal Not Found" issue. Typically, this error occurs when the terminal you are trying to log in to is already active on a different device. To resolve this, you need to deactivate the terminal from the previous device before logging in to a new one.
-          To deactivate:
-
-          Open the LithosPOS application.
-          Go to Menu > Settings > Account Details > Deactivate.
-          If you cannot access the previous device, please send a deactivation request from your registered LithosPOS email, mentioning your registered email ID and requesting deactivation, to support@lithospos.com.
-        </td>
-      </tr>
-
-      <tr>
-        <td>Images added in the back office not showing in the POS</td>
-        <td>Start Menu >type Internet options> Open Internet options > programs > manage add ons > learn more about toolbars and extensions> in the new internet explorer window load the back office URL</td>
-      </tr>
-
-      <tr>
-        <td>KOT not generating</td>
-        <td>Ensure kitchen printer is connected properly.</td>
-      </tr>
-
-      <tr>
-        <td>Slow system performance</td>
-        <td>Clear browser cache and restart the system.</td>
-      </tr>
-
-      <tr>
-        <td>Unable to sync data</td>
-        <td>Check server connectivity and retry sync.</td>
-      </tr>
-
-    </tbody>
-  </table>
-
-</div>
-<script src="script.js"></script>
 </body>
 </html>
