@@ -1837,6 +1837,174 @@ td:first-child {
 
 }
 
+/* =========================================================
+   IMPORTANT SECTION
+========================================================= */
+
+.important-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+.important-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--border);
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.important-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(245, 158, 11, 0.35);
+
+  box-shadow:
+    0 10px 30px rgba(245, 158, 11, 0.08);
+}
+
+
+/* Header containing Area + Query */
+
+.important-header {
+  display: grid;
+
+  grid-template-columns:
+    180px 1fr;
+
+  gap: 18px;
+
+  align-items: center;
+
+  padding: 16px 20px;
+
+  border-bottom: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245, 158, 11, 0.10),
+      transparent
+    );
+}
+
+
+.important-area {
+  color: #FBBF24;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+
+.important-query {
+  color: var(--text);
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+.important-solution {
+  padding: 20px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.important-solution strong {
+  color: var(--text);
+}
+
+
+.important-solution ol,
+.important-solution ul {
+  margin-top: 10px;
+
+  padding-left: 24px;
+}
+
+
+.important-solution li {
+  margin-bottom: 8px;
+}
+
+
+.important-solution a {
+  display: inline-block;
+
+  color: #60A5FA;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.important-solution a:hover {
+  text-decoration: underline;
+}
+
+
+.important-solution code {
+  display: inline-block;
+
+  padding: 5px 8px;
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: #FBBF24;
+
+  font-family: monospace;
+
+  font-size: 12px;
+
+  word-break: break-all;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .important-header {
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+  }
+
+  .important-solution {
+    padding: 16px;
+  }
+
+}
+
 
 /* =========================================================
    MOBILE NAV
