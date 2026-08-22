@@ -473,22 +473,37 @@
 
             <!-- Custom hours -->
 
-            <div
-              class="field hidden"
-              id="customHoursField">
+            <!-- Custom work duration -->
 
-              <input
-                type="number"
-                id="customHours"
-                min="1"
-                placeholder=" ">
+<div
+  class="field hidden"
+  id="customHoursField">
 
-              <label for="customHours">
-                Custom Hours
-              </label>
+  <label class="section-label">
+    Custom Work Duration
+  </label>
 
-            </div>
+  <div class="time-inputs">
 
+    <select id="customHours">
+      <option value="" selected disabled>
+        Hours
+      </option>
+    </select>
+
+    <span class="time-separator">
+      :
+    </span>
+
+    <select id="customMinutes">
+      <option value="" selected disabled>
+        Minutes
+      </option>
+    </select>
+
+  </div>
+
+</div>
 
           </div>
 
