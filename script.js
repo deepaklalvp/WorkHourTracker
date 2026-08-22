@@ -55,10 +55,22 @@ function getBreaks(){
  .reduce((a,b)=>a+b,0);
 }
 
-function updateProgress(min,target){
- let p=Math.min(min/target*100,100);
- progressBar.style.width=p+"%";
- progressBar.innerText=Math.floor(p)+"%";
+function updateProgress(min, target) {
+  if (!target || target <= 0) {
+    progressBar.style.width = "0%";
+    progressBar.innerText = "0%";
+    progressPercent.innerText = "0%";
+    return;
+  }
+
+  let p = Math.min((min / target) * 100, 100);
+  let percent = Math.floor(p);
+
+  progressBar.style.width = p + "%";
+  progressBar.innerText = percent + "%";
+
+  // Update Daily Progress percentage
+  progressPercent.innerText = percent + "%";
 }
 
 function updateCountdown(ld){
