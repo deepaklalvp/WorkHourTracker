@@ -250,6 +250,31 @@ function openSubTab(tabId, btn) {
 
 }
 
+/* =========================================================
+   COMMON ISSUES ACCORDION
+========================================================= */
+
+function toggleIssue(header) {
+
+  const card = header.closest(".issue-card");
+
+  card.classList.toggle("open");
+
+}
+
+
+/* =========================================================
+   IMPORTANT ACCORDION
+========================================================= */
+
+function toggleImportant(header) {
+
+  const card = header.closest(".important-card");
+
+  card.classList.toggle("open");
+
+}
+
 
 /* =========================================================
    WORK CALCULATION
