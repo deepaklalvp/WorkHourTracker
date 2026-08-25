@@ -802,3 +802,163 @@ clearImportantSearch.addEventListener(
 
   }
 );
+
+/* =========================================================
+   COPY KNOWLEDGE BASE CONTENT
+========================================================= */
+
+async function copyKnowledge(button) {
+
+  /*
+    Find the solution/content container
+  */
+  const container =
+    button.closest(".issue-content, .important-solution");
+
+
+  if (!container) {
+    return;
+  }
+
+
+  /*
+    Clone the content so we can remove the
+    Copy button before extracting the text.
+  */
+  const clone =
+    container.cloneNode(true);
+
+
+  /*
+    Remove all copy buttons from the cloned content
+  */
+  clone
+    .querySelectorAll(".copy-btn")
+    .forEach(btn => btn.remove());
+
+
+  /*
+    Convert the HTML content into clean text
+  */
+  let text =
+    clone.innerText
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+
+  /*
+    Copy to clipboard
+  */
+  try {
+
+    await navigator.clipboard.writeText(text);
+
+
+    /*
+      Change button appearance
+    */
+    const originalText =
+      button.innerText;
+
+
+    button.innerText =
+      "✅ Copied!";
+
+
+    button.classList.add("copied");
+
+
+    /*
+      Restore button after 2 seconds
+    */
+    setTimeout(() => {
+
+      button.innerText =
+        originalText;
+
+      button.classList.remove("copied");
+
+    }, 2000);
+
+
+  } catch (error) {
+
+    /*
+      Fallback for browsers where
+      Clipboard API is unavailable
+    */
+
+    const textarea =
+      document.createElement("textarea");
+
+
+    textarea.value =
+      text;
+
+
+    textarea.style.position =
+      "fixed";
+
+    textarea.style.opacity =
+      "0";
+
+
+    document.body.appendChild(
+      textarea
+    );
+
+
+    textarea.focus();
+
+    textarea.select();
+
+
+    try {
+
+      document.execCommand("copy");
+
+
+      const originalText =
+        button.innerText;
+
+
+      button.innerText =
+        "✅ Copied!";
+
+
+      button.classList.add("copied");
+
+
+      setTimeout(() => {
+
+        button.innerText =
+          originalText;
+
+        button.classList.remove("copied");
+
+      }, 2000);
+
+
+    } catch (fallbackError) {
+
+      button.innerText =
+        "❌ Failed";
+
+
+      setTimeout(() => {
+
+        button.innerText =
+          "📋 Copy";
+
+      }, 2000);
+
+    }
+
+
+    document.body.removeChild(
+      textarea
+    );
+
+  }
+
+}
