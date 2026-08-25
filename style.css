@@ -2229,6 +2229,64 @@ td:first-child {
   display: none;
 }
 
+/* =========================================
+   ACCORDION - COMMON ISSUES
+========================================= */
+
+.issue-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.issue-content {
+  display: none;
+}
+
+.issue-card.open .issue-content {
+  display: block;
+}
+
+.issue-card.open .expand-icon {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================
+   ACCORDION - IMPORTANT
+========================================= */
+
+.important-header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.important-solution {
+  display: none;
+}
+
+.important-card.open .important-solution {
+  display: block;
+}
+
+.important-card.open .expand-icon {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================
+   EXPAND ICON
+========================================= */
+
+.expand-icon {
+  font-size: 24px;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
 
 /* =========================================================
    TABLET
