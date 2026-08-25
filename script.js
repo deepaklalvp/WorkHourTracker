@@ -659,6 +659,11 @@ window.onload = () => {
    KNOWLEDGE BASE SEARCH
 ========================================================= */
 
+
+/* =========================================================
+   COMMON ISSUES SEARCH
+========================================================= */
+
 const knowledgeSearch =
   document.getElementById("knowledgeSearch");
 
@@ -666,7 +671,7 @@ const clearSearch =
   document.getElementById("clearSearch");
 
 
-function searchKnowledge() {
+function searchIssues() {
 
   const searchText =
     knowledgeSearch.value
@@ -676,11 +681,8 @@ function searchKnowledge() {
 
   const articles =
     document.querySelectorAll(
-      ".issue-card, .important-card"
+      "#issuesTab .issue-card"
     );
-
-
-  let found = 0;
 
 
   articles.forEach(article => {
@@ -694,45 +696,27 @@ function searchKnowledge() {
       text.includes(searchText);
 
 
-    if (matched) {
-
-      article.style.display = "";
-
-      found++;
-
-    } else {
-
-      article.style.display = "none";
-
-    }
+    article.style.display =
+      matched ? "" : "none";
 
   });
 
 
-  /* Show / hide clear button */
-
-  if (searchText !== "") {
-
-    clearSearch.style.display = "flex";
-
-  } else {
-
-    clearSearch.style.display = "none";
-
-  }
+  clearSearch.style.display =
+    searchText !== "" ? "flex" : "none";
 
 }
 
 
-/* Search while typing */
+/* Search Common Issues while typing */
 
 knowledgeSearch.addEventListener(
   "input",
-  searchKnowledge
+  searchIssues
 );
 
 
-/* Clear search */
+/* Clear Common Issues search */
 
 clearSearch.addEventListener(
   "click",
@@ -740,9 +724,81 @@ clearSearch.addEventListener(
 
     knowledgeSearch.value = "";
 
-    searchKnowledge();
+    searchIssues();
 
     knowledgeSearch.focus();
+
+  }
+);
+
+
+/* =========================================================
+   IMPORTANT SEARCH
+========================================================= */
+
+const importantSearch =
+  document.getElementById("importantSearch");
+
+const clearImportantSearch =
+  document.getElementById("clearImportantSearch");
+
+
+function searchImportant() {
+
+  const searchText =
+    importantSearch.value
+      .trim()
+      .toLowerCase();
+
+
+  const articles =
+    document.querySelectorAll(
+      "#importantTab .important-card"
+    );
+
+
+  articles.forEach(article => {
+
+    const text =
+      article.innerText.toLowerCase();
+
+
+    const matched =
+      searchText === "" ||
+      text.includes(searchText);
+
+
+    article.style.display =
+      matched ? "" : "none";
+
+  });
+
+
+  clearImportantSearch.style.display =
+    searchText !== "" ? "flex" : "none";
+
+}
+
+
+/* Search Important while typing */
+
+importantSearch.addEventListener(
+  "input",
+  searchImportant
+);
+
+
+/* Clear Important search */
+
+clearImportantSearch.addEventListener(
+  "click",
+  () => {
+
+    importantSearch.value = "";
+
+    searchImportant();
+
+    importantSearch.focus();
 
   }
 );
