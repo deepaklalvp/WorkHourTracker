@@ -1336,7 +1336,7 @@
 
 
 
-   <!-- ===================================
+<!-- ===================================
      COMMON ISSUES
 =================================== -->
 
@@ -1356,24 +1356,28 @@
 
   </div>
 
-<div class="knowledge-search">
-  <span class="search-icon">🔍</span>
 
-  <input
-    type="text"
-    id="knowledgeSearch"
-    placeholder="Search common issues..."
-    autocomplete="off"
-  />
+  <div class="knowledge-search">
 
-  <button
-    type="button"
-    id="clearSearch"
-    class="clear-search"
-    aria-label="Clear search">
-    ✕
-  </button>
-</div>
+    <span class="search-icon">🔍</span>
+
+    <input
+      type="text"
+      id="knowledgeSearch"
+      placeholder="Search common issues..."
+      autocomplete="off"
+    />
+
+    <button
+      type="button"
+      id="clearSearch"
+      class="clear-search"
+      aria-label="Clear search">
+      ✕
+    </button>
+
+  </div>
+
 
   <div class="issues-list">
 
@@ -1400,6 +1404,15 @@
 
       <div class="issue-content">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         This message is regarding your query about the
         <strong>"Terminal Not Found"</strong> issue.
 
@@ -1416,7 +1429,10 @@
         <strong>To deactivate:</strong>
 
         <ol>
-          <li>Open the LithosPOS application.</li>
+
+          <li>
+            Open the LithosPOS application.
+          </li>
 
           <li>
             Go to
@@ -1432,6 +1448,7 @@
             registered email ID and requesting deactivation,
             to <strong>support@lithospos.com</strong>.
           </li>
+
         </ol>
 
         Feel free to let us know if you need any more help.
@@ -1463,11 +1480,22 @@
 
       <div class="issue-content">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <strong>Resolution:</strong>
 
         <ol>
 
-          <li>Open the <strong>Start Menu</strong>.</li>
+          <li>
+            Open the <strong>Start Menu</strong>.
+          </li>
 
           <li>
             Type <strong>Internet Options</strong>.
@@ -1526,6 +1554,15 @@
 
       <div class="issue-content">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         Regarding the WhatsApp integration pricing,
         the charge will be <strong>$15 monthly</strong>,
         which is WhatsApp's fee.
@@ -1581,6 +1618,15 @@
 
 
       <div class="issue-content">
+
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
 
         <strong>Step 1:</strong>
 
@@ -1672,6 +1718,15 @@
 
       <div class="issue-content">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <strong>Step 1:</strong>
 
         <br><br>
@@ -1756,6 +1811,15 @@
 
       <div class="issue-content">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <strong>
           "Currently another sync in Queue"
         </strong>
@@ -1804,8 +1868,6 @@
 
 </section>
 
-
-
 <!-- ===================================
      IMPORTANT
 =================================== -->
@@ -1829,30 +1891,37 @@
 
   </div>
 
-<div class="knowledge-search">
-  <span class="search-icon">🔍</span>
 
-  <input
-    type="text"
-    id="importantSearch"
-    placeholder="Search important..."
-    autocomplete="off"
-  />
+  <!-- IMPORTANT SEARCH -->
 
-  <button
-    type="button"
-    id="clearImportantSearch"
-    class="clear-search"
-    aria-label="Clear search">
-    ✕
-  </button>
-</div>
+  <div class="knowledge-search">
+
+    <span class="search-icon">🔍</span>
+
+    <input
+      type="text"
+      id="importantSearch"
+      placeholder="Search important..."
+      autocomplete="off"
+    />
+
+    <button
+      type="button"
+      id="clearImportantSearch"
+      class="clear-search"
+      aria-label="Clear search">
+      ✕
+    </button>
+
+  </div>
 
 
   <div class="important-list">
 
 
-    <!-- WELCOME REPLY -->
+    <!-- ===================================
+         WELCOME REPLY
+    =================================== -->
 
     <article class="important-card">
 
@@ -1881,6 +1950,15 @@
 
 
       <div class="important-solution">
+
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
 
         Thank you for expressing interest in LithosPOS.
 
@@ -1952,7 +2030,10 @@
     </article>
 
 
-    <!-- BOOK DEMO -->
+
+    <!-- ===================================
+         BOOK DEMO
+    =================================== -->
 
     <article class="important-card">
 
@@ -1982,6 +2063,15 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         Please book a demo to get more features and
         benefits of LithosPOS.
 
@@ -2000,7 +2090,10 @@
     </article>
 
 
-    <!-- ENTERPRISE MEETING -->
+
+    <!-- ===================================
+         ENTERPRISE MEETING
+    =================================== -->
 
     <article class="important-card">
 
@@ -2030,6 +2123,15 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         To discuss the Enterprise plan in detail,
         kindly book a meeting with our expert team.
 
@@ -2048,7 +2150,10 @@
     </article>
 
 
-    <!-- PARTNER APPOINTMENT -->
+
+    <!-- ===================================
+         PARTNER APPOINTMENT
+    =================================== -->
 
     <article class="important-card">
 
@@ -2078,6 +2183,15 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         Please schedule a meeting with us at your
         convenience using the link below.
 
@@ -2104,7 +2218,10 @@
     </article>
 
 
-    <!-- INDIAN PRICING -->
+
+    <!-- ===================================
+         INDIAN PRICING
+    =================================== -->
 
     <article class="important-card">
 
@@ -2133,6 +2250,15 @@
 
 
       <div class="important-solution">
+
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
 
         The pricing plans for India, excluding
         <strong>18% GST</strong>, are as follows:
@@ -2195,7 +2321,10 @@
     </article>
 
 
-    <!-- USD PRICING -->
+
+    <!-- ===================================
+         USD PRICING
+    =================================== -->
 
     <article class="important-card">
 
@@ -2224,6 +2353,15 @@
 
 
       <div class="important-solution">
+
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
 
         <strong>Lite Plan</strong>
 
@@ -2276,7 +2414,10 @@
     </article>
 
 
-    <!-- WAITER APP -->
+
+    <!-- ===================================
+         WAITER APP
+    =================================== -->
 
     <article class="important-card">
 
@@ -2306,6 +2447,15 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <ol>
 
           <li>
@@ -2318,7 +2468,9 @@
             the displayed IP Address and Port.
           </li>
 
-          <li>Open the LithosPOS Waiter App.</li>
+          <li>
+            Open the LithosPOS Waiter App.
+          </li>
 
           <li>
             Enter the IP Address and Port and click
@@ -2349,7 +2501,10 @@
     </article>
 
 
-    <!-- ADD PRINTER -->
+
+    <!-- ===================================
+         ADD PRINTER
+    =================================== -->
 
     <article class="important-card">
 
@@ -2378,6 +2533,15 @@
 
 
       <div class="important-solution">
+
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
 
         <ol>
 
@@ -2420,7 +2584,10 @@
     </article>
 
 
-    <!-- QK ORDER -->
+
+    <!-- ===================================
+         QK ORDER
+    =================================== -->
 
     <article class="important-card">
 
@@ -2450,11 +2617,21 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <strong>
           Manage the QR code menu with Quiqqy Order:
         </strong>
 
         <br><br>
+
 
         <strong>1. Enable Quiqqy Order</strong>
 
@@ -2519,7 +2696,10 @@
     </article>
 
 
-    <!-- ON ACCOUNT SALE -->
+
+    <!-- ===================================
+         ON ACCOUNT SALE
+    =================================== -->
 
     <article class="important-card">
 
@@ -2549,11 +2729,22 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <strong>Install On Account feature</strong>
 
         <ol>
 
-          <li>Go to <strong>Back Office</strong>.</li>
+          <li>
+            Go to <strong>Back Office</strong>.
+          </li>
 
           <li>
             Select <strong>Integrations</strong>.
@@ -2570,9 +2761,13 @@
 
         <ol>
 
-          <li>Select the customer.</li>
+          <li>
+            Select the customer.
+          </li>
 
-          <li>Add the items and place the order.</li>
+          <li>
+            Add the items and place the order.
+          </li>
 
           <li>
             Go to <strong>Orders → Payment</strong>.
@@ -2599,7 +2794,9 @@
             Enable <strong>Balance</strong> from View.
           </li>
 
-          <li>Search for the customer.</li>
+          <li>
+            Search for the customer.
+          </li>
 
         </ol>
 
@@ -2614,15 +2811,21 @@
             Go to <strong>Menu → Customers</strong>.
           </li>
 
-          <li>Select the customer.</li>
+          <li>
+            Select the customer.
+          </li>
 
-          <li>Click <strong>Pay</strong>.</li>
+          <li>
+            Click <strong>Pay</strong>.
+          </li>
 
           <li>
             Enter the amount and payment type.
           </li>
 
-          <li>Click <strong>Submit</strong>.</li>
+          <li>
+            Click <strong>Submit</strong>.
+          </li>
 
         </ol>
 
@@ -2631,7 +2834,10 @@
     </article>
 
 
-    <!-- MULTI KITCHEN -->
+
+    <!-- ===================================
+         MULTI KITCHEN
+    =================================== -->
 
     <article class="important-card">
 
@@ -2661,42 +2867,100 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <strong>Install Multi Kitchen feature</strong>
 
         <ol>
-          <li>Go to <strong>Back Office</strong>.</li>
-          <li>Select <strong>Integrations</strong>.</li>
-          <li>Install <strong>Multi Kitchen</strong>.</li>
+
+          <li>
+            Go to <strong>Back Office</strong>.
+          </li>
+
+          <li>
+            Select <strong>Integrations</strong>.
+          </li>
+
+          <li>
+            Install <strong>Multi Kitchen</strong>.
+          </li>
+
         </ol>
 
 
         <strong>Enable Multi Kitchen for a store</strong>
 
         <ol>
-          <li>Go to <strong>Back Office → Store</strong>.</li>
-          <li>Select the required store.</li>
-          <li>Enable <strong>Multi Kitchen</strong>.</li>
-          <li>Click <strong>Submit</strong>.</li>
+
+          <li>
+            Go to <strong>Back Office → Store</strong>.
+          </li>
+
+          <li>
+            Select the required store.
+          </li>
+
+          <li>
+            Enable <strong>Multi Kitchen</strong>.
+          </li>
+
+          <li>
+            Click <strong>Submit</strong>.
+          </li>
+
         </ol>
 
 
         <strong>Adding Multi Kitchen</strong>
 
         <ol>
-          <li>Go to <strong>Kitchen Printers</strong>.</li>
-          <li>Click <strong>Add Kitchen Printer</strong>.</li>
-          <li>Select the categories for that kitchen.</li>
-          <li>Click <strong>Submit</strong>.</li>
+
+          <li>
+            Go to <strong>Kitchen Printers</strong>.
+          </li>
+
+          <li>
+            Click <strong>Add Kitchen Printer</strong>.
+          </li>
+
+          <li>
+            Select the categories for that kitchen.
+          </li>
+
+          <li>
+            Click <strong>Submit</strong>.
+          </li>
+
         </ol>
 
 
         <strong>KOT Printer Settings</strong>
 
         <ol>
-          <li>Go to POS <strong>Settings → Printers</strong>.</li>
-          <li>Add the printer.</li>
-          <li>Enable <strong>Print KOT</strong>.</li>
-          <li>Select the required kitchens.</li>
+
+          <li>
+            Go to POS <strong>Settings → Printers</strong>.
+          </li>
+
+          <li>
+            Add the printer.
+          </li>
+
+          <li>
+            Enable <strong>Print KOT</strong>.
+          </li>
+
+          <li>
+            Select the required kitchens.
+          </li>
+
         </ol>
 
       </div>
@@ -2704,7 +2968,10 @@
     </article>
 
 
-    <!-- ADD TAX -->
+
+    <!-- ===================================
+         ADD TAX
+    =================================== -->
 
     <article class="important-card">
 
@@ -2734,6 +3001,15 @@
 
       <div class="important-solution">
 
+        <button
+          type="button"
+          class="copy-btn"
+          onclick="copyKnowledge(this)"
+        >
+          📋 Copy
+        </button>
+
+
         <ol>
 
           <li>
@@ -2751,7 +3027,9 @@
             Enable <strong>Include Tax</strong> if required.
           </li>
 
-          <li>Submit the settings.</li>
+          <li>
+            Submit the settings.
+          </li>
 
           <li>
             Go to <strong>Settings → Taxes</strong>
@@ -2786,10 +3064,10 @@
 
     </article>
 
+
   </div>
 
 </section>
-
     <!-- =======================================
          MOBILE BOTTOM NAV
     ======================================== -->
