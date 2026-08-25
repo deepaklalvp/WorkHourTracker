@@ -1,5 +1,11 @@
 /* =========================================================
    MODERN FLUTTER / MATERIAL 3 INSPIRED UI
+   IMPROVEMENTS 1–9 APPLIED
+========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES
 ========================================================= */
 
 :root {
@@ -33,10 +39,10 @@
     0 2px 6px rgba(23, 32, 51, 0.06);
 
   --shadow:
-    0 4px 14px rgba(23, 32, 51, 0.08);
+    0 6px 18px rgba(23, 32, 51, 0.09);
 
   --shadow-lg:
-    0 12px 35px rgba(23, 32, 51, 0.12);
+    0 14px 40px rgba(23, 32, 51, 0.13);
 
   --transition:
     0.2s ease;
@@ -72,10 +78,23 @@ body.dark {
     0 2px 6px rgba(0, 0, 0, 0.25);
 
   --shadow:
-    0 4px 16px rgba(0, 0, 0, 0.3);
+    0 6px 18px rgba(0, 0, 0, 0.30);
 
   --shadow-lg:
-    0 15px 40px rgba(0, 0, 0, 0.4);
+    0 15px 40px rgba(0, 0, 0, 0.42);
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(90, 120, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 100%,
+      rgba(80, 200, 170, 0.05),
+      transparent 30%
+    ),
+    var(--surface);
 }
 
 
@@ -105,7 +124,18 @@ body {
     BlinkMacSystemFont,
     sans-serif;
 
-  background: var(--surface);
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(63, 109, 246, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(20, 184, 166, 0.06),
+      transparent 30%
+    ),
+    var(--surface);
 
   color: var(--text);
 
@@ -125,7 +155,44 @@ select {
 
 
 /* =========================================================
+   SCROLLBAR
+   IMPROVEMENT 9
+========================================================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--surface-high)
+    transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+
+  background:
+    var(--surface-high);
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+    var(--text-secondary);
+}
+
+
+/* =========================================================
    LIGHT BACKGROUND
+   IMPROVEMENT 1
 ========================================================= */
 
 body.light {
@@ -133,12 +200,12 @@ body.light {
   background:
     radial-gradient(
       circle at 0% 0%,
-      rgba(63, 109, 246, 0.08),
+      rgba(63, 109, 246, 0.09),
       transparent 30%
     ),
     radial-gradient(
       circle at 100% 100%,
-      rgba(20, 184, 166, 0.06),
+      rgba(20, 184, 166, 0.07),
       transparent 30%
     ),
     var(--surface);
@@ -151,6 +218,23 @@ body.light {
 
 .hidden {
   display: none !important;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+
+  outline:
+    3px solid
+    rgba(63, 109, 246, 0.25);
+
+  outline-offset: 2px;
 }
 
 
@@ -182,6 +266,7 @@ body.light {
   color: var(--text);
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -191,11 +276,16 @@ body.light {
 
   transition:
     transform var(--transition),
-    background var(--transition);
+    background var(--transition),
+    box-shadow var(--transition);
 }
 
 .theme-toggle:hover {
+
   transform: scale(1.06);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -231,6 +321,17 @@ body.light {
   box-shadow: var(--shadow-lg);
 
   text-align: center;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-card:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--shadow-lg);
 }
 
 .brand-logo {
@@ -241,12 +342,18 @@ body.light {
   margin: 0 auto 20px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   border-radius: 20px;
 
-  background: var(--primary);
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-hover)
+    );
 
   color: white;
 
@@ -277,6 +384,7 @@ body.light {
 
 /* =========================================================
    FIELD
+   IMPROVEMENT 4
 ========================================================= */
 
 .field {
@@ -311,7 +419,7 @@ body.light {
   font-size: 14px;
 
   transition:
-    border var(--transition),
+    border-color var(--transition),
     box-shadow var(--transition),
     background var(--transition);
 }
@@ -323,6 +431,14 @@ body.light {
   resize: vertical;
 }
 
+.field input:hover,
+.field textarea:hover,
+.field select:hover {
+
+  border-color:
+    rgba(99, 130, 255, 0.30);
+}
+
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
@@ -330,7 +446,8 @@ body.light {
   border-color: var(--primary);
 
   box-shadow:
-    0 0 0 3px rgba(63, 109, 246, 0.12);
+    0 0 0 3px rgba(63, 109, 246, 0.10),
+    0 3px 10px rgba(63, 109, 246, 0.08);
 }
 
 .field label {
@@ -389,6 +506,7 @@ body.light {
 
 /* =========================================================
    BUTTONS
+   IMPROVEMENT 3
 ========================================================= */
 
 button {
@@ -402,7 +520,8 @@ button {
   transition:
     transform 0.15s ease,
     box-shadow var(--transition),
-    background var(--transition);
+    background var(--transition),
+    filter var(--transition);
 }
 
 button:active {
@@ -410,6 +529,8 @@ button:active {
 }
 
 .primary {
+
+  position: relative;
 
   width: 100%;
 
@@ -419,9 +540,16 @@ button:active {
 
   padding: 13px 20px;
 
+  overflow: hidden;
+
   border-radius: 999px;
 
-  background: var(--primary);
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-hover)
+    );
 
   color: #fff;
 
@@ -429,14 +557,25 @@ button:active {
 
   box-shadow:
     0 4px 12px rgba(63, 109, 246, 0.25);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
 }
 
 .primary:hover {
 
-  background: var(--primary-hover);
+  filter: brightness(1.05);
+
+  transform: translateY(-1px);
 
   box-shadow:
-    0 6px 18px rgba(63, 109, 246, 0.3);
+    0 6px 18px rgba(63, 109, 246, 0.30);
+}
+
+.primary:active {
+  transform: scale(0.98);
 }
 
 .login-button {
@@ -449,7 +588,7 @@ button:active {
 
   border-radius: 999px;
 
-  background: rgba(198, 40, 40, 0.1);
+  background: rgba(198, 40, 40, 0.10);
 
   color: var(--danger);
 
@@ -513,11 +652,12 @@ button:active {
 
   padding: 0 28px;
 
-  background: color-mix(
-    in srgb,
-    var(--surface) 92%,
-    transparent
-  );
+  background:
+    color-mix(
+      in srgb,
+      var(--surface) 92%,
+      transparent
+    );
 
   border-bottom: 1px solid var(--border);
 
@@ -545,11 +685,19 @@ button:active {
 
   border-radius: 13px;
 
-  background: var(--primary);
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-hover)
+    );
 
   color: #fff;
 
   font-size: 20px;
+
+  box-shadow:
+    0 5px 14px rgba(63, 109, 246, 0.20);
 }
 
 .app-title {
@@ -592,6 +740,8 @@ button:active {
   border-radius: 999px;
 
   background: var(--surface-container);
+
+  border: 1px solid var(--border);
 
   font-size: 13px;
 
@@ -706,6 +856,9 @@ button:active {
   color: var(--primary);
 
   font-weight: 700;
+
+  box-shadow:
+    inset 3px 0 0 var(--primary);
 }
 
 .nav-icon {
@@ -788,6 +941,8 @@ button:active {
   font-size: 12px;
 
   white-space: nowrap;
+
+  box-shadow: var(--shadow-sm);
 }
 
 
@@ -826,6 +981,7 @@ button:active {
 
 /* =========================================================
    STATS
+   IMPROVEMENT 2
 ========================================================= */
 
 .stats-grid {
@@ -861,18 +1017,19 @@ button:active {
   box-shadow: var(--shadow-sm);
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .stat-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
 
-  border-color: rgba(63, 109, 246, 0.22);
+  border-color:
+    rgba(99, 130, 255, 0.25);
 }
 
 .stat-icon {
@@ -927,6 +1084,7 @@ button:active {
 
 /* =========================================================
    CONTENT CARD
+   IMPROVEMENT 2
 ========================================================= */
 
 .content-card {
@@ -944,18 +1102,19 @@ button:active {
   box-shadow: var(--shadow-sm);
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .content-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
 
-  border-color: rgba(63, 109, 246, 0.18);
+  border-color:
+    rgba(99, 130, 255, 0.22);
 }
 
 .card-header {
@@ -1060,6 +1219,25 @@ button:active {
   color: var(--text);
 
   cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.time-inputs select:hover {
+
+  border-color:
+    rgba(99, 130, 255, 0.30);
+}
+
+.time-inputs select:focus {
+
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(63, 109, 246, 0.10);
 }
 
 .time-separator {
@@ -1074,6 +1252,7 @@ button:active {
 
 /* =========================================================
    RESULTS
+   IMPROVEMENT 6
 ========================================================= */
 
 .results-card {
@@ -1096,9 +1275,17 @@ button:active {
 
   min-width: 0;
 
-  padding: 16px;
+  min-height: 105px;
 
-  border-radius: 16px;
+  padding: 17px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  border-radius: 17px;
 
   background: var(--surface);
 
@@ -1107,27 +1294,34 @@ button:active {
   overflow: hidden;
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .result-item:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
+
+  border-color:
+    rgba(99, 130, 255, 0.22);
 }
 
 
-/* Worked */
+/* =========================================================
+   WORKED
+========================================================= */
 
 .result-item:nth-child(1) {
 
-  background: rgba(46, 125, 91, 0.12);
+  background:
+    rgba(46, 125, 91, 0.12);
 
-  border-color: rgba(46, 125, 91, 0.30);
+  border-color:
+    rgba(46, 125, 91, 0.30);
 }
 
 .result-item:nth-child(1) .result-label,
@@ -1137,13 +1331,17 @@ button:active {
 }
 
 
-/* Break Taken */
+/* =========================================================
+   BREAK TAKEN
+========================================================= */
 
 .result-item:nth-child(2) {
 
-  background: rgba(245, 158, 11, 0.12);
+  background:
+    rgba(245, 158, 11, 0.12);
 
-  border-color: rgba(245, 158, 11, 0.30);
+  border-color:
+    rgba(245, 158, 11, 0.30);
 }
 
 .result-item:nth-child(2) .result-label,
@@ -1153,13 +1351,17 @@ button:active {
 }
 
 
-/* Leave Time */
+/* =========================================================
+   LEAVE TIME
+========================================================= */
 
 .result-item:nth-child(3) {
 
-  background: rgba(33, 150, 243, 0.12);
+  background:
+    rgba(33, 150, 243, 0.12);
 
-  border-color: rgba(33, 150, 243, 0.30);
+  border-color:
+    rgba(33, 150, 243, 0.30);
 }
 
 .result-item:nth-child(3) .result-label,
@@ -1169,13 +1371,17 @@ button:active {
 }
 
 
-/* Remaining */
+/* =========================================================
+   REMAINING / OVERTIME
+========================================================= */
 
 .result-item:nth-child(4) {
 
-  background: rgba(139, 92, 246, 0.12);
+  background:
+    rgba(139, 92, 246, 0.12);
 
-  border-color: rgba(139, 92, 246, 0.32);
+  border-color:
+    rgba(139, 92, 246, 0.32);
 }
 
 .result-item:nth-child(4) .result-label,
@@ -1184,6 +1390,10 @@ button:active {
   color: #A78BFA;
 }
 
+
+/* =========================================================
+   RESULT TEXT
+========================================================= */
 
 .result-label {
 
@@ -1218,7 +1428,9 @@ button:active {
 
   color: var(--text);
 
-  font-size: 18px;
+  font-size: 20px;
+
+  line-height: 1.2;
 
   font-weight: 800;
 
@@ -1254,6 +1466,7 @@ button:active {
 
 /* =========================================================
    PROGRESS
+   IMPROVEMENT 5
 ========================================================= */
 
 .progress-section {
@@ -1279,16 +1492,21 @@ button:active {
 
   width: 100%;
 
-  height: 10px;
+  height: 12px;
 
   overflow: hidden;
 
   border-radius: 999px;
 
   background: var(--surface-high);
+
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .progress-bar {
+
+  position: relative;
 
   width: 0%;
 
@@ -1300,15 +1518,56 @@ button:active {
 
   justify-content: center;
 
+  overflow: hidden;
+
   border-radius: 999px;
 
-  background: var(--primary);
+  background:
+    linear-gradient(
+      90deg,
+      var(--primary),
+      #6F8FFF
+    );
 
   color: transparent;
 
   font-size: 0;
 
-  transition: width 0.5s ease;
+  box-shadow:
+    0 2px 8px rgba(63, 109, 246, 0.25);
+
+  transition:
+    width 0.5s ease;
+}
+
+.progress-bar::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+
+  transform: translateX(-100%);
+
+  animation:
+    progressShine 2.5s infinite;
+}
+
+@keyframes progressShine {
+
+  to {
+    transform: translateX(100%);
+  }
+
 }
 
 
@@ -1390,10 +1649,10 @@ button:active {
   text-align: left;
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .sub-tab-btn > span {
@@ -1426,7 +1685,7 @@ button:active {
 
   background: var(--surface-high);
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
 }
@@ -1438,6 +1697,9 @@ button:active {
   border-color: transparent;
 
   color: var(--primary);
+
+  box-shadow:
+    0 4px 12px rgba(63, 109, 246, 0.10);
 }
 
 
@@ -1470,18 +1732,19 @@ button:active {
   box-shadow: var(--shadow-sm);
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .inner-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
 
-  border-color: rgba(63, 109, 246, 0.18);
+  border-color:
+    rgba(99, 130, 255, 0.22);
 }
 
 .inner-card-title {
@@ -1518,6 +1781,8 @@ button:active {
   border-radius: 14px;
 
   border: 1px solid var(--border);
+
+  box-shadow: var(--shadow-sm);
 }
 
 table {
@@ -1586,18 +1851,19 @@ td:first-child {
   border: 1px solid var(--border);
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .bank-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
 
-  border-color: rgba(63, 109, 246, 0.20);
+  border-color:
+    rgba(99, 130, 255, 0.22);
 }
 
 .bank-card h4 {
@@ -1642,19 +1908,20 @@ td:first-child {
   text-decoration: none;
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .meeting-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
 
-  border-color: rgba(63, 109, 246, 0.20);
+  border-color:
+    rgba(99, 130, 255, 0.20);
 }
 
 .meeting-icon {
@@ -1721,18 +1988,19 @@ td:first-child {
   box-shadow: var(--shadow-sm);
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .issue-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow: var(--shadow);
 
-  border-color: rgba(245, 158, 11, 0.30);
+  border-color:
+    rgba(245, 158, 11, 0.30);
 }
 
 .issue-title {
@@ -1798,20 +2066,18 @@ td:first-child {
   box-shadow: var(--shadow-sm);
 
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
 }
-
-
-/* Important hover */
 
 .important-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
-  border-color: rgba(245, 158, 11, 0.45);
+  border-color:
+    rgba(245, 158, 11, 0.45);
 
   box-shadow:
     0 10px 30px rgba(245, 158, 11, 0.10);
@@ -1956,6 +2222,7 @@ td:first-child {
 
 /* =========================================================
    MOBILE NAV
+   IMPROVEMENT 8
 ========================================================= */
 
 .mobile-nav {
@@ -1997,7 +2264,9 @@ td:first-child {
 @media (max-width: 700px) {
 
   body {
-    padding-bottom: 75px;
+
+    padding-bottom:
+      calc(75px + env(safe-area-inset-bottom));
   }
 
 
@@ -2080,7 +2349,8 @@ td:first-child {
 
     width: 100%;
 
-    padding: 20px 14px;
+    padding:
+      16px 12px 90px;
   }
 
 
@@ -2151,9 +2421,15 @@ td:first-child {
 
     width: 100%;
 
-    padding: 17px;
+    padding: 16px;
+
+    margin-bottom: 14px;
 
     border-radius: 19px;
+  }
+
+  .card-header {
+    margin-bottom: 17px;
   }
 
 
@@ -2171,7 +2447,9 @@ td:first-child {
 
   .result-item {
 
-    padding: 12px;
+    min-height: 92px;
+
+    padding: 13px;
 
     border-radius: 14px;
   }
@@ -2187,7 +2465,16 @@ td:first-child {
   .break-total,
   .leave-time {
 
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+
+  /* -----------------------------------------
+     Progress
+  ----------------------------------------- */
+
+  .progress-container {
+    height: 10px;
   }
 
 
@@ -2281,7 +2568,7 @@ td:first-child {
 
 
   /* -----------------------------------------
-     IMPORTANT - MOBILE
+     Important - Mobile
   ----------------------------------------- */
 
   .important-list {
@@ -2310,7 +2597,8 @@ td:first-child {
 
     box-shadow: var(--shadow-sm);
 
-    border-color: rgba(245, 158, 11, 0.35);
+    border-color:
+      rgba(245, 158, 11, 0.35);
   }
 
   .important-header {
@@ -2397,19 +2685,15 @@ td:first-child {
 
     left: 10px;
     right: 10px;
-    bottom: 10px;
+
+    bottom:
+      max(10px, env(safe-area-inset-bottom));
 
     z-index: 1000;
 
     height: 62px;
 
     display: grid;
-
-    /*
-      IMPORTANT:
-      Change this to repeat(4, 1fr)
-      if you have 4 mobile navigation buttons.
-    */
 
     grid-template-columns:
       repeat(4, 1fr);
@@ -2432,6 +2716,8 @@ td:first-child {
     box-shadow: var(--shadow-lg);
 
     backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .mobile-nav .tab-btn {
@@ -2473,6 +2759,9 @@ td:first-child {
     background: var(--primary-container);
 
     color: var(--primary);
+
+    box-shadow:
+      0 2px 8px rgba(63, 109, 246, 0.10);
   }
 
 
@@ -2502,7 +2791,8 @@ td:first-child {
 
   .main-content {
 
-    padding: 17px 10px;
+    padding:
+      14px 10px 90px;
   }
 
   .stats-grid {
@@ -2525,6 +2815,10 @@ td:first-child {
       1fr 1fr;
   }
 
+  .result-item {
+    min-height: 88px;
+  }
+
   .time-inputs {
 
     grid-template-columns:
@@ -2535,7 +2829,9 @@ td:first-child {
   }
 
 
-  /* Important small mobile */
+  /* -----------------------------------------
+     Important small mobile
+  ----------------------------------------- */
 
   .important-card {
     border-radius: 14px;
@@ -2568,6 +2864,29 @@ td:first-child {
     padding-left: 18px;
   }
 
+
+  /* -----------------------------------------
+     Bottom navigation
+  ----------------------------------------- */
+
+  .mobile-nav {
+
+    left: 7px;
+    right: 7px;
+
+    height: 60px;
+
+    border-radius: 18px;
+  }
+
+  .mobile-nav .tab-btn span {
+    font-size: 16px;
+  }
+
+  .mobile-nav .tab-btn small {
+    font-size: 8px;
+  }
+
 }
 
 
@@ -2588,6 +2907,28 @@ td:first-child {
 
   .content-card {
     padding: 26px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
   }
 
 }
