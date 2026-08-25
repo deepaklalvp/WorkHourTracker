@@ -3106,3 +3106,94 @@ td:first-child {
   }
 
 }
+
+/* =========================================================
+   KNOWLEDGE COPY BUTTON
+========================================================= */
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+  margin-bottom: 18px;
+
+  padding: 8px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.copy-btn:hover {
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border-color: rgba(255, 255, 255, 0.25);
+
+  transform: translateY(-1px);
+
+}
+
+
+.copy-btn:active {
+
+  transform: scale(0.96);
+
+}
+
+
+.copy-btn.copied {
+
+  background: rgba(46, 204, 113, 0.15);
+
+  border-color: rgba(46, 204, 113, 0.4);
+
+  color: #2ecc71;
+
+}
+
+
+/* Light theme */
+
+body.light .copy-btn {
+
+  background: rgba(0, 0, 0, 0.04);
+
+  border-color: rgba(0, 0, 0, 0.10);
+
+}
+
+
+body.light .copy-btn:hover {
+
+  background: rgba(0, 0, 0, 0.08);
+
+  border-color: rgba(0, 0, 0, 0.18);
+
+}
+
+
+body.light .copy-btn.copied {
+
+  background: rgba(46, 204, 113, 0.10);
+
+  border-color: rgba(46, 204, 113, 0.35);
+
+  color: #219653;
+
+}
