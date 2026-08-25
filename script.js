@@ -654,3 +654,95 @@ window.onload = () => {
   );
 
 };
+
+/* =========================================================
+   KNOWLEDGE BASE SEARCH
+========================================================= */
+
+const knowledgeSearch =
+  document.getElementById("knowledgeSearch");
+
+const clearSearch =
+  document.getElementById("clearSearch");
+
+
+function searchKnowledge() {
+
+  const searchText =
+    knowledgeSearch.value
+      .trim()
+      .toLowerCase();
+
+
+  const articles =
+    document.querySelectorAll(
+      ".issue-card, .important-card"
+    );
+
+
+  let found = 0;
+
+
+  articles.forEach(article => {
+
+    const text =
+      article.innerText.toLowerCase();
+
+
+    const matched =
+      searchText === "" ||
+      text.includes(searchText);
+
+
+    if (matched) {
+
+      article.style.display = "";
+
+      found++;
+
+    } else {
+
+      article.style.display = "none";
+
+    }
+
+  });
+
+
+  /* Show / hide clear button */
+
+  if (searchText !== "") {
+
+    clearSearch.style.display = "flex";
+
+  } else {
+
+    clearSearch.style.display = "none";
+
+  }
+
+}
+
+
+/* Search while typing */
+
+knowledgeSearch.addEventListener(
+  "input",
+  searchKnowledge
+);
+
+
+/* Clear search */
+
+clearSearch.addEventListener(
+  "click",
+  () => {
+
+    knowledgeSearch.value = "";
+
+    searchKnowledge();
+
+    knowledgeSearch.focus();
+
+  }
+);
