@@ -1336,31 +1336,23 @@
 
 
 
-        <!-- ===================================
-             COMMON ISSUES
-        ==================================== -->
+   <!-- ===================================
+     COMMON ISSUES
+=================================== -->
 
-      <section
-  id="issuesTab"
-  class="tab-content">
+<section id="issuesTab" class="tab-content">
 
   <div class="page-section-header">
 
     <div>
-
-      <h2>
-        Common Issues
-      </h2>
+      <h2>Common Issues</h2>
 
       <p>
         Quick solutions for frequently reported problems.
       </p>
-
     </div>
 
-    <span class="section-icon">
-      ⚠️
-    </span>
+    <span class="section-icon">⚠️</span>
 
   </div>
 
@@ -1368,16 +1360,25 @@
   <div class="issues-list">
 
 
-    <!-- =================================================
-         1. TERMINAL NOT FOUND
-    ================================================== -->
+    <!-- TERMINAL NOT FOUND -->
 
     <article class="issue-card">
 
-      <div class="issue-title">
-        <span>⚠️</span>
-        Terminal not found
+      <div
+        class="issue-title"
+        onclick="toggleIssue(this)"
+        role="button"
+        tabindex="0"
+      >
+
+        <span class="issue-heading">
+          ⚠️ Terminal not found
+        </span>
+
+        <span class="expand-icon">⌄</span>
+
       </div>
+
 
       <div class="issue-content">
 
@@ -1397,10 +1398,7 @@
         <strong>To deactivate:</strong>
 
         <ol>
-
-          <li>
-            Open the LithosPOS application.
-          </li>
+          <li>Open the LithosPOS application.</li>
 
           <li>
             Go to
@@ -1414,10 +1412,8 @@
             please send a deactivation request from your
             registered LithosPOS email, mentioning your
             registered email ID and requesting deactivation,
-            to
-            <strong>support@lithospos.com</strong>.
+            to <strong>support@lithospos.com</strong>.
           </li>
-
         </ol>
 
         Feel free to let us know if you need any more help.
@@ -1427,16 +1423,25 @@
     </article>
 
 
-    <!-- =================================================
-         2. IMAGES NOT SHOWING IN POS
-    ================================================== -->
+    <!-- IMAGES NOT SHOWING -->
 
     <article class="issue-card">
 
-      <div class="issue-title">
-        <span>🖼️</span>
-        Images added in the back office not showing in the POS
+      <div
+        class="issue-title"
+        onclick="toggleIssue(this)"
+        role="button"
+        tabindex="0"
+      >
+
+        <span class="issue-heading">
+          🖼️ Images added in the back office not showing in the POS
+        </span>
+
+        <span class="expand-icon">⌄</span>
+
       </div>
+
 
       <div class="issue-content">
 
@@ -1444,9 +1449,7 @@
 
         <ol>
 
-          <li>
-            Open the <strong>Start Menu</strong>.
-          </li>
+          <li>Open the <strong>Start Menu</strong>.</li>
 
           <li>
             Type <strong>Internet Options</strong>.
@@ -1483,16 +1486,25 @@
     </article>
 
 
-    <!-- =================================================
-         3. WHATSAPP
-    ================================================== -->
+    <!-- WHATSAPP -->
 
     <article class="issue-card">
 
-      <div class="issue-title">
-        <span>💬</span>
-        WhatsApp
+      <div
+        class="issue-title"
+        onclick="toggleIssue(this)"
+        role="button"
+        tabindex="0"
+      >
+
+        <span class="issue-heading">
+          💬 WhatsApp
+        </span>
+
+        <span class="expand-icon">⌄</span>
+
       </div>
+
 
       <div class="issue-content">
 
@@ -1513,17 +1525,16 @@
 
         <br><br>
 
-        <strong>
-          WhatsApp Pricing:
-        </strong>
+        <strong>WhatsApp Pricing:</strong>
 
-        <br>
+        <br><br>
 
         <a
           href="https://developers.facebook.com/docs/whatsapp/pricing/"
           target="_blank"
-          rel="noopener noreferrer">
-          https://developers.facebook.com/docs/whatsapp/pricing/
+          rel="noopener noreferrer"
+        >
+          WhatsApp Pricing
         </a>
 
       </div>
@@ -1531,16 +1542,25 @@
     </article>
 
 
-    <!-- =================================================
-         4. WEIGHING SCALE CONNECTION
-    ================================================== -->
+    <!-- WEIGHING SCALE -->
 
     <article class="issue-card">
 
-      <div class="issue-title">
-        <span>⚖️</span>
-        Weighing scale Connection
+      <div
+        class="issue-title"
+        onclick="toggleIssue(this)"
+        role="button"
+        tabindex="0"
+      >
+
+        <span class="issue-heading">
+          ⚖️ Weighing scale Connection
+        </span>
+
+        <span class="expand-icon">⌄</span>
+
       </div>
+
 
       <div class="issue-content">
 
@@ -1552,13 +1572,13 @@
 
         <br><br>
 
-        <strong>
-          Back Office → Integrations
-        </strong>
+        <strong>Back Office → Integrations</strong>
 
         <br><br>
 
         <strong>Step 2:</strong>
+
+        <br><br>
 
         In the back office, go to:
 
@@ -1573,27 +1593,15 @@
         By default:
 
         <ul>
-
-          <li>
-            Prefix: <strong>9911</strong>
-          </li>
-
-          <li>
-            Entry code digit: <strong>3</strong>
-          </li>
-
-          <li>
-            Weight digit: <strong>5</strong>
-          </li>
-
-          <li>
-            Total: <strong>12 digits</strong>
-          </li>
-
+          <li>Prefix: <strong>9911</strong></li>
+          <li>Entry code digit: <strong>3</strong></li>
+          <li>Weight digit: <strong>5</strong></li>
+          <li>Total: <strong>12 digits</strong></li>
         </ul>
 
-
         <strong>Step 3:</strong>
+
+        <br><br>
 
         After that, open an item and enable the
         <strong>weighing scale</strong> option.
@@ -1606,8 +1614,9 @@
 
         <br><br>
 
-
         <strong>Step 4:</strong>
+
+        <br><br>
 
         Connect the weighing scale and print the barcode
         label with the weight.
@@ -1623,32 +1632,43 @@
     </article>
 
 
-    <!-- =================================================
-         5. WHITE SCREEN - WINDOWS
-    ================================================== -->
+    <!-- WHITE SCREEN -->
 
     <article class="issue-card">
 
-      <div class="issue-title">
-        <span>⬜</span>
-        White screen - Windows
+      <div
+        class="issue-title"
+        onclick="toggleIssue(this)"
+        role="button"
+        tabindex="0"
+      >
+
+        <span class="issue-heading">
+          ⬜ White screen - Windows
+        </span>
+
+        <span class="expand-icon">⌄</span>
+
       </div>
+
 
       <div class="issue-content">
 
         <strong>Step 1:</strong>
 
+        <br><br>
+
         Press:
 
         <br><br>
 
-        <strong>
-          Windows Key + R
-        </strong>
+        <strong>Windows Key + R</strong>
 
         <br><br>
 
         <strong>Step 2:</strong>
+
+        <br><br>
 
         In the popup, type:
 
@@ -1664,7 +1684,9 @@
 
         <strong>Step 3:</strong>
 
-        In the new window, select the path and go to:
+        <br><br>
+
+        Go to:
 
         <br><br>
 
@@ -1677,13 +1699,13 @@
 
         <strong>Step 4:</strong>
 
-        There will be a file named:
+        <br><br>
+
+        Find the file:
 
         <br><br>
 
-        <strong>
-          shared preferences
-        </strong>
+        <strong>shared preferences</strong>
 
         <br><br>
 
@@ -1694,16 +1716,25 @@
     </article>
 
 
-    <!-- =================================================
-         6. ANOTHER SYNC IN QUEUE
-    ================================================== -->
+    <!-- ANOTHER SYNC -->
 
     <article class="issue-card">
 
-      <div class="issue-title">
-        <span>🔄</span>
-        Another sync in queue
+      <div
+        class="issue-title"
+        onclick="toggleIssue(this)"
+        role="button"
+        tabindex="0"
+      >
+
+        <span class="issue-heading">
+          🔄 Another sync in queue
+        </span>
+
+        <span class="expand-icon">⌄</span>
+
       </div>
+
 
       <div class="issue-content">
 
@@ -1711,6 +1742,8 @@
           "Currently another sync in Queue"
         </strong>
         means that a background sync is already going on.
+
+        <br><br>
 
         Usually, the sync will not take this much time.
 
@@ -1749,22 +1782,23 @@
 
     </article>
 
-
   </div>
 
 </section>
 
-<section
-  id="importantTab"
-  class="tab-content">
+
+
+<!-- ===================================
+     IMPORTANT
+=================================== -->
+
+<section id="importantTab" class="tab-content">
 
   <div class="page-section-header">
 
     <div>
 
-      <h2>
-        Important
-      </h2>
+      <h2>Important</h2>
 
       <p>
         Important information, pricing, procedures and
@@ -1773,9 +1807,7 @@
 
     </div>
 
-    <span class="section-icon">
-      ⭐
-    </span>
+    <span class="section-icon">⭐</span>
 
   </div>
 
@@ -1783,21 +1815,30 @@
   <div class="important-list">
 
 
-    <!-- =================================================
-         1. WELCOME REPLY
-    ================================================== -->
+    <!-- WELCOME REPLY -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          💬 Welcome Reply
+        <div>
+
+          <div class="important-area">
+            💬 Welcome Reply
+          </div>
+
+          <div class="important-query">
+            Welcome reply
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Welcome reply
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -1814,7 +1855,8 @@
         <a
           href="https://www.lithospos.com/"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           🌐 LithosPOS Website
         </a>
 
@@ -1823,79 +1865,80 @@
         Should you encounter any queries or require
         assistance while navigating the software, our
         website's help section provides comprehensive,
-        step-by-step instructions for your convenience.
+        step-by-step instructions.
 
         <br><br>
 
         <a
           href="https://help.lithospos.com/"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           📚 LithosPOS Help Center
         </a>
 
         <br><br><br>
 
-        Additionally, we extend an invitation to schedule
-        a complimentary demonstration meeting with our
-        knowledgeable team to gain deeper insights into
-        how our system can revolutionize your retail
-        operations through automation.
+        Additionally, you can schedule a complimentary
+        demonstration meeting with our team.
 
-        During this demo session, we will delve into your
-        specific requirements and elucidate how our
-        software can effectively address them.
+        <br><br>
 
-        <br><br><br>
+        During this demo session, we will discuss your
+        specific requirements and explain how the software
+        can help automate your retail operations.
 
-        To arrange a demo tailored to your needs, please
-        click on the following link:
+        <br><br>
+
+        To arrange a demo:
 
         <br><br>
 
         <a
           href="https://www.lithospos.com/request-demo"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           📅 Request a Demo
         </a>
 
         <br><br><br>
 
-        We value your interest in LithosPOS and eagerly
-        anticipate the opportunity to assist you further
-        in optimizing your retail endeavors.
-
-        <br><br>
-
         Thanks and regards
 
         <br><br>
 
-        <strong>
-          Lithos Support team
-        </strong>
+        <strong>Lithos Support team</strong>
 
       </div>
 
     </article>
 
 
-    <!-- =================================================
-         2. BOOK DEMO
-    ================================================== -->
+    <!-- BOOK DEMO -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          📅 Meetings
+        <div>
+
+          <div class="important-area">
+            📅 Meetings
+          </div>
+
+          <div class="important-query">
+            Book Demo
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Book Demo
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -1910,7 +1953,8 @@
         <a
           href="https://lithospos.com/request-demo"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           📅 Book a Demo
         </a>
 
@@ -1919,21 +1963,30 @@
     </article>
 
 
-    <!-- =================================================
-         3. ENTERPRISE MEETING
-    ================================================== -->
+    <!-- ENTERPRISE MEETING -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          🏢 Book Enterprise Meeting
+        <div>
+
+          <div class="important-area">
+            🏢 Book Enterprise Meeting
+          </div>
+
+          <div class="important-query">
+            Enterprise plan meeting
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Enterprise plan meeting
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -1941,15 +1994,15 @@
       <div class="important-solution">
 
         To discuss the Enterprise plan in detail,
-        kindly book a meeting with our expert team
-        using this link:
+        kindly book a meeting with our expert team.
 
         <br><br>
 
         <a
           href="https://meetings.hubspot.com/lithospos/enterprise"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           📅 Book Enterprise Meeting
         </a>
 
@@ -1958,21 +2011,30 @@
     </article>
 
 
-    <!-- =================================================
-         4. PARTNER APPOINTMENT
-    ================================================== -->
+    <!-- PARTNER APPOINTMENT -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          🤝 Book Partner Appointment
+        <div>
+
+          <div class="important-area">
+            🤝 Book Partner Appointment
+          </div>
+
+          <div class="important-query">
+            Partner appointment
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Partner appointment
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -1987,7 +2049,8 @@
         <a
           href="https://meetings.hubspot.com/lithospos/partner"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           📅 Book Partner Appointment
         </a>
 
@@ -2004,21 +2067,30 @@
     </article>
 
 
-    <!-- =================================================
-         5. INDIAN PRICING
-    ================================================== -->
+    <!-- INDIAN PRICING -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          💰 Price
+        <div>
+
+          <div class="important-area">
+            💰 Price
+          </div>
+
+          <div class="important-query">
+            Indian Pricing
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Indian Pricing
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -2034,13 +2106,11 @@
 
         <br><br>
 
-        Monthly:
-        <strong>799 INR</strong>
+        Monthly: <strong>799 INR</strong>
 
         <br>
 
-        Yearly:
-        <strong>5,999 INR</strong>
+        Yearly: <strong>5,999 INR</strong>
 
         <br><br>
 
@@ -2060,13 +2130,11 @@
 
         <br><br>
 
-        Monthly:
-        <strong>1,599 INR</strong>
+        Monthly: <strong>1,599 INR</strong>
 
         <br>
 
-        Yearly:
-        <strong>14,999 INR</strong>
+        Yearly: <strong>14,999 INR</strong>
 
         <br><br>
 
@@ -2090,21 +2158,30 @@
     </article>
 
 
-    <!-- =================================================
-         6. USD PRICING
-    ================================================== -->
+    <!-- USD PRICING -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          💵 USD Pricing
+        <div>
+
+          <div class="important-area">
+            💵 USD Pricing
+          </div>
+
+          <div class="important-query">
+            USD pricing
+          </div>
+
         </div>
 
-        <div class="important-query">
-          USD pricing
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -2115,17 +2192,15 @@
 
         <br><br>
 
-        Monthly:
-        <strong>$25</strong>
+        Monthly: <strong>$25</strong>
 
         <br>
 
-        Yearly:
-        <strong>$228</strong>
+        Yearly: <strong>$228</strong>
 
         <br><br>
 
-        Additional terminal cost:
+        Additional terminal:
 
         <br>
 
@@ -2141,17 +2216,15 @@
 
         <br><br>
 
-        Monthly:
-        <strong>$58</strong>
+        Monthly: <strong>$58</strong>
 
         <br>
 
-        Yearly:
-        <strong>$588</strong>
+        Yearly: <strong>$588</strong>
 
         <br><br>
 
-        Additional terminal cost:
+        Additional terminal:
 
         <br>
 
@@ -2166,21 +2239,30 @@
     </article>
 
 
-    <!-- =================================================
-         7. WAITER APP
-    ================================================== -->
+    <!-- WAITER APP -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          📱 POS
+        <div>
+
+          <div class="important-area">
+            📱 POS
+          </div>
+
+          <div class="important-query">
+            Waiter App - how to connect
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Waiter App - how to connect
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -2191,8 +2273,7 @@
 
           <li>
             In the LithosPOS application, go to
-            <strong>Settings</strong> and click on
-            <strong>KOT Server</strong>.
+            <strong>Settings → KOT Server</strong>.
           </li>
 
           <li>
@@ -2200,36 +2281,29 @@
             the displayed IP Address and Port.
           </li>
 
-          <li>
-            Open the LithosPOS Waiter App.
-          </li>
+          <li>Open the LithosPOS Waiter App.</li>
 
           <li>
-            Enter the IP Address and Port you noted
-            earlier and click
+            Enter the IP Address and Port and click
             <strong>Check Availability</strong>.
           </li>
 
           <li>
-            If prompted, click <strong>Connect</strong>
-            to establish the connection.
+            If prompted, click <strong>Connect</strong>.
           </li>
 
           <li>
-            In the LithosPOS application, approve the
-            connection request under
-            <strong>KOT Server</strong> to allow the
-            Waiter App to start taking orders.
+            Approve the connection request under
+            <strong>KOT Server</strong>.
           </li>
 
         </ol>
 
-        <br>
-
         <a
           href="https://help.lithospos.com/docs/lithospos-apps/lithospos-waiter-app"
           target="_blank"
-          rel="noopener noreferrer">
+          rel="noopener noreferrer"
+        >
           📚 View Waiter App Guide
         </a>
 
@@ -2238,21 +2312,30 @@
     </article>
 
 
-    <!-- =================================================
-         8. ADD PRINTER
-    ================================================== -->
+    <!-- ADD PRINTER -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          🖨️ POS
+        <div>
+
+          <div class="important-area">
+            🖨️ POS
+          </div>
+
+          <div class="important-query">
+            How to add printer
+          </div>
+
         </div>
 
-        <div class="important-query">
-          How to add printer
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -2262,43 +2345,35 @@
         <ol>
 
           <li>
-            From the main menu, click on
+            From the main menu, click
             <strong>Printers</strong>.
           </li>
 
           <li>
-            Click the <strong>+</strong> button to add
-            a new printer.
+            Click the <strong>+</strong> button.
           </li>
 
           <li>
-            Enter the necessary details such as
-            Printer Name, Printer Type and IP Address
-            for network printers.
+            Enter Printer Name, Printer Type and IP Address
+            if required.
           </li>
 
           <li>
             Enable <strong>Receipt Print</strong> and
-            <strong>KOT</strong> (Kitchen Order Ticket)
-            depending on your needs.
+            <strong>KOT</strong> as required.
           </li>
 
           <li>
-            For a Bluetooth printer, pair it first from
-            Device Settings. Then select
-            <strong>Bluetooth</strong> as the printer
-            type in POS.
+            For Bluetooth printers, pair the printer first
+            from Device Settings.
           </li>
 
           <li>
-            Click <strong>Test Print</strong> to verify
-            that the printer is functioning correctly.
+            Click <strong>Test Print</strong>.
           </li>
 
           <li>
-            Once the test print is successful, click
-            <strong>Save</strong> to finalize the printer
-            configuration.
+            Click <strong>Save</strong>.
           </li>
 
         </ol>
@@ -2308,28 +2383,39 @@
     </article>
 
 
-    <!-- =================================================
-         9. QK ORDER
-    ================================================== -->
+    <!-- QK ORDER -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          🛒 Back Office
+        <div>
+
+          <div class="important-area">
+            🛒 Back Office
+          </div>
+
+          <div class="important-query">
+            QK Order
+          </div>
+
         </div>
 
-        <div class="important-query">
-          QK Order
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
 
       <div class="important-solution">
 
-        <strong>Manage the QR code menu with Quiqqy Order:</strong>
+        <strong>
+          Manage the QR code menu with Quiqqy Order:
+        </strong>
 
         <br><br>
 
@@ -2342,13 +2428,11 @@
             <strong>
               Back Office → Settings → General → Features
             </strong>
-            and enable the
-            <strong>Online Sale</strong> option.
+            and enable <strong>Online Sale</strong>.
           </li>
 
           <li>
-            Navigate to the <strong>Integrations</strong>
-            menu, find the E-commerce section, and enable
+            Go to <strong>Integrations</strong> and enable
             <strong>Quiqqy Order</strong>.
           </li>
 
@@ -2367,75 +2451,61 @@
           </li>
 
           <li>
-            Fill in the online store details and provide
-            your opening hours.
+            Fill in the store details and opening hours.
           </li>
 
         </ol>
 
 
-        <strong>3. Generate and use Quiqqy Order links</strong>
+        <strong>
+          3. Generate and use Quiqqy Order links
+        </strong>
 
-        <p>
-          Use the following format for each table:
-        </p>
+        <br><br>
 
         <code>
           https://quiqqy.com/storename/Table/table-number
         </code>
 
-        <p>
-          Replace <strong>store-name</strong> with the
-          name you set in Quiqqy Order settings.
-          No special characters should be used;
-          <strong>-</strong> is allowed.
-        </p>
+        <br><br>
 
-        <strong>Examples:</strong>
+        Replace <strong>store-name</strong> with the
+        configured store name.
 
-        <ul>
-
-          <li>
-            Table 1:
-            <br>
-            <code>
-              https://quiqqy.com/lpos-kot/Table/1
-            </code>
-          </li>
-
-          <li>
-            Table 2:
-            <br>
-            <code>
-              https://quiqqy.com/lpos-kot/Table/2
-            </code>
-          </li>
-
-        </ul>
+        <br><br>
 
         Orders placed using these links will automatically
-        be assigned to the specified table in the POS.
+        be assigned to the specified table.
 
       </div>
 
     </article>
 
 
-    <!-- =================================================
-         10. ON ACCOUNT SALE
-    ================================================== -->
+    <!-- ON ACCOUNT SALE -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          💳 On Account Sale
+        <div>
+
+          <div class="important-area">
+            💳 On Account Sale
+          </div>
+
+          <div class="important-query">
+            Setting up and using On Account
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Setting up and using On Account
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -2446,17 +2516,14 @@
 
         <ol>
 
-          <li>
-            Go to <strong>Back Office</strong>.
-          </li>
+          <li>Go to <strong>Back Office</strong>.</li>
 
           <li>
             Select <strong>Integrations</strong>.
           </li>
 
           <li>
-            Click on the <strong>On Account</strong>
-            icon to install the feature.
+            Install <strong>On Account</strong>.
           </li>
 
         </ol>
@@ -2466,26 +2533,16 @@
 
         <ol>
 
+          <li>Select the customer.</li>
+
+          <li>Add the items and place the order.</li>
+
           <li>
-            In the POS app, select
-            <strong>CustomerName</strong>
-            (the customer for whom you want to provide
-            a credit sale).
+            Go to <strong>Orders → Payment</strong>.
           </li>
 
           <li>
-            Add the items ordered by the customer and
-            place the order.
-          </li>
-
-          <li>
-            Go to <strong>Orders</strong>, select the order
-            and click on <strong>Payment</strong>.
-          </li>
-
-          <li>
-            Select <strong>On Account</strong> from the
-            payment options and complete the order.
+            Select <strong>On Account</strong>.
           </li>
 
         </ol>
@@ -2498,69 +2555,37 @@
         <ol>
 
           <li>
-            In Back Office, select
-            <strong>Customers</strong>.
+            Go to <strong>Customers</strong>.
           </li>
 
           <li>
-            Click on <strong>View</strong> and enable
-            <strong>Balance</strong>.
+            Enable <strong>Balance</strong> from View.
           </li>
 
-          <li>
-            Search for the customer by entering
-            <strong>CustomerName</strong>.
-          </li>
+          <li>Search for the customer.</li>
 
         </ol>
 
 
         <strong>
-          Check Customer Credit Balance on POS
+          How to receive payment
         </strong>
 
         <ol>
 
           <li>
-            Click on <strong>Menu</strong> and select
-            <strong>Customers</strong>.
+            Go to <strong>Menu → Customers</strong>.
           </li>
+
+          <li>Select the customer.</li>
+
+          <li>Click <strong>Pay</strong>.</li>
 
           <li>
-            Search for the customer using their
-            name or phone number.
+            Enter the amount and payment type.
           </li>
 
-        </ol>
-
-
-        <strong>
-          How to receive cash when a customer pays
-        </strong>
-
-        <ol>
-
-          <li>
-            In the POS app, click on
-            <strong>Menu → Customers</strong>.
-          </li>
-
-          <li>
-            Search for and select the customer.
-          </li>
-
-          <li>
-            Click on <strong>Pay</strong>.
-          </li>
-
-          <li>
-            Enter the amount, select the payment type,
-            and enter a note.
-          </li>
-
-          <li>
-            Click <strong>Submit</strong>.
-          </li>
+          <li>Click <strong>Submit</strong>.</li>
 
         </ol>
 
@@ -2569,157 +2594,103 @@
     </article>
 
 
-    <!-- =================================================
-         11. MULTI KITCHEN
-    ================================================== -->
+    <!-- MULTI KITCHEN -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          👨‍🍳 Multi Kitchen
+        <div>
+
+          <div class="important-area">
+            👨‍🍳 Multi Kitchen
+          </div>
+
+          <div class="important-query">
+            Setting up Multi Kitchen
+          </div>
+
         </div>
 
-        <div class="important-query">
-          Setting up Multi Kitchen
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
 
       <div class="important-solution">
 
-        <strong>
-          Install Multi Kitchen feature
-        </strong>
+        <strong>Install Multi Kitchen feature</strong>
 
         <ol>
-
-          <li>
-            Go to <strong>Back Office</strong>.
-          </li>
-
-          <li>
-            Select <strong>Integrations</strong>.
-          </li>
-
-          <li>
-            Click on the <strong>Multi Kitchen</strong>
-            icon to install the feature.
-          </li>
-
+          <li>Go to <strong>Back Office</strong>.</li>
+          <li>Select <strong>Integrations</strong>.</li>
+          <li>Install <strong>Multi Kitchen</strong>.</li>
         </ol>
 
 
-        <strong>
-          Enable Multi Kitchen option for store
-        </strong>
+        <strong>Enable Multi Kitchen for a store</strong>
 
         <ol>
-
-          <li>
-            Go to
-            <strong>Back Office → Store</strong>
-            from Store Settings.
-          </li>
-
-          <li>
-            Click on the required
-            <strong>StoreName</strong>.
-          </li>
-
-          <li>
-            Enable <strong>Multi Kitchen</strong>
-            and click <strong>Submit</strong>.
-          </li>
-
+          <li>Go to <strong>Back Office → Store</strong>.</li>
+          <li>Select the required store.</li>
+          <li>Enable <strong>Multi Kitchen</strong>.</li>
+          <li>Click <strong>Submit</strong>.</li>
         </ol>
 
 
-        <strong>
-          Adding Multi Kitchen in Back Office
-        </strong>
+        <strong>Adding Multi Kitchen</strong>
 
         <ol>
-
-          <li>
-            Navigate to Back Office Settings and click
-            <strong>Kitchen Printers</strong>.
-          </li>
-
-          <li>
-            Click the
-            <strong>Add Kitchen Printer</strong>
-            icon.
-          </li>
-
-          <li>
-            Enter the Kitchen Name and select the
-            categories to be prepared in that kitchen.
-          </li>
-
-          <li>
-            Click <strong>Submit</strong>.
-          </li>
-
+          <li>Go to <strong>Kitchen Printers</strong>.</li>
+          <li>Click <strong>Add Kitchen Printer</strong>.</li>
+          <li>Select the categories for that kitchen.</li>
+          <li>Click <strong>Submit</strong>.</li>
         </ol>
 
 
-        <strong>
-          KOT Printer Settings for Multi Kitchen
-        </strong>
+        <strong>KOT Printer Settings</strong>
 
         <ol>
-
-          <li>
-            Go to POS Settings and click
-            <strong>Printers</strong>.
-          </li>
-
-          <li>
-            Click <strong>+</strong> and add the printer.
-          </li>
-
-          <li>
-            Enter the required printer details.
-          </li>
-
-          <li>
-            Enable <strong>Print KOT</strong>.
-          </li>
-
-          <li>
-            Select the required kitchens from the list.
-          </li>
-
+          <li>Go to POS <strong>Settings → Printers</strong>.</li>
+          <li>Add the printer.</li>
+          <li>Enable <strong>Print KOT</strong>.</li>
+          <li>Select the required kitchens.</li>
         </ol>
-
-
-        Orders containing items from particular
-        categories will have their KOT printed on the
-        printer assigned to that kitchen.
 
       </div>
 
     </article>
 
 
-    <!-- =================================================
-         12. ADD TAX
-    ================================================== -->
+    <!-- ADD TAX -->
 
     <article class="important-card">
 
-      <div class="important-header">
+      <div
+        class="important-header"
+        onclick="toggleImportant(this)"
+        role="button"
+        tabindex="0"
+      >
 
-        <div class="important-area">
-          🧾 Add Tax
+        <div>
+
+          <div class="important-area">
+            🧾 Add Tax
+          </div>
+
+          <div class="important-query">
+            How to add tax
+          </div>
+
         </div>
 
-        <div class="important-query">
-          How to add tax
-        </div>
+        <span class="expand-icon">⌄</span>
 
       </div>
 
@@ -2740,24 +2711,19 @@
           </li>
 
           <li>
-            Enable <strong>Include Tax</strong> if the
-            sale rate of the item already includes the tax.
+            Enable <strong>Include Tax</strong> if required.
           </li>
 
-          <li>
-            Submit the settings.
-          </li>
+          <li>Submit the settings.</li>
 
           <li>
-            Go to
-            <strong>Settings → Taxes</strong>
+            Go to <strong>Settings → Taxes</strong>
             and add the required tax.
           </li>
 
           <li>
-            Go to
-            <strong>Settings → Store</strong>,
-            select the store and enable tax.
+            Go to <strong>Settings → Store</strong>
+            and enable tax for the store.
           </li>
 
           <li>
@@ -2766,14 +2732,15 @@
 
           <li>
             Go to
-            <strong>Back Office → Settings → Receipt</strong>
-            and enable <strong>Tax Clarification</strong>.
+            <strong>
+              Back Office → Settings → Receipt
+            </strong>
+            and enable
+            <strong>Tax Clarification</strong>.
           </li>
 
           <li>
-            Add taxes to the item by going to
-            <strong>Back Office → Item</strong>
-            and selecting the required item.
+            Add the tax to the required item.
           </li>
 
         </ol>
@@ -2781,7 +2748,6 @@
       </div>
 
     </article>
-
 
   </div>
 
