@@ -3197,3 +3197,371 @@ body.light .copy-btn.copied {
   color: #219653;
 
 }
+
+/* =========================================================
+   NOVADASH GLASS UI REFRESH
+   Appended overrides: preserves existing selectors and logic.
+   Supports body.light / body.dark and existing responsive UI.
+========================================================= */
+
+:root {
+  color-scheme: light;
+  --primary: #4f6df5;
+  --primary-hover: #3855dc;
+  --primary-container: rgba(79, 109, 245, 0.12);
+  --secondary: #65718a;
+  --success: #16866b;
+  --danger: #d94b62;
+  --surface: #f4f7ff;
+  --surface-container: rgba(255, 255, 255, 0.72);
+  --surface-high: rgba(232, 238, 251, 0.88);
+  --text: #17213d;
+  --text-secondary: #65718a;
+  --border: rgba(105, 127, 177, 0.18);
+  --white: #ffffff;
+  --radius-sm: 13px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 4px 14px rgba(37, 57, 105, 0.055);
+  --shadow: 0 12px 30px rgba(37, 57, 105, 0.085);
+  --shadow-lg: 0 24px 64px rgba(37, 57, 105, 0.14);
+  --transition: 0.22s cubic-bezier(.2, .7, .2, 1);
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(99, 143, 255, .17), transparent 34%),
+    radial-gradient(ellipse at 96% 12%, rgba(104, 221, 203, .13), transparent 30%),
+    radial-gradient(ellipse at 75% 100%, rgba(174, 143, 255, .12), transparent 34%),
+    var(--surface);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+body.light {
+  color-scheme: light;
+  --surface-container: rgba(255, 255, 255, 0.72);
+  --surface-high: rgba(233, 239, 251, 0.92);
+}
+
+body.dark {
+  color-scheme: dark;
+  --primary: #9eb4ff;
+  --primary-hover: #bfd0ff;
+  --primary-container: rgba(113, 143, 255, 0.19);
+  --secondary: #a9b5cc;
+  --success: #63d7b3;
+  --danger: #ff9eae;
+  --surface: #0b1020;
+  --surface-container: rgba(20, 29, 52, 0.76);
+  --surface-high: rgba(35, 47, 76, 0.88);
+  --text: #edf2ff;
+  --text-secondary: #a5b1cc;
+  --border: rgba(167, 190, 255, 0.14);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.16);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.38);
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(74, 105, 225, .19), transparent 35%),
+    radial-gradient(ellipse at 95% 8%, rgba(26, 172, 157, .10), transparent 30%),
+    #0b1020;
+}
+
+/* Translucent app chrome */
+.app-bar {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  border-bottom-color: var(--border);
+  backdrop-filter: blur(24px) saturate(155%);
+  -webkit-backdrop-filter: blur(24px) saturate(155%);
+}
+
+.main-nav {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border-right-color: var(--border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.app-icon,
+.brand-logo {
+  background: linear-gradient(135deg, #7394ff 0%, #4f6df5 48%, #7358e8 100%);
+  box-shadow: 0 9px 24px rgba(79, 109, 245, .28);
+}
+
+.app-title,
+.login-card h1,
+.page-header h2,
+.page-section-header h2 {
+  letter-spacing: -0.045em;
+}
+
+.app-subtitle,
+.page-header p,
+.page-section-header p {
+  letter-spacing: 0;
+}
+
+.main-content {
+  padding: 34px;
+}
+
+.main-nav .tab-btn {
+  min-height: 46px;
+  border: 1px solid transparent;
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.main-nav .tab-btn.active {
+  background: linear-gradient(110deg, rgba(79, 109, 245, .17), rgba(119, 143, 255, .09));
+  border-color: rgba(79, 109, 245, .14);
+  color: var(--primary);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+body.dark .main-nav .tab-btn.active {
+  background: linear-gradient(110deg, rgba(113, 143, 255, .22), rgba(113, 143, 255, .07));
+}
+
+.stat-card,
+.content-card,
+.inner-card,
+.issue-card,
+.important-card,
+.login-card {
+  background: var(--surface-container);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.stat-card,
+.content-card,
+.inner-card,
+.issue-card,
+.important-card,
+.bank-card,
+.meeting-card,
+.result-item {
+  border-radius: var(--radius-md);
+}
+
+.content-card,
+.inner-card {
+  padding: 24px;
+}
+
+.stat-card,
+.content-card,
+.inner-card,
+.issue-card,
+.important-card,
+.bank-card,
+.meeting-card,
+.sub-tab-btn,
+.result-item {
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.stat-card:hover,
+.content-card:hover,
+.inner-card:hover,
+.issue-card:hover,
+.important-card:hover,
+.bank-card:hover,
+.meeting-card:hover,
+.result-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: rgba(99, 126, 245, .28);
+}
+
+.stat-icon,
+.card-header-icon,
+.section-icon,
+.meeting-icon {
+  border: 1px solid rgba(255, 255, 255, .36);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+
+body.dark .stat-icon,
+body.dark .card-header-icon,
+body.dark .section-icon,
+body.dark .meeting-icon {
+  border-color: rgba(255, 255, 255, .08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+.result-item {
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+}
+
+.result-item:nth-child(1) {
+  background: rgba(22, 134, 107, .10);
+  border-color: rgba(22, 134, 107, .20);
+}
+.result-item:nth-child(1) .result-label,
+.result-item:nth-child(1) .result {
+  color: var(--success);
+}
+.result-item:nth-child(2) {
+  background: rgba(224, 157, 45, .10);
+  border-color: rgba(224, 157, 45, .22);
+}
+.result-item:nth-child(2) .result-label,
+.result-item:nth-child(2) .break-total {
+  color: #c78a22;
+}
+.result-item:nth-child(3) {
+  background: rgba(65, 135, 235, .10);
+  border-color: rgba(65, 135, 235, .22);
+}
+.result-item:nth-child(3) .result-label,
+.result-item:nth-child(3) .leave-time {
+  color: #4386e8;
+}
+.result-item:nth-child(4) {
+  background: rgba(139, 104, 238, .10);
+  border-color: rgba(139, 104, 238, .22);
+}
+.result-item:nth-child(4) .result-label,
+.result-item:nth-child(4) .leave-time {
+  color: #8b68ee;
+}
+
+.primary {
+  background: linear-gradient(115deg, #5c7cff, #4c63e8 55%, #7959e8);
+  border: 1px solid rgba(255, 255, 255, .22);
+  box-shadow: 0 8px 22px rgba(79, 109, 245, .23);
+}
+.primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 12px 28px rgba(79, 109, 245, .30);
+}
+.logout {
+  border: 1px solid rgba(217, 75, 98, .16);
+}
+
+.field input,
+.field textarea,
+.field select,
+.time-inputs select {
+  border-color: var(--border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus,
+.time-inputs select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 14%, transparent);
+}
+
+.sub-tab-btn {
+  background: var(--surface-container);
+  border-color: var(--border);
+  border-radius: 16px;
+}
+.sub-tab-btn.active {
+  background: var(--primary-container);
+  border-color: color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.table-wrapper {
+  border-color: var(--border);
+  border-radius: 16px;
+  box-shadow: none;
+}
+table {
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+}
+th {
+  background: var(--surface-high);
+}
+tbody tr:hover {
+  background: color-mix(in srgb, var(--primary) 6%, transparent);
+}
+
+.bank-card,
+.meeting-card {
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border-color: var(--border);
+}
+
+.important-header {
+  background: linear-gradient(115deg, rgba(245, 158, 11, .13), transparent 78%);
+}
+.important-area {
+  color: #c88b25;
+}
+body.dark .important-area {
+  color: #f5c15e;
+}
+
+.clock-card,
+.user-chip {
+  background: var(--surface-container);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.theme-toggle {
+  border-color: var(--border);
+  background: var(--surface-container);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.progress-container {
+  background: var(--surface-high);
+}
+.progress-bar {
+  background: linear-gradient(90deg, #5d7cff, #7b65ed, #63cfc0);
+}
+
+::selection {
+  background: rgba(79, 109, 245, .22);
+}
+
+/* Keep all existing sections usable on tablet and mobile. */
+@media (max-width: 1000px) {
+  .main-content { padding: 24px; }
+  .content-card, .inner-card { padding: 20px; }
+}
+
+@media (max-width: 700px) {
+  .app-bar {
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .main-content { padding: 18px 12px 92px; }
+  .content-card, .inner-card { padding: 16px; }
+  .stat-card:hover,
+  .content-card:hover,
+  .inner-card:hover,
+  .issue-card:hover,
+  .important-card:hover,
+  .bank-card:hover,
+  .meeting-card:hover,
+  .result-item:hover { transform: none; }
+  .mobile-nav {
+    background: color-mix(in srgb, var(--surface-container) 86%, transparent);
+    border-color: var(--border);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
