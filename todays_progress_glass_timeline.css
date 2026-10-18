@@ -1,0 +1,314 @@
+/*
+  Work Tracker — Today's Progress redesign
+  CSS-only enhancement. Append this file after your existing style.css, or paste
+  it at the END of style.css. No HTML/JavaScript changes or ID changes required.
+*/
+
+/* ---------- Today's Progress shell ---------- */
+.results-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(245,247,255,.68));
+  box-shadow: 0 18px 48px rgba(28, 39, 75, .08), inset 0 1px 0 rgba(255,255,255,.8);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.results-card::before,
+.results-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+.results-card::before {
+  width: 190px;
+  height: 190px;
+  top: -105px;
+  right: -45px;
+  background: radial-gradient(circle, rgba(129,140,248,.18), transparent 72%);
+}
+.results-card::after {
+  width: 170px;
+  height: 170px;
+  bottom: -110px;
+  left: -70px;
+  background: radial-gradient(circle, rgba(45,212,191,.13), transparent 72%);
+}
+
+.results-card .card-header {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.results-card .card-header h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 750;
+  letter-spacing: -.035em;
+}
+.results-card .card-header p {
+  margin: 6px 0 0;
+  color: #78839a;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+.results-card .card-header-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(129,140,248,.2);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(224,231,255,.9), rgba(240,253,250,.85));
+  box-shadow: 0 8px 18px rgba(99,102,241,.1);
+  font-size: 1.2rem;
+}
+
+/* ---------- Four translucent metric cards ---------- */
+.results-card .result-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 18px;
+}
+.results-card .result-item {
+  position: relative;
+  min-width: 0;
+  padding: 17px 16px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(148,163,184,.2);
+  border-radius: 18px;
+  background: rgba(255,255,255,.58);
+  box-shadow: 0 7px 20px rgba(31,41,55,.035), inset 0 1px 0 rgba(255,255,255,.75);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.results-card .result-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(129,140,248,.42);
+  box-shadow: 0 12px 26px rgba(79,70,229,.09);
+}
+.results-card .result-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 3px;
+  border-radius: 0 0 5px 5px;
+  background: linear-gradient(90deg, #818cf8, #38bdf8);
+  opacity: .9;
+}
+.results-card .result-item:nth-child(2)::before { background: linear-gradient(90deg, #34d399, #2dd4bf); }
+.results-card .result-item:nth-child(3)::before { background: linear-gradient(90deg, #fbbf24, #fb923c); }
+.results-card .result-item:nth-child(4)::before { background: linear-gradient(90deg, #c084fc, #818cf8); }
+.results-card .result-label {
+  display: block;
+  margin: 2px 0 10px;
+  color: #7b879d;
+  font-size: .76rem;
+  font-weight: 650;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+.results-card .result,
+.results-card .break-total,
+.results-card .leave-time {
+  min-height: 1.55em;
+  color: #202b43;
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  font-weight: 760;
+  line-height: 1.25;
+  letter-spacing: -.035em;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Workday timeline / progress track ---------- */
+.results-card .progress-section {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+  padding: 20px 20px 16px;
+  border: 1px solid rgba(148,163,184,.2);
+  border-radius: 20px;
+  background: rgba(248,250,255,.72);
+}
+.results-card .progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 15px;
+  color: #536079;
+  font-size: .86rem;
+  font-weight: 650;
+}
+.results-card #progressPercent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  padding: 6px 10px;
+  border: 1px solid rgba(99,102,241,.18);
+  border-radius: 999px;
+  background: rgba(224,231,255,.75);
+  color: #4f46e5;
+  font-size: .8rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.results-card .progress-container {
+  position: relative;
+  height: 13px;
+  overflow: hidden;
+  border: 1px solid rgba(148,163,184,.12);
+  border-radius: 999px;
+  background: #e7ebf5;
+  box-shadow: inset 0 2px 4px rgba(30,41,59,.07);
+}
+.results-card #progressBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #818cf8 0%, #6366f1 48%, #2dd4bf 100%);
+  box-shadow: 0 0 18px rgba(99,102,241,.2);
+  color: transparent;
+  font-size: 0;
+  transition: width .5s ease, background .3s ease;
+}
+.results-card #progressBar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.3) 48%, transparent 72%);
+  transform: translateX(-100%);
+  animation: progressShimmer 3.2s ease-in-out infinite;
+}
+@keyframes progressShimmer {
+  55%, 100% { transform: translateX(100%); }
+}
+
+/* Timeline labels visually anchor the start, current progress, and end of the day. */
+.results-card .progress-container::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 2px;
+  bottom: 2px;
+  left: 50%;
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(255,255,255,.8);
+  pointer-events: none;
+}
+.results-card .progress-container::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 3px;
+  left: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: calc(var(--timeline-end, 0px)) 0 0 #fff;
+  pointer-events: none;
+}
+.results-card .progress-section::after {
+  content: "START OF DAY                                      TARGET";
+  display: flex;
+  justify-content: space-between;
+  margin-top: 11px;
+  color: #8a95aa;
+  font-size: .64rem;
+  font-weight: 750;
+  letter-spacing: .09em;
+  white-space: pre;
+}
+.results-card .overtime {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  color: #66728a;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.results-card .overtime:empty { display: none; }
+
+/* ---------- Dark theme ---------- */
+body.dark .results-card {
+  border-color: rgba(148,163,184,.16);
+  background: linear-gradient(135deg, rgba(25,33,53,.91), rgba(19,27,44,.82));
+  box-shadow: 0 20px 55px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.045);
+}
+body.dark .results-card .card-header p { color: #9aa7bf; }
+body.dark .results-card .card-header-icon {
+  border-color: rgba(129,140,248,.2);
+  background: linear-gradient(145deg, rgba(79,70,229,.2), rgba(13,148,136,.14));
+}
+body.dark .results-card .result-item {
+  border-color: rgba(148,163,184,.15);
+  background: rgba(10,17,32,.32);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+}
+body.dark .results-card .result-label { color: #98a5bd; }
+body.dark .results-card .result,
+body.dark .results-card .break-total,
+body.dark .results-card .leave-time { color: #f1f5ff; }
+body.dark .results-card .progress-section {
+  border-color: rgba(148,163,184,.14);
+  background: rgba(8,15,29,.42);
+}
+body.dark .results-card .progress-header { color: #c2cbe0; }
+body.dark .results-card #progressPercent {
+  border-color: rgba(129,140,248,.22);
+  background: rgba(79,70,229,.2);
+  color: #c7d2fe;
+}
+body.dark .results-card .progress-container {
+  border-color: rgba(255,255,255,.04);
+  background: #28334a;
+}
+body.dark .results-card .progress-section::after { color: #7f8ca6; }
+body.dark .results-card .overtime { color: #aab6cc; }
+
+/* ---------- Responsive layout ---------- */
+@media (max-width: 900px) {
+  .results-card .result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .results-card { padding: 18px; border-radius: 20px; }
+  .results-card .card-header { margin-bottom: 18px; }
+  .results-card .result-grid { gap: 10px; }
+  .results-card .result-item { padding: 15px 12px 16px; border-radius: 15px; }
+  .results-card .result-label { font-size: .68rem; letter-spacing: .025em; }
+  .results-card .result,
+  .results-card .break-total,
+  .results-card .leave-time { font-size: 1.05rem; }
+  .results-card .progress-section { padding: 16px 13px 13px; border-radius: 16px; }
+  .results-card .progress-section::after { font-size: .55rem; letter-spacing: .045em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .results-card *, .results-card *::before, .results-card *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
